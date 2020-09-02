@@ -10,7 +10,7 @@ namespace RepoTestHome
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Megane");
+            Console.WriteLine("This is a test");
         }
     }
 }
