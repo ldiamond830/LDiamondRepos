@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/Fire Sanctuary - The Legend of Zelda Skyward Sword.mp3</SourceFile>
+  <SourceTime>2021-05-06T15:29:42.8120363-04:00</SourceTime>
+  <DestFile>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/bin/DesktopGL/Content/Fire Sanctuary - The Legend of Zelda Skyward Sword.xnb</DestFile>
+  <DestTime>2021-06-27T00:56:07.034783-04:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2020-08-10T16:17:54-04:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/bin/DesktopGL/Content/Fire Sanctuary - The Legend of Zelda Skyward Sword.ogg</string>
+  </BuildOutput>
+</PipelineBuildEvent>

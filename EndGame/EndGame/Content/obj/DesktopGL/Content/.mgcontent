@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/alivePlaceHolder1.png</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/alivePlaceHolder2.png</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/alivePlaceHolder3.png</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/alivePlaceHolder4.png</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/axeTemp.png</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/BulletPlace.png</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/castleMadeOfSandBoss.JPG</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/killbox.png</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/pitTemp.png</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/pitTempCorrected.png</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/playerPlaceHolder.png</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/stockFont.spritefont</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/what'sInMyHead1.jpg</File>
+    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/what'sInMyHead2.jpg</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

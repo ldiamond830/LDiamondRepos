@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "fG78mzGn0UJm1LCN8AaO38bfhUfZXHpomhify8mBMAZ2Np+F3Jv7lE0zJjgaLWfPS1fdTm+AXRpx5SkL6L+blA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Lucas Diamond\\source\\repos\\LockAndStock\\LockAndStock\\LockAndStock.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Lucas Diamond\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
+    "C:\\Users\\Lucas Diamond\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"
+  ],
+  "logs": []
+}
