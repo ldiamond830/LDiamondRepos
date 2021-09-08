@@ -36,7 +36,7 @@ namespace EndGame
         private movement movementDirection;
         private double movementTimer;
 
-        public BonesOfBirds(Texture2D projectileTexture, Texture2D texture, Player player, SoundEffect screechSound, Texture2D tornadoTexture) : base(500, 10, 10, 5, new Rectangle(960, 540, 100, 100), projectileTexture, texture, player)
+        public BonesOfBirds(Texture2D projectileTexture, Texture2D texture, Player player, SoundEffect screechSound, Texture2D tornadoTexture) : base(500, 10, 10, 5, new Rectangle(960, 540, 200, 200), projectileTexture, texture, player)
         {
             this.screechSound = screechSound;
             this.tornadoTexture = tornadoTexture;
@@ -46,21 +46,26 @@ namespace EndGame
 
         public void Update(GameTime gameTime)
         {
+            //timers to control intervals
             timer += gameTime.ElapsedGameTime.TotalSeconds;
             movementTimer += gameTime.ElapsedGameTime.TotalSeconds;
 
+            //changes the bosses direction every 2 seconds
             if(movementTimer >= 2)
             {
                 DirectionSelector();
                 movementTimer = 0;
             }
-
+            
+            //selects a different attack every 2 seconds
             if(timer >= 1.25)
             {
-                ChooseAttack(rng.Next(1, 6), gameTime);
+                //ChooseAttack(rng.Next(1, 6), gameTime);
+                ChooseAttack(1, gameTime);
                 timer = 0;
             }
 
+            //calls the update method to move any tornado projectiles the boss has spawned
             foreach(Tornado tornado in tornadoList)
             {
                 tornado.Update();
@@ -78,14 +83,18 @@ namespace EndGame
                 contactDamageTimer -= gameTime.ElapsedGameTime.TotalSeconds;
             }
 
+            //if the attack selector picks fly
             if (flyActive)
             {
+                //moves the boss right until it's well off screen
                 if(position.X < 1930 + position.Width)
                 {
                     position.X += moveSpeed;
                 }
+                //once the boss is off screen
                 else
                 {
+                    //teleports to the player's y position on the other side of the screen, creating the effect of it having flown around in a circle
                     position.Y = player.Position.Y;
                     position.X = -10 - position.Width;
                     inPosition = true;
@@ -96,6 +105,7 @@ namespace EndGame
                 {
                     position.X += moveSpeed * 2;
 
+                    //flies at player until it reaches the position to was in at the start of the attack
                     if(position.X >= xPositionAtStartOfFly)
                     {
                         inPosition = false;
@@ -147,12 +157,15 @@ namespace EndGame
             }
         }
 
+        //rng to pick attack
         private void ChooseAttack(int choice, GameTime gameTime)
         {
+            //prevent's the boss from attacking if it's in the process of flying
             if (!flyActive)
             {
                 if (choice == 1)
                 {
+                    
                     Fly();
                 }
                 else if (choice == 2)
@@ -172,7 +185,7 @@ namespace EndGame
            
         }
 
-        //like in pokemon
+        //trigger's the attack which is carried out in the update method
         private void Fly()
         {
             flyActive = true;
@@ -217,11 +230,13 @@ namespace EndGame
             
         }
 
+        //spawns another projectile that moves in a specific pattern
         private void Tornado(GameTime gameTime)
         {
             tornadoList.Add(new Tornado(new Rectangle(this.Position.X, this.Position.Y, 50, 100), tornadoTexture, damage + 5, player, projectileSpeed, gameTime));
         }
 
+        //picks the direction for the boss to move
         private void DirectionSelector()
         {
             int randomizer = rng.Next(1, 21);
@@ -266,6 +281,7 @@ namespace EndGame
                 {
                     movementDirection = movement.downRight;
                 }
+                //has a greater chance to move in a straight line then on a diagonal
                 else if (randomizer > 4 && randomizer <= 8)
                 {
                     movementDirection = movement.up;

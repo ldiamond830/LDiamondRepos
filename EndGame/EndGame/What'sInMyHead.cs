@@ -10,6 +10,7 @@ namespace EndGame
 {
     class What_sInMyHead : Boss
     {
+        //fields
         private bool phaseChanged = false;
         private Texture2D texture2;
         private double timer = 0;
@@ -34,6 +35,7 @@ namespace EndGame
         private bool axeReadyToSlam = false;
         private int playerCurrentX;
         
+        //constructor
         public What_sInMyHead(Texture2D projectileTexture, Texture2D texture, Player player, Texture2D texture2, Texture2D axeTexture, Texture2D pitTexture) : base(500, 10, 5, 5, new Rectangle(960, 540, 300, 300), projectileTexture, texture, player)
         {
             this.texture2 = texture2;
@@ -44,8 +46,9 @@ namespace EndGame
 
         public void Update(GameTime gameTime)
         {
+            //times attack interval
             timer += gameTime.ElapsedGameTime.TotalSeconds;
-
+            //moves the boss closer to the player on either the x or y axis
             MoveCloser();
 
             if(timer >= timeTillAttack)
@@ -54,6 +57,7 @@ namespace EndGame
                 timer = 0;
             }
 
+            //when the boss's health hits 200 it gets a damage increase and attack's more frequently
             if(health <= 200 && phaseChanged == false)
             {
                 phaseChanged = true;
@@ -61,6 +65,7 @@ namespace EndGame
                 timeTillAttack--;
             }
 
+            //control's behavior for the grab attack
             if (grabActive)
             {
                 position.X += (int)(grabVector.X * moveSpeed);
@@ -82,7 +87,8 @@ namespace EndGame
                     
                 }
             }
-
+            
+            //moves the axe forward on it's path toward the edge of the screen
             if (isThrowing)
             {
                 axe.X += (int)(axePath.X * 9);
@@ -96,6 +102,7 @@ namespace EndGame
                     ReturnAxe();
                 }
             }
+
 
             if (isReturning)
             {
@@ -111,7 +118,7 @@ namespace EndGame
                 ReturnAxe();
             }
 
-
+            //axe hit detection
             if(isReturning || isThrowing)
             {
                 if (axe.Intersects(player.Position) && axeDamageTimer == 0)
@@ -142,6 +149,7 @@ namespace EndGame
 
             if (pitVisible)
             {
+                //increase's size of the pit
                 Pit.Inflate(1, 1);
 
                 if (pitCanDamage && Pit.Intersects(player.Position))
@@ -193,6 +201,7 @@ namespace EndGame
 
         private void ChooseAttack(int choice)
         {
+            //if the boss is already in the process of grabbing deals damage to the player rather than picking a new attack, this was to save having to create a separate timer
             if (hasGrabbed)
             {
                 player.Health -= damage;
@@ -203,6 +212,7 @@ namespace EndGame
             }
             else
             {
+                //different attack choices based on which phase the boss is in
                 if (!phaseChanged)
                 {
                     if (choice == 1)
@@ -262,6 +272,7 @@ namespace EndGame
 
         private void CreatePit()
         {
+            //spawns a rectangle under the player, which expands out (this is controlled elsewhere) and after getting to a certain size cna damage the player
             Pit = new Rectangle(player.Position.X, player.Position.Y, 10,10);
             pitVisible = true;
         }
@@ -290,6 +301,7 @@ namespace EndGame
             }
         }
 
+
         private void ReturnAxe()
         {
             axePath = new Vector2(((position.X + 5) - axe.X),((position.Y + position.Height / 2) - axe.Y));
@@ -298,6 +310,7 @@ namespace EndGame
 
         public override void Draw(SpriteBatch sb, Color color)
         {
+            //uses a different texture for the boxx depending on  the phase
             if(!phaseChanged)
             {
                 
@@ -317,7 +330,7 @@ namespace EndGame
             }
 
             sb.Draw(axeTexture, axe, Color.White);
-
+            //pit changes color when it is able to do damage
             if (pitVisible)
             {
                 if (pitCanDamage)

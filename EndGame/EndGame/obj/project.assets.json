@@ -181,11 +181,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lucas Diamond\\source\\repos\\EndGame\\EndGame\\EndGame.csproj",
+      "projectUniqueName": "C:\\Users\\Lucas Diamond\\Documents\\GitHub\\LDiamondRepos\\EndGame\\EndGame\\EndGame.csproj",
       "projectName": "EndGame",
-      "projectPath": "C:\\Users\\Lucas Diamond\\source\\repos\\EndGame\\EndGame\\EndGame.csproj",
+      "projectPath": "C:\\Users\\Lucas Diamond\\Documents\\GitHub\\LDiamondRepos\\EndGame\\EndGame\\EndGame.csproj",
       "packagesPath": "C:\\Users\\Lucas Diamond\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lucas Diamond\\source\\repos\\EndGame\\EndGame\\obj\\",
+      "outputPath": "C:\\Users\\Lucas Diamond\\Documents\\GitHub\\LDiamondRepos\\EndGame\\EndGame\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -244,7 +244,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
       }
     }
   }

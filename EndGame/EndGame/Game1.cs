@@ -263,11 +263,11 @@ namespace EndGame
                     }
                     if (progress == 3)
                     {
-
+                        bonesOfBirds.Update(gameTime);
                     }
                     if (progress == 4)
                     {
-
+                        //blackHoleSun.Update(gameTime);
                     }
                     if (progress == 5)
                     {

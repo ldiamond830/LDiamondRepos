@@ -47,9 +47,11 @@ namespace EndGame
 
         public void Update()
         {
+            //gets the direction vector between the tornado and the player
             path = new Vector2(target.Position.X - position.X, target.Position.Y - position.Y);
             path.Normalize();
 
+            //changes direction every 0.75 seconds
             timer += gameTime.ElapsedGameTime.TotalSeconds;
 
             if(timer >= 0.75)
@@ -58,6 +60,7 @@ namespace EndGame
                 changeDirection();
             }
 
+            //hit detection
             if (position.Intersects(target.Position))
             {
                 isActive = true;
@@ -67,6 +70,7 @@ namespace EndGame
             
             switch (currentDirection)
             {
+                //can either move toward or away from the player to make it a bit more unpredicatable
                 case direction.towardX:
                     position.X += (int)(speed * path.X);
                     break;

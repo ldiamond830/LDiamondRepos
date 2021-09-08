@@ -21,6 +21,7 @@ namespace EndGame
     }
     class Bullet
     {
+        //fields
         private Rectangle position;
         private int damage;
         private int speed;
@@ -31,6 +32,7 @@ namespace EndGame
         private bool hasHit = false;
         private Color color = Color.Red;
 
+        //properties
         public bool HasHit
         {
             get { return hasHit; }
@@ -41,6 +43,7 @@ namespace EndGame
             get { return position; }
         }
 
+        //constructor
         public Bullet(Texture2D texture, Rectangle position, Direction direction, Boss target, int damage, int speed)
         {
             this.texture = texture;
@@ -58,6 +61,7 @@ namespace EndGame
 
         public void Update()
         {
+            //moves the bullet in a particular direction based on what direction it was created  with
             if (direction == Direction.up)
             {
                 //moves up the screen by the set amount movespeed
@@ -76,6 +80,7 @@ namespace EndGame
                 position.X += speed;
             }
 
+            //hit dector
             if (position.Intersects(target.Position))
             {
                 
@@ -84,6 +89,7 @@ namespace EndGame
 
             }
 
+            //stops the bullet from being updated if it's outside the screen
             if(position.X > 1920 || position.X < 0 - position.Width || position.Y > 1080 || position.Y < 0 - position.Height)
             {
                 hasHit = true;

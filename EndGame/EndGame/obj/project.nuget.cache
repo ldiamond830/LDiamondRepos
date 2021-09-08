@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7DcOHGkQ/LdgAcIr/O37iflq6f877x3LGr1hLzttO80BEMcmeczD3xvx8XdyTM+jeliWKyF8wpFqMQfBYSNGVA==",
+  "dgSpecHash": "8HSotH2/gpe/DLbp/9Nl6/yV32Vx9JIBZxmjONQYXXppE6urpu0A0USM85EeTg4ci2Q9tl4CrfNWuphq4/FPeQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lucas Diamond\\source\\repos\\EndGame\\EndGame\\EndGame.csproj",
+  "projectFilePath": "C:\\Users\\Lucas Diamond\\Documents\\GitHub\\LDiamondRepos\\EndGame\\EndGame\\EndGame.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lucas Diamond\\.nuget\\packages\\monogame.content.builder.task\\3.8.0.1641\\monogame.content.builder.task.3.8.0.1641.nupkg.sha512",
     "C:\\Users\\Lucas Diamond\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"

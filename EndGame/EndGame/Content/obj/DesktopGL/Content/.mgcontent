@@ -4,22 +4,28 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/alivePlaceHolder1.png</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/alivePlaceHolder2.png</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/alivePlaceHolder3.png</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/alivePlaceHolder4.png</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/axeTemp.png</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/BulletPlace.png</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/castleMadeOfSandBoss.JPG</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/killbox.png</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/pitTemp.png</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/pitTempCorrected.png</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/playerPlaceHolder.png</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/stockFont.spritefont</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/what'sInMyHead1.jpg</File>
-    <File>C:/Users/Lucas Diamond/source/repos/EndGame/EndGame/Content/what'sInMyHead2.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/alivePlaceHolder1.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/alivePlaceHolder2.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/alivePlaceHolder3.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/alivePlaceHolder4.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/axeTemp.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/bonesOfBirds.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/BulletPlace.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/castleMadeOfSandBoss.JPG</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/killbox.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/pitTemp.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/pitTempCorrected.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/playerPlaceHolder.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/screechSound.wav</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/stockFont.spritefont</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/tornadoArt.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/what'sInMyHead1.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/EndGame/EndGame/Content/what'sInMyHead2.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
