@@ -61,3 +61,5 @@ C:\Users\Lucas Diamond\source\repos\LockAndStock\LockAndStock\bin\Debug\netcorea
 C:\Users\Lucas Diamond\source\repos\LockAndStock\LockAndStock\bin\Debug\netcoreapp3.1\Content\cyrptoNerdTexture.xnb
 C:\Users\Lucas Diamond\source\repos\LockAndStock\LockAndStock\bin\Debug\netcoreapp3.1\Content\traderTexture.xnb
 C:\Users\Lucas Diamond\source\repos\LockAndStock\LockAndStock\bin\Debug\netcoreapp3.1\Content\gamePlayBackGround2.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\LockAndStock\LockAndStock\obj\Debug\netcoreapp3.1\LockAndStock.dll
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\LockAndStock\LockAndStock\obj\Debug\netcoreapp3.1\LockAndStock.pdb

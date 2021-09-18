@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/nagaclosedNervous.png</SourceFile>
+  <SourceFile>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/nagaclosedNervous.png</SourceFile>
   <SourceTime>2021-05-06T15:29:42.9104331-04:00</SourceTime>
-  <DestFile>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/bin/DesktopGL/Content/nagaclosedNervous.xnb</DestFile>
-  <DestTime>2021-06-27T00:56:12.6906671-04:00</DestTime>
+  <DestFile>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/bin/DesktopGL/Content/nagaclosedNervous.xnb</DestFile>
+  <DestTime>2021-09-14T15:32:10.523075-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

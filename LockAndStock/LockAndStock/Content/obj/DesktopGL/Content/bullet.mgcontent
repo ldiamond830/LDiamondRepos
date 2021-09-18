@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Lucas Diamond/source/repos/LockAndStock/LockAndStock/Content/bullet.png</SourceFile>
+  <SourceFile>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/LockAndStock/LockAndStock/Content/bullet.png</SourceFile>
   <SourceTime>2021-05-23T18:52:43.0301656-04:00</SourceTime>
-  <DestFile>C:/Users/Lucas Diamond/source/repos/LockAndStock/LockAndStock/Content/bin/DesktopGL/Content/bullet.xnb</DestFile>
-  <DestTime>2021-05-23T18:53:19.4744147-04:00</DestTime>
+  <DestFile>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/LockAndStock/LockAndStock/Content/bin/DesktopGL/Content/bullet.xnb</DestFile>
+  <DestTime>2021-09-14T15:35:49.8465439-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

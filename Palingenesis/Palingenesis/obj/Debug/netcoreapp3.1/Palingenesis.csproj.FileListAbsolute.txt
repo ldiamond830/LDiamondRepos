@@ -158,3 +158,93 @@ C:\Users\Lucas Diamond\Source\Repos\gdaps2_2205_team_G\game\Palingenesis\Palinge
 C:\Users\Lucas Diamond\Source\Repos\gdaps2_2205_team_G\game\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\lavaBackground.xnb
 C:\Users\Lucas Diamond\Source\Repos\gdaps2_2205_team_G\game\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\NagaBG.xnb
 C:\Users\Lucas Diamond\Source\Repos\gdaps2_2205_team_G\game\Palingenesis\Palingenesis\obj\Debug\netcoreapp3.1\Palingenesis.csproj.AssemblyReference.cache
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\obj\Debug\netcoreapp3.1\Palingenesis.dll
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\obj\Debug\netcoreapp3.1\Palingenesis.pdb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\10 Min.Meditation Music for Positive Energy - GUARANTEED Find Inner Peace within 10 Min..ogg
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\10 Min.Meditation Music for Positive Energy - GUARANTEED Find Inner Peace within 10 Min..xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\attackPlaceholder.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\back-error_sound.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\bar.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\bayo2.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\bigfont.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\bigRice.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\Bingus.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\Bonk.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\bossPlaceHolder.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\deathSound.ogg
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\deathSound.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\enter_name_screen.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\Fire Sanctuary - The Legend of Zelda Skyward Sword.ogg
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\Fire Sanctuary - The Legend of Zelda Skyward Sword.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\Fireball.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\font.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\forward_sound.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\GameOver.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\GameOverScreen.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\Instructions Screen (new).xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\instructions screen.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\InstructionsPlaceHolder.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\Landia - Kirby's Return to Dream Land.ogg
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\Landia - Kirby's Return to Dream Land.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\lavaBackground.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\naga fire worm.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\NagaBackground.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\NagaBackgroundFight.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\NagaBG.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\nagaBossVNAlternate.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\nagaBossVNMain.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\nagaclosedNervous.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\nagaopenMad.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\NagaTeleport.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\namebox.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\PauseScreen.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\playerPlaceHolderTexture.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\playerProjectile.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\playerProjectileCorrected.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\RGbackgroundVN.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\RGTeleport.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\rice.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\ricegoddess.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\riceGoddessExpression1.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\RiceGoddessSprite.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\RiceGoddessVisualNovelExpression2.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\ricegoddessWise.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\RiceGodessBackground.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\rustyName.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\Sad but True - The HU.ogg
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\Sad but True - The HU.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\ScoreBoard.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\spriteSheet.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\spriteSheetPalagenisis.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\takeDamadge.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\teleportPlaceHolder.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\textbox.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\theo.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\theophaniaExpression1.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\theophaniaInGame.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\TheoVisualNovelExpression2.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\titlescreen.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\VOICES- Cello Instrumental by Yoko Kanno.ogg
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Content\VOICES- Cello Instrumental by Yoko Kanno.xnb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Palingenesis.exe
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Palingenesis.deps.json
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Palingenesis.runtimeconfig.json
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Palingenesis.runtimeconfig.dev.json
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Palingenesis.dll
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\Palingenesis.pdb
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\MonoGame.Framework.dll
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libSDL2-2.0.so.0
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\runtimes\linux-x64\native\libopenal.so.1
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\runtimes\osx\native\libSDL2-2.0.0.dylib
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\runtimes\osx\native\libopenal.1.dylib
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\SDL2.dll
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\soft_oal.dll
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\SDL2.dll
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\soft_oal.dll
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\obj\Debug\netcoreapp3.1\Palingenesis.csproj.AssemblyReference.cache
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\obj\Debug\netcoreapp3.1\Palingenesis.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\obj\Debug\netcoreapp3.1\Palingenesis.AssemblyInfoInputs.cache
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\obj\Debug\netcoreapp3.1\Palingenesis.AssemblyInfo.cs
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\obj\Debug\netcoreapp3.1\Palingenesis.csproj.CoreCompileInputs.cache
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\obj\Debug\netcoreapp3.1\Palingenesis.csproj.CopyComplete
+C:\Users\Lucas Diamond\Documents\GitHub\LDiamondRepos\Palingenesis\Palingenesis\obj\Debug\netcoreapp3.1\Palingenesis.genruntimeconfig.cache

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Lucas Diamond/source/repos/LockAndStock/LockAndStock/Content/traderTexture.png</SourceFile>
+  <SourceFile>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/LockAndStock/LockAndStock/Content/traderTexture.png</SourceFile>
   <SourceTime>2021-05-23T18:01:48.2219018-04:00</SourceTime>
-  <DestFile>C:/Users/Lucas Diamond/source/repos/LockAndStock/LockAndStock/Content/bin/DesktopGL/Content/traderTexture.xnb</DestFile>
-  <DestTime>2021-05-23T18:01:59.2166645-04:00</DestTime>
+  <DestFile>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/LockAndStock/LockAndStock/Content/bin/DesktopGL/Content/traderTexture.xnb</DestFile>
+  <DestTime>2021-09-14T15:35:53.0439917-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

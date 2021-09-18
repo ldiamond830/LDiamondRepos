@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/InstructionsPlaceHolder.png</SourceFile>
+  <SourceFile>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/InstructionsPlaceHolder.png</SourceFile>
   <SourceTime>2021-05-01T21:23:19.0692783-04:00</SourceTime>
-  <DestFile>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/bin/DesktopGL/Content/InstructionsPlaceHolder.xnb</DestFile>
-  <DestTime>2021-06-27T00:56:08.0560537-04:00</DestTime>
+  <DestFile>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/bin/DesktopGL/Content/InstructionsPlaceHolder.xnb</DestFile>
+  <DestTime>2021-09-14T15:32:06.2551314-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

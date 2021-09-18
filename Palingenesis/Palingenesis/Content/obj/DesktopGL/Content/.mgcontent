@@ -4,67 +4,67 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/10 Min.Meditation Music for Positive Energy - GUARANTEED Find Inner Peace within 10 Min..mp3</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/attackPlaceholder.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/back-error_sound.wav</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/bar.jpg</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/bayo2.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/bigfont.spritefont</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/bigRice.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/Bingus.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/Bonk.wav</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/bossPlaceHolder.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/deathSound.mp3</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/deathSound.wav</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/enter_name_screen.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/Fire Sanctuary - The Legend of Zelda Skyward Sword.mp3</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/Fireball.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/font.spritefont</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/forward_sound.wav</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/GameOver.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/GameOverScreen.jpg</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/Instructions Screen (new).png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/instructions screen.PNG</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/InstructionsPlaceHolder.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/Landia - Kirby's Return to Dream Land.mp3</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/lavaBackground.jpg</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/naga fire worm.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/NagaBackground.jpg</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/NagaBackgroundFight.jpg</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/NagaBG.jpg</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/nagaBossVNAlternate.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/nagaBossVNMain.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/nagaclosedNervous.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/nagaopenMad.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/NagaTeleport.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/namebox.jpg</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/PauseScreen.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/playerPlaceHolderTexture.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/playerProjectile.jpg</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/playerProjectileCorrected.jpg</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/RGbackgroundVN.jpg</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/RGTeleport.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/rice.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/ricegoddess.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/riceGoddessExpression1.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/RiceGoddessSprite.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/RiceGoddessVisualNovelExpression2.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/ricegoddessWise.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/RiceGodessBackground.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/rustyName.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/Sad but True - The HU.mp3</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/ScoreBoard.jpg</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/spriteSheet.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/spriteSheetPalagenisis.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/takeDamadge.wav</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/teleportPlaceHolder.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/textbox.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/theo.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/theophaniaExpression1.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/theophaniaInGame.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/TheoVisualNovelExpression2.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/titlescreen.png</File>
-    <File>C:/Users/Lucas Diamond/Source/Repos/gdaps2_2205_team_G/game/Palingenesis/Palingenesis/Content/VOICES- Cello Instrumental by Yoko Kanno.mp3</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/10 Min.Meditation Music for Positive Energy - GUARANTEED Find Inner Peace within 10 Min..mp3</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/attackPlaceholder.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/back-error_sound.wav</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/bar.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/bayo2.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/bigfont.spritefont</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/bigRice.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/Bingus.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/Bonk.wav</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/bossPlaceHolder.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/deathSound.mp3</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/deathSound.wav</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/enter_name_screen.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/Fire Sanctuary - The Legend of Zelda Skyward Sword.mp3</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/Fireball.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/font.spritefont</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/forward_sound.wav</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/GameOver.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/GameOverScreen.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/Instructions Screen (new).png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/instructions screen.PNG</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/InstructionsPlaceHolder.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/Landia - Kirby's Return to Dream Land.mp3</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/lavaBackground.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/naga fire worm.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/NagaBackground.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/NagaBackgroundFight.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/NagaBG.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/nagaBossVNAlternate.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/nagaBossVNMain.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/nagaclosedNervous.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/nagaopenMad.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/NagaTeleport.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/namebox.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/PauseScreen.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/playerPlaceHolderTexture.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/playerProjectile.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/playerProjectileCorrected.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/RGbackgroundVN.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/RGTeleport.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/rice.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/ricegoddess.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/riceGoddessExpression1.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/RiceGoddessSprite.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/RiceGoddessVisualNovelExpression2.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/ricegoddessWise.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/RiceGodessBackground.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/rustyName.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/Sad but True - The HU.mp3</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/ScoreBoard.jpg</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/spriteSheet.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/spriteSheetPalagenisis.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/takeDamadge.wav</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/teleportPlaceHolder.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/textbox.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/theo.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/theophaniaExpression1.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/theophaniaInGame.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/TheoVisualNovelExpression2.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/titlescreen.png</File>
+    <File>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/Palingenesis/Palingenesis/Content/VOICES- Cello Instrumental by Yoko Kanno.mp3</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/Lucas Diamond/source/repos/LockAndStock/LockAndStock/Content/cryptoNerdPlaceHolder.png</SourceFile>
+  <SourceFile>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/LockAndStock/LockAndStock/Content/cryptoNerdPlaceHolder.png</SourceFile>
   <SourceTime>2021-05-21T23:59:52.1260626-04:00</SourceTime>
-  <DestFile>C:/Users/Lucas Diamond/source/repos/LockAndStock/LockAndStock/Content/bin/DesktopGL/Content/cryptoNerdPlaceHolder.xnb</DestFile>
-  <DestTime>2021-05-22T00:12:11.2237132-04:00</DestTime>
+  <DestFile>C:/Users/Lucas Diamond/Documents/GitHub/LDiamondRepos/LockAndStock/LockAndStock/Content/bin/DesktopGL/Content/cryptoNerdPlaceHolder.xnb</DestFile>
+  <DestTime>2021-09-14T15:35:50.0599882-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
