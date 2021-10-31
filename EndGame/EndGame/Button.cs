@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Audio;
 
+//taken from starter code from IGME 106 taught by Erica Mesh
 namespace EndGame
 {
     public enum Effect

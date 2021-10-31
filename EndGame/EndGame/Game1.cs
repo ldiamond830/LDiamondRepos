@@ -20,6 +20,7 @@ namespace EndGame
     }
     public class Game1 : Game
     {
+        //declaring variables
         private GameTime gameTime;
         private double BossTimer;
         private double playerShootTimer = 3;
@@ -79,7 +80,7 @@ namespace EndGame
             // TODO: Add your initialization logic here
             stockFont = Content.Load<SpriteFont>("stockFont");
 
-            _graphics.PreferredBackBufferWidth = 1920;  // set this value to the desired width of your window
+            _graphics.PreferredBackBufferWidth = 1920;  // sets window size
             _graphics.PreferredBackBufferHeight = 1080;
             _graphics.ApplyChanges();
             base.Initialize();
@@ -89,6 +90,7 @@ namespace EndGame
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            //assigning assets
             bulletTexture = Content.Load<Texture2D>("BulletPlace");
             playerTexture = Content.Load<Texture2D>("playerPlaceHolder");
             aliveTexture1 = Content.Load<Texture2D>("alivePlaceHolder1");
@@ -109,20 +111,23 @@ namespace EndGame
             tornadoTexture = Content.Load<Texture2D>("tornadoArt");
             screechSFX = Content.Load<SoundEffect>("screechSound");
 
+            //initializing player
             player = new Player(100, 100, 8, 10, bulletTexture, playerTexture, new Rectangle(100, 600, 100, 100), 1);
             
-            // TODO: use this.Content to load your game content here
+            
         }
 
         protected override void Update(GameTime gameTime)
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            //gets the state of the keyboard at the start of each frame
             kbState = Keyboard.GetState();
-            // TODO: Add your update logic here
+            
+            //finite state machine
             switch (currentState)
             {
+                //transition to the first question state when the player presses enter
                 case GameState.Menu:
                     if(SingleKeyPress(Keys.Enter, kbState))
                     {
@@ -131,7 +136,9 @@ namespace EndGame
                     break;
 
                 case GameState.Question:
+                    //calls a method to intiialize each boss
                     LoadBoss();
+                    //if the player is just starting the game asks them to input their name
                     if (progress == 0)
                     {
 
@@ -139,13 +146,15 @@ namespace EndGame
                         {
                             name += ScoreboardInput();
                         }
+                        //allows the player to delete characters from their name
                         else if(ScoreboardInput() == "back")
                         {
                             name = name.Remove(name.Length - 1, 1);
                         }
-                       
+                       //sets the current boss to boss 1
                         currentBoss = alive;
                     }
+                    //otherwise will set the current boss to the next boss in order based on the progess variable
                     if (progress == 1)
                     {
                         currentBoss = castlesMadeOfSand;
@@ -167,6 +176,7 @@ namespace EndGame
                         currentBoss = lastRemainingLight;
                     }
 
+                    //if the player has completed boss 1 this method is used to check if the player has clicked on any of the buttons
                     if(progress != 0)
                     {
                         for (int i = 0; i < buttonList.Count; i++)
@@ -185,18 +195,18 @@ namespace EndGame
                     break;
 
                 case GameState.Battle:
+                    //allows the player to pause at any time during a fight by pressing P
                     if(SingleKeyPress(Keys.P, kbState))
                     {
                         currentState = GameState.Pause;
                     }
 
+                    //takes the inputs for the player character
                     player.Update(kbState, currentBoss, playerShootTimer);
 
+                    //removes any projectiles that have already hit or gone off screen so that the cleaner can delete them
                     for (int i = 0; i < player.ProjectileList.Count; i++)
                     {
-
-                    
-                    
                         if (player.ProjectileList[i].HasHit)
                         {
                             player.ProjectileList.Remove(player.ProjectileList[i]);
@@ -205,11 +215,13 @@ namespace EndGame
 
                     }
 
+                    //updates each currently active projectile the player has fired
                     for (int i = 0; i < player.ProjectileList.Count; i++)
                     {
                         player.ProjectileList[i].Update();
                     }
 
+                    //removes any projectiles that have already hit or gone off screen so that the cleaner can delete them
                     for (int i = 0; i < currentBoss.BulletList.Count; i++)
                     {
 
@@ -220,6 +232,7 @@ namespace EndGame
 
                     }
 
+                    //updates each currently active projectile the boss has fired
                     if(currentBoss.BulletList.Count >= 1)
                     {
                         for (int i = 0; i < currentBoss.BulletList.Count; i++)
@@ -228,19 +241,20 @@ namespace EndGame
                         }
                     }
 
-
+                    //timer controlling the player's firerate
                     if (!player.HasShot)
                     {
                         playerShootTimer += gameTime.ElapsedGameTime.TotalSeconds;
                     }
                     
-
+                    //resets the time when the player shoots
                     if(player.HasShot)
                     {
                         player.HasShot = false;
                         playerShootTimer = 0;
                     }
 
+                    //these two statement are pretty much only used for the alive boss as I figured it would neaten up my code to move all this to the a method in the boss method 
                     BossTimer += gameTime.ElapsedGameTime.TotalSeconds;
                     if (currentBoss.AttackSwitch)
                     {
@@ -248,6 +262,7 @@ namespace EndGame
                         BossTimer = 0;
                     }
 
+                    //updates the current boss
                     if (progress == 0)
                     {
                         
@@ -271,15 +286,21 @@ namespace EndGame
                     }
                     if (progress == 5)
                     {
-
+                        //lastRemainingLight.Update(gameTime);
                     }
 
+                    //when the bosses health reaches zero
                     if(currentBoss.Health <= 0)
                     {
+                        //changes the game state to question
                         currentState = GameState.Question;
+                        //increase's the progress meter
                         progress++;
+                        //resets the player's health
                         player.Reset();
+                        //creates each button for the current question
                         CreateOptions(progress);
+                        
                         playerShootTimer = 0;
                     }
 
@@ -288,26 +309,31 @@ namespace EndGame
                     break;
 
                 case GameState.Pause:
+                    //allows the player to go back into the current fight
                     if(SingleKeyPress(Keys.P, kbState))
                     {
                         currentState = GameState.Battle;
                     }
+                    //allows the player to exit to menu and restart
                     if(SingleKeyPress(Keys.Escape, kbState))
                     {
+                        progress = 0;
+                        player.Reset();
                         currentState = GameState.Menu;
                     }
                     break;
 
                 case GameState.GameOver:
-
+                    //placeholder
                     break;
 
                 case GameState.Victory:
-
+                    //placeholder
                     break;
             }
-
+            //gets the keyboard state at the end of this frame so that when it rolls over to the next frame it can sever as the previous state
             prevKbState = kbState;
+
             base.Update(gameTime);
         }
 
@@ -317,6 +343,7 @@ namespace EndGame
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
+            //draws all assets based on the current game state
             switch (currentState)
             {
                 case GameState.Menu:
@@ -405,9 +432,10 @@ namespace EndGame
 
 
 
-        //helpet methods
+        //helper methods
         private void LoadBoss()
         {
+            //initializes each boss
             alive = new Alive(bulletTexture, aliveTexture1, aliveTexture2, player, aliveTexture3, aliveTexture4, aliveTexture1);
             
             castlesMadeOfSand = new Castle_sMadeOfSand(bulletTexture, castlesMadeOfSandTexture, player, killBoxTextures);
@@ -432,9 +460,10 @@ namespace EndGame
             {
                 //has player input their name rather than ask a question
             }
+            //otherwise declares 3 choices for each question
             else if(stage == 1)
             {
-                
+               
                 buttonList.Add(new Button(GraphicsDevice, new Rectangle(850, 400, 400, 100), "Just drifted I guess", stockFont, Color.Black, Effect.damageOverTime));
                 buttonList.Add(new Button(GraphicsDevice, new Rectangle(850, 550, 400, 100), "I scratched and clawed my way", stockFont, Color.Black, Effect.increaseSpeed));
                 buttonList.Add(new Button(GraphicsDevice, new Rectangle(850, 700, 400, 100), "no idea", stockFont, Color.Black, Effect.increaseFireRate));
@@ -488,6 +517,7 @@ namespace EndGame
             
         }
 
+        //assigns an effect based on the effect enum to each button
         private void PickButtonEffect(Button button, Effect effect)
         {
 
@@ -542,6 +572,7 @@ namespace EndGame
             }
         }
 
+        //methods to run for each button effect
         private void AddDotEffect()
         {
             if (player.HasDOT == false)
@@ -592,6 +623,8 @@ namespace EndGame
             player.FullHealth = 100;
             currentState = GameState.Battle;
         }
+
+        //allows the player to input their name by checking for each key that is pressed and released 
         private string ScoreboardInput()
         {
             if (SingleKeyPress(Keys.A, kbState))

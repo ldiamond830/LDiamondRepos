@@ -8,8 +8,10 @@ using Microsoft.Xna.Framework.Audio;
 
 namespace EndGame
 {
+    //parent class for all the different bosses
     abstract class Boss
     {
+        //fields
         protected int health;
         protected int damage;
         protected int moveSpeed;
@@ -22,7 +24,10 @@ namespace EndGame
         protected Player player;
         protected List<BossBullet> bulletList;
         protected bool attackSwitch = false;
+        
+        //properties
 
+        //remeber to check if I ever actually used this
         public bool AttackSwitch
         {
             get { return attackSwitch; }
@@ -45,6 +50,7 @@ namespace EndGame
             get { return position; }
         }
 
+        //constructor
         public Boss (int health, int damage, int moveSpeed, int projectileSpeed, Rectangle position, Texture2D projectileTexture, Texture2D texture, Player player)
         {
             this.health = health;
@@ -58,12 +64,14 @@ namespace EndGame
             bulletList = new List<BossBullet>();
         }
 
+        //update method to be overwritten
         public virtual void Update()
         {
 
         }
        
-
+       
+        //stock draw method
         public virtual void Draw(SpriteBatch sb, Color color)
         {
             sb.Draw(texture, position, color);

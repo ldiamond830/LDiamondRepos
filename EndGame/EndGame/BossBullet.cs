@@ -17,7 +17,7 @@ namespace EndGame
         private bool isActive;
         private Direction direction;
         private Texture2D texture;
-        private Player target;
+        private Player target; //separate class for enemy projectiles and player projectiles 
         private bool hasHit = false;
         private Color color = Color.Red;
         private Vector2 path;

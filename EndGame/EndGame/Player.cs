@@ -10,6 +10,7 @@ namespace EndGame
 {
     class Player
     {
+        //fields
         private int bulletSize = 25;
         private int health;
         private int damage;
@@ -28,6 +29,7 @@ namespace EndGame
         private int dotDamge = 5;
         private bool canMove = true;
 
+        //properties
         public bool CanMove
         {
             get { return canMove; }
@@ -98,6 +100,7 @@ namespace EndGame
             set { bulletSize = value; }
         }
 
+        //constructor
         public Player (int health, int damage, int moveSpeed, int projectileSpeed, Texture2D projectileTexture, Texture2D playerTexture, Rectangle position, double FireRate)
         {
             this.health = health;
@@ -111,6 +114,7 @@ namespace EndGame
             this.fireRate = FireRate;
         }
 
+        //update method called each frame and allows the player to shoot and move
         public void Update(KeyboardState kbState, Boss currentBoss, double timer)
         {
             shoot(kbState, currentBoss, timer);
@@ -119,9 +123,10 @@ namespace EndGame
 
         private void shoot(KeyboardState kbState, Boss currentBoss, double timer)
         {
+            //if enough time as passed in between shots
             if(timer >= fireRate)
             {
-                
+                //fires a bullet in one of the 4 cardinal directions
                 if (kbState.IsKeyDown(Keys.Up))
                 {
                     bulletList.Add(new Bullet(projectileTexture, new Rectangle(position.X, position.Y, bulletSize, bulletSize), Direction.up, currentBoss, damage, projectileSpeed));
@@ -148,8 +153,10 @@ namespace EndGame
 
         private void move(KeyboardState kbState)
         {
+            //if the player isn't held in place by a boss effect
             if (canMove)
             {
+                //moves in each direction depending on which of the WASD keys are being held
                 if (kbState.IsKeyDown(Keys.W))
                 {
                     position.Y -= moveSpeed;
@@ -170,11 +177,13 @@ namespace EndGame
             
         }
 
+        //draw method
         public void Draw(SpriteBatch sb, Color color)
         {
             sb.Draw(playerTexture, position, color);
         }
 
+        //resets health position and hasShot
         public void Reset()
         {
             health = fullHealth;
@@ -183,6 +192,7 @@ namespace EndGame
             hasShot = false;
         }
 
+        //called by some boss attacks to move the player in the opposite direction of where they get hit from
         public void KnockBack(Rectangle EnemyPosition, int knockbackQuantitiy)
         {
             if(EnemyPosition.X > position.X)
