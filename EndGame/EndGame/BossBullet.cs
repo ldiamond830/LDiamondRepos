@@ -8,9 +8,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace EndGame
 {
-    
+    /// <summary>
+    /// project class for use by the NPC enenmy
+    /// </summary>
     class BossBullet
     {
+        //fields
         private Rectangle position;
         private int damage;
         private int speed;
@@ -28,6 +31,7 @@ namespace EndGame
             get { return hasHit;  }
         }
 
+        // standard contructor 
         public BossBullet(Texture2D texture, Rectangle position, Direction direction, Player target, int damage, int Speed)
         {
             this.texture = texture;
@@ -42,6 +46,7 @@ namespace EndGame
             }
         }
 
+        //constructor for custom bullet path
         public BossBullet(Texture2D texture, Rectangle position, Direction direction, Player target, int damage, Vector2 path, int speed)
         {
             this.texture = texture;
@@ -60,6 +65,7 @@ namespace EndGame
 
         public void Update()
         {
+            //bullet types for each cardinal direction
             if (direction == Direction.up)
             {
                 //moves up the screen by the set amount movespeed
@@ -77,6 +83,7 @@ namespace EndGame
             {
                 position.X += speed;
             }
+            //custom path
             else if(direction == Direction.custom)
             {
                 position.X += (int)path.X;
@@ -92,6 +99,7 @@ namespace EndGame
 
                 maxDistance--;
 
+                //to avoid a homing projectile chasing the player indefinately it's despawned after 1000 frames
                 if(maxDistance == 1)
                 {
                     maxDistance = 1000;

@@ -585,6 +585,8 @@ namespace EndGame
             }
             currentState = GameState.Battle;
         }
+
+        //stat boost methods to be called by pressing the button promopts that appear between each fight
         private void IncreaseDamageEffect()
         {
             player.Damage += 5;

@@ -27,7 +27,7 @@ namespace EndGame
         
         //properties
 
-        //remeber to check if I ever actually used this
+        //remember to check if I ever actually used this
         public bool AttackSwitch
         {
             get { return attackSwitch; }
