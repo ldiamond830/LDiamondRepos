@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    //fields
     public Light flashLight;
     private float lightTimer = 2;
     public int charges = 3;
@@ -32,9 +33,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //WASD movement controls
         if(playerInput.y > 0)
         {
             position.y += speed * Time.deltaTime;
+            //controls the orientation of the player sprite
             animator.SetBool("Up", true);
             animator.SetBool("Down", false);
         }
@@ -68,7 +71,7 @@ public class Player : MonoBehaviour
             animator.SetBool("Left", false);
         }
 
-
+        //flashlight behavior
         if (flashLight.enabled == true)
         {
             lightTimer -= Time.deltaTime;
@@ -82,7 +85,7 @@ public class Player : MonoBehaviour
 
         }
 
-
+        //when the player colides with the goat
         if (goatBounds.Contains(transform.position))
         {
             hasGoat = true;
@@ -93,6 +96,7 @@ public class Player : MonoBehaviour
 
         if (hasGoat)
         {
+            //win condition is when the player reaches nearby the fire with the goat
             if(position.y > 11 && position.y < 35 && position.x > 7 && position.x < 30)
             {
                 SceneManager.LoadScene("WinScene");
@@ -103,8 +107,10 @@ public class Player : MonoBehaviour
         gameObject.transform.position = position;
     }
 
+    //input method for flash light
     private void OnFlashLight(InputValue value)
     {
+        //stops the player from using their stun more than 3 times or spamming it over and over
         if (charges > 0 && flashLight.enabled == false)
         {
             flashLight.enabled = true;
@@ -112,6 +118,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    //gets WASD movement input vector
     public void OnMove(InputValue value)
     {
         playerInput = value.Get<Vector2>();

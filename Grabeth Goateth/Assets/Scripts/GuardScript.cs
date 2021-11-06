@@ -17,7 +17,7 @@ public class GuardScript : MonoBehaviour
     private List<Vector3> stopList = new List<Vector3>();
 
     private bool aware = false;
-    private float detectionTimer = 1;
+    private float detectionTimer = 1.5;
     private bool detected;
 
     public float speed;
@@ -118,33 +118,40 @@ public class GuardScript : MonoBehaviour
                 {
                     detectionEndTimer -= Time.deltaTime;
 
+                    //if the player is outside of the detection radius for 3 seconds sets the guard to unaware 
                     if (detectionEndTimer < 0)
                     {
                         detectionTimer = 3;
                         speed *= 2;
                         aware = false;
+                        //put's the guard back on it's patrol path
                         direction = nextPoint - transform.position;
                         direction.Normalize();
                         questionMark.SetActive(false);
 
                     }
                 }
+                //detection timer only decrease's while the player is within the detection radius
                 else
                 {
+                    
                     detectionTimer -= Time.deltaTime;
                 }
 
+                //slows the guard down to offer the player a chance to escape
                 if (!speedChanged)
                 {
                     speed = speed / 2;
                     speedChanged = true;
                 }
 
+                //display's a question mark above the guard's head as a visual cue
                 questionMark.SetActive(true);
+
 
                 DetectedPathSet();
                 
-                
+                //if the player is inside of the guard's detection radius for a 1 second the player losses
                 if (detectionTimer <= 0)
                 {
                     SceneManager.LoadScene("LossScene");
@@ -153,8 +160,10 @@ public class GuardScript : MonoBehaviour
                
             }
         }
+        //if the guard has been stunned
         else
         {
+            //resets the guard after the stun ends
             if (stunTimer < 0)
             {
                 canMove = true;
@@ -222,6 +231,7 @@ public class GuardScript : MonoBehaviour
         //distance formula d=sqrt((x_2-x_1)�+(y_2-y_1)�)
         float distance = Mathf.Pow((Player.transform.position.x - transform.position.x), 2) + Mathf.Pow((Player.transform.position.y - transform.position.y), 2);
         distance = Mathf.Sqrt(distance);
+
         if (distance < visionRadius)
         {
             return true;
@@ -232,6 +242,7 @@ public class GuardScript : MonoBehaviour
         }
     }
 
+    //if the player enter's the guard's detection radius the guard will start approaching them
     private void DetectedPathSet()
     {
         direction = Player.transform.position - transform.position;
