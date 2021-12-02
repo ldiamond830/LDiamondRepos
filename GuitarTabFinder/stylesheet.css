@@ -1,0 +1,76 @@
+#searchBox{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #5c8da5;
+    margin-left:auto;
+    margin-right:auto;
+    width:50%;
+    border-radius: 25px;
+    border:solid black 0.2em;
+    padding: 20px;
+}
+
+#textSearch{
+    display: flex;
+    align-items: center;
+   
+}
+
+#keyword{
+    margin-right: 20px;
+}
+
+input{
+    margin-left: 10px;
+    height: 10px
+}
+
+@font-face {
+    /*weezer font is also know as century gothic*/
+    font-family: 'weezerFont';
+    src: url('weezerfont-webfont.woff2') format('woff2'),
+         url('weezerfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+body{
+    font-family: "weezerFont";
+    background-color: #016fa4;
+}
+
+button{
+    font-family: "weezerFont";
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 40px;
+}
+
+select{
+    font-family: 'weezerFont';
+}
+
+
+
+.singleResult{
+    display: flex;
+}
+.type{
+    font-weight: bolder;
+    font-size: larger;
+    margin-right: 3px;
+    
+}
+
+
+
+a:link{color: rgb(0, 0, 0); font-weight: bolder;}
+a:visited{color: rgb(0, 0, 0); font-weight: lighter; text-decoration: none;}
+a:hover{color: red;}
+

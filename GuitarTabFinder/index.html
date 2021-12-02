@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project 2: Guitar Tab Finder</title>
+    <link rel= "stylesheet" href = stylesheet.css>
+    <script src = "script.js"></script>
+</head>
+<body>
+    <h1>GUITAR TAB FINDER</h1>
+    <div id = "searchBox">
+        <h3><a href = "instructions.html" target="_blank" rel="noopener noreferrer">Instructions</a></h3>
+    <div id = "textSearch">
+       <p><strong> Search By Keyword: </strong></p> 
+	<input id="keyword" type="text" size="20" maxlength="40"/>
+
+    <p> <strong>Search By Artist: </strong></p>
+    <input id="artist" type="text" size="20" maxlength="40"/>
+</div>  
+    <p><strong>Tab Type</strong></p>
+    <form name="instrumentSelect">
+        Tabs <input type="radio" name="instrument" value="false" id = "tabs"/>
+        Chord Chart <input type="radio" name="instrument" value="false" id = "chords"/>
+        Both <input type="radio" name="instrument" value="false" id = "both"/>
+    </form>
+       
+    <p> <strong>Maximum Number of Results</strong></p>
+        <select id="limit">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="15">15</option>
+            <option value="20">20</option>
+            <option value="25">25</option>
+        </select>
+    
+        <br>
+        <button id = "search">search</button>
+    </div>
+    <div id = "results">
+        <h2>Results:</h2>
+        <p id = "output">empty</p>
+    </div>
+
+    <footer>
+        <p>created by Lucas Diamond</p>
+        <a href = "documentation.html" target="_blank" rel="noopener noreferrer">Documentation</a>
+    </footer>
+</body>
+</html>
