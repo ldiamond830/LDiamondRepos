@@ -17,7 +17,7 @@ public class GuardScript : MonoBehaviour
     private List<Vector3> stopList = new List<Vector3>();
 
     private bool aware = false;
-    private float detectionTimer = 1.5;
+    private float detectionTimer = 1.5f;
     private bool detected;
 
     public float speed;

@@ -329,14 +329,14 @@ namespace Palingenesis
                     //Play Rice Goddess music
                     if (randomChoice==1 && !IsMusicPlaying)
                     {
-                        MediaPlayer.Play(RiceGoddessOST);
+                        //MediaPlayer.Play(RiceGoddessOST);
                         IsMusicPlaying = true;
                     }
 
                     //Play Naga music
                     if (randomChoice==2 && !IsMusicPlaying)
                     {
-                        MediaPlayer.Play(NagaOST);
+                        //MediaPlayer.Play(NagaOST);
                         IsMusicPlaying = true;
                     }
 
@@ -493,14 +493,14 @@ namespace Palingenesis
                     //plays rice godess VN music
                     if (randomChoice==1 && !IsMusicPlaying)
                     {
-                        MediaPlayer.Play(VNRiceGoddessOST);
+                        //MediaPlayer.Play(VNRiceGoddessOST);
                         IsMusicPlaying = true;
                     }
 
                     //plays rice godess VN music
                     else if (randomChoice == 2 && !IsMusicPlaying)
                     {
-                        MediaPlayer.Play(VNNagaOST);
+                        //MediaPlayer.Play(VNNagaOST);
                         IsMusicPlaying = true;
                     }
                     
