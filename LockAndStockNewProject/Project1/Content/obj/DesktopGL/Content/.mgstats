@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/Lucas Diamond/source/repos/LockAndStockTest/Project1/Content/anCapTexture.png","C:/Users/Lucas Diamond/source/repos/LockAndStockTest/Project1/Content/bin/DesktopGL/Content/anCapTexture.xnb","TextureProcessor","Texture2DContent",63427,600085,0.372768
+"C:/Users/Lucas Diamond/source/repos/LockAndStockTest/Project1/Content/anCapVoiceLine.mp3","C:/Users/Lucas Diamond/source/repos/LockAndStockTest/Project1/Content/bin/DesktopGL/Content/anCapVoiceLine.xnb","SongProcessor","SongContent",43005,132,0.8183841
+"C:/Users/Lucas Diamond/source/repos/LockAndStockTest/Project1/Content/File.spritefont","C:/Users/Lucas Diamond/source/repos/LockAndStockTest/Project1/Content/bin/DesktopGL/Content/File.xnb","FontDescriptionProcessor","SpriteFontContent",2008,21538,0.16744
