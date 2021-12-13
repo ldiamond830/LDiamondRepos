@@ -1,0 +1,23 @@
+body{
+    
+    cursor: url(../images/move.png) 8 8,crosshair;
+    background-image:  linear-gradient(black, rgb(0, 2, 148));
+    
+}
+
+
+canvas{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@font-face {
+   
+    font-family: 'magdaClean';
+    src: url('../font/magdaclean_black-webfont.woff2') format('woff2'),
+         url('../font/magdaclean_black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}

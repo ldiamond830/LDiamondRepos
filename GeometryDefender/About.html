@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Project 3 Proposal LD</title>
+</head>
+<body>
+    <h1>TITLE: Geometry Defender</h1>
+    <h2>I.High Concept</h2>
+    <p>Place turrets around the scene to defend your powersource against larger and larger waves of enemies.</p>
+    <hr>
+    <h2>II.Genre</h2>
+    <p>The primary genre for this game will be tower defense where you set up defenses along a path that the AI enemies follow in an attempt to stop those enemies from reaching the end of the path.</p>
+    <hr>
+    <h2>III.Platform</h2>
+    <p>The platform will be a browser game that's formated for desktop.</p>
+    <hr>
+    <h2>IV.Story/Themes</h2>
+    <p>The game won't have much of a story but the player's objective will be to defend their powersource which will be a shape with many more sides than all the others from the AI enemies which will be pentagons.</p>
+    <hr>
+    <h2>V.Aethetics</h2>
+    <p>The Aesthetic will be simple geometric shapes. The map will be a grid with squares colored brown to indicate the path that the enemies follow and green to show where the player and place defenses. The defense the player will have access to will be squares, the standard, triangles, which do extra damage but fire slower, and circles, which shoot fast but do less damage. As mentioned above the enemies will be pentagons and the powersource will be a many sided shape. Each shape will have it's own simple color. The game's sound will be techno sounding and will play when each of the turrets fire, when any of the enemies die, and when the powersource takes damage.</p>
+    <hr>
+    <h2>VI.GamePlay</h2>
+    <p>The mechanics the player will have access to is purchasing defenses with money given each time an enemy dies as well as starting each wave, the movement of the enemies and turrets firing will be controlled by the computer. The decisions they will have to make are where to position their defenses and which of the 3 types to use. For controls, the player will click on the shop icon to select the defense they want to purchase and then click on the grid square to place their defense, they will also use the enter key to start each wave</p>
+    <hr>
+    <h2>VII.Screenshots</h2>
+    <p>Map Prototype:</p>
+    <img src = "images/MapPrototype.png">
+    <p>Shop Prototype</p>
+    <img src = "images/shopPrototype.png">
+    <hr>
+    <h2>VIII.Other</h2>
+    <p>The primary library I will be using is pixi.js as well as the howler library in order to play sound effects. </p>
+
+    <h2>Documentation:</h2>
+    <h3>Development Process</h3>
+    <p>Once I had decided on making a tower defense game, I started by drawing out the map and making sure that it was pixel perfect to fit the canvas. From there I started working on the grid by making a ES6 class called gridBox that would draw a 50x50 empty rectangle and made a function that would create a 12x12 grid of those boxes covering the entire map. Next, I started on the classes for the enemies and defenses. I gave the enemy class a method that would change the object's direction at the coordinate of each turn along the path. initially I tried creating a parent class for each of the defenses but this caused an issue with the super(); method call so I had to copy each class method for each defense type, square, triangle, and circle. Once I had debugged all of those methods, I started on the store buttons. After some trial and error, I added a pointerup function to the map image and a helper method that would find the grid box that the mouse cursor was within so that when the player bought a new defense and clicked on a grid box a new defense would spawn there. After submitting my project to my crit group I added description boxes that would appear when the player mouses over the store buttons and gave each defense a different effect. Previously all of the defense fired homing shots with different damage and fire rate stats, I change it so that the triangle would fire piercing shots and the circle would fire in 3 round bursts in order to add more complexity. The last thing I had to do was improve the visual design of the game. I tried downloading a web font and installing it via CSS however this caused an issue where some labels wouldn't display in the right font since the game would load before the font file. After a lot of trial and error I eventually had to take screenshots of each label with the proper font and uses them as sprites rather than PIXI.Text objects.</p>
+    <h3>Sources</h3>
+    <p>Font used: Magda Clean Black <br>
+    Sound Effects: <a href= 'https://www.zapsplat.com/music/science-fiction-laser-hit-impact-with-a-thud-1/'>https://www.zapsplat.com/music/science-fiction-laser-hit-impact-with-a-thud-1/</a> 
+    <a href = 'https://www.zapsplat.com/music/car-crash-impact-head-on-smash-metal-and-glass-breaking/'>https://www.zapsplat.com/music/car-crash-impact-head-on-smash-metal-and-glass-breaking/</a>
+    <a href = 'https://www.zapsplat.com/music/science-fiction-robotic-servo-or-robot-shutdown-broken-5/'>https://www.zapsplat.com/music/science-fiction-robotic-servo-or-robot-shutdown-broken-5/</a>
+    Sound effects obtained from <a href = "https://www.zapsplat.com“">https://www.zapsplat.com</a><br>
+    </p>
+    <h3>I'd like you to see</h3>
+    <p>Please take a look at the description boxes that appears when mousing over each store button. Also, there is another enemy type that has a small chance to spawn so please keep playing until one appears</p>
+    <h3>Requirements</h3>
+    <p>Functional:
+        <ul>
+            <li>uses PIXI.JS</li>
+            <li>key features are clearly labeled and there are visual cues built in to help the user understand what they are meant to do</li>
+            <li>uses collision multiple types of firing patterns and a very different control scheme than in class examples</li>
+            <li>there are no JavaScript errors I'm aware of</li>
+        </ul>
+        Design:
+        <ul>
+            <li>uses a consistent geometric design aesthetic</li>
+            <li>store is labeled and each store button has a cost label</li>
+            <li>instructions are available on the main menu but in game labels also provide a guide as to what the player should do</li>
+            <li>canvas is centered and uses a background gradient</li>
+        </ul>
+        HTML and CSS
+        <ul>
+            <li>HTML validated</li>
+            <li>CSS validated</li>
+            <li>all CSS in an external sheet</li>
+            <li>since the only HMTL element added is the canvas there was no need for semantic elements</li>
+        </ul>
+        Code Conventions
+        <ul>
+            <li>6 ES6 classes of my own creation</li>
+            <li>var never used</li>
+            <li>DOM not used</li>
+            <li>tried to keep code as dry as possible but issues with the parent class I created for each of my defenses I did have to repeat the methods for the circle square and triangle class</li>
+            <li>main game loop, classes, and helper functions, all in unique js files</li>
+            <li>all variables begin with lowercase letters</li>
+            <li>code well commented</li>
+            <li>only console.log call is in the app.loader</li>
+        </ul>
+    </p>
+
+
+
+</body>
+</html>
