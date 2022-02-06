@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    //variables
     public float speed = 0.01f;
     private Vector3 velocity;
     private Vector3 position;
@@ -12,7 +13,9 @@ public class PlayerController : MonoBehaviour
     public float fireRate = 1.0f;
     public Shuriken shuriken;
     private float fireTimer = 0;
+    public SceneManager sceneManager;
     
+    //properties
     public Vector3 Position
     {
         get { return position; }
@@ -21,6 +24,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //starts the auto moving, subject to change
         velocity = new Vector3(speed, 0, 0);
         position = gameObject.transform.position;
     }
@@ -32,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
         gameObject.transform.position = position;
 
+        //reduces the time till the player can next throw a shuriken
         if(fireTimer > 0)
         {
             fireTimer -= Time.deltaTime;
@@ -42,18 +47,24 @@ public class PlayerController : MonoBehaviour
     {
         if(fireTimer <= 0)
         {
+            //gets mouse location
             Vector3 mousePos = Mouse.current.position.ReadValue();
             mousePos.z = Camera.main.transform.position.y - 0.5f;
             Vector3 clickPos = Camera.main.ScreenToWorldPoint(mousePos);
-            //sets mouse.y to 0 to avoid the seek point being positioned above the ground
+            //sets mouse.z to 0 to avoid shuriken going behind the camera
             clickPos.z = 0;
 
 
 
             Shuriken newShuriken = Instantiate(shuriken);
+            //new shuriken will move towards the position of the mouse at the time of firing
             newShuriken.direction = clickPos - this.position;
             newShuriken.transform.position = position;
 
+            //adds the new shuriken to the list so collision tests can be run
+            sceneManager.shurikenList.Add(newShuriken);
+
+            //sets the cooldown before the next shot
             fireTimer = fireRate;
             
         }

@@ -24,6 +24,7 @@ public class FireBallMonster : Monster
         if (isAgro && fireTimer <= 0)
         {
             Attack();
+            fireTimer = fireRate;
         }
 
         if(fireTimer > 0)
@@ -37,7 +38,7 @@ public class FireBallMonster : Monster
         FireBall newFireBall = Instantiate(fireBall);
         newFireBall.speed = projectileSpeed;
         //creates a new fireball above the head of the enemy
-        newFireBall.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 200, 0);
+        newFireBall.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2.5f, 0);
         newFireBall.direction = player.Position - newFireBall.position;
         newFireBall.direction = newFireBall.direction.normalized;
     }
