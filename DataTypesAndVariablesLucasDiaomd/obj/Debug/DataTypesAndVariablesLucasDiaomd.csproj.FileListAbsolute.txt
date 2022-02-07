@@ -1,7 +1,0 @@
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\DataTypesAndVariablesLucasDiaomd\bin\Debug\DataTypesAndVariablesLucasDiaomd.exe.config
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\DataTypesAndVariablesLucasDiaomd\bin\Debug\DataTypesAndVariablesLucasDiaomd.exe
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\DataTypesAndVariablesLucasDiaomd\bin\Debug\DataTypesAndVariablesLucasDiaomd.pdb
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\DataTypesAndVariablesLucasDiaomd\obj\Debug\DataTypesAndVariablesLucasDiaomd.csprojAssemblyReference.cache
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\DataTypesAndVariablesLucasDiaomd\obj\Debug\DataTypesAndVariablesLucasDiaomd.csproj.CoreCompileInputs.cache
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\DataTypesAndVariablesLucasDiaomd\obj\Debug\DataTypesAndVariablesLucasDiaomd.exe
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\DataTypesAndVariablesLucasDiaomd\obj\Debug\DataTypesAndVariablesLucasDiaomd.pdb
