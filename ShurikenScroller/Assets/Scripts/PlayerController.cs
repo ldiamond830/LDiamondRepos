@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public Shuriken shuriken;
     private float fireTimer = 0;
     public SceneManager sceneManager;
+    public SpriteRenderer spriteRenderer;
     
     //properties
     public Vector3 Position
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         //starts the auto moving, subject to change
         velocity = new Vector3(speed, 0, 0);
         position = gameObject.transform.position;

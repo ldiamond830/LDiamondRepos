@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class SceneManager : MonoBehaviour
 {
     public List<Monster> enemyList = new List<Monster>();
+    public List<FireBall> fireBallList = new List<FireBall>();
     public List<Shuriken> shurikenList = new List<Shuriken>();
     public PlayerController player;
     public GameObject crossHair;

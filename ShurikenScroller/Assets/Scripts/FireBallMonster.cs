@@ -8,6 +8,7 @@ public class FireBallMonster : Monster
     public float projectileSpeed = 5f;
     private float fireRate = 1.5f;
     private float fireTimer = 0;
+    public SceneManager sceneManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,10 +37,12 @@ public class FireBallMonster : Monster
     void Attack()
     {
         FireBall newFireBall = Instantiate(fireBall);
+        sceneManager.fireBallList.Add(newFireBall);
         newFireBall.speed = projectileSpeed;
         //creates a new fireball above the head of the enemy
         newFireBall.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2.5f, 0);
         newFireBall.direction = player.Position - newFireBall.position;
         newFireBall.direction = newFireBall.direction.normalized;
+        newFireBall.damage = this.damage;
     }
 }
