@@ -29,6 +29,11 @@ public abstract class Monster : MonoBehaviour
         {
             isAgro = true;
         }
+        else
+        {
+            //stops the enemy from attacking if the player is far enough away, avoids a situation where an enemy the player passed by is still firing projectiles 
+            isAgro = false;
+        }
     }
 
     //requires each child class to have it's own update method to be called by the scene manager
