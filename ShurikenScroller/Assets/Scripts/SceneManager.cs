@@ -21,6 +21,7 @@ public class SceneManager : MonoBehaviour
     {
         foreach(Monster enemy in enemyList)
         {
+            //calls each enemy's unique update method
             enemy.UpdateHolder();
 
             foreach(Shuriken shuriken in shurikenList)
@@ -30,14 +31,32 @@ public class SceneManager : MonoBehaviour
                     //stops updating both the enemy and the projectile if they hit
                     enemy.isAlive = false; //may not be necesarry
                     enemy.spriteRenderer.enabled = false;
+                    enemy.enabled = false;
                     enemyList.Remove(enemy);
 
+                    
                     shurikenList.Remove(shuriken);
                     shuriken.spriteRenderer.enabled = false;
                 }
             }
         }
 
+        foreach(FireBall fireBall in fireBallList)
+        {
+            //collision detection for player and enemy projectile
+            if (CollisionDetector(player.spriteRenderer, fireBall.spriteRenderer))
+            {
+                //on hit removes fireball from scene
+                fireBallList.Remove(fireBall);
+                fireBall.spriteRenderer.enabled = false;
+                fireBall.enabled = false;
+
+                //reduces player hp by set amount
+                player.hp -= fireBall.damage;
+
+            }
+        }
+        //moves player cross hair
         updateCrossHair();
     }
 

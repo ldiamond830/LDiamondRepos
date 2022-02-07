@@ -10,7 +10,7 @@ public class FireBall : MonoBehaviour
     public Vector3 velocity;
     public Vector3 position;
     public SpriteRenderer spriteRenderer;
-    
+    public int damage;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,11 +20,13 @@ public class FireBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //controls movement
         velocity = direction * speed;
         position += velocity * Time.deltaTime;
+        //sets position
         gameObject.transform.position = position;
-        transform.rotation = Quaternion.LookRotation(Vector3.right, direction);
+        //rotates the fireball to face towards the player
+        transform.rotation = Quaternion.LookRotation(Vector3.right, direction); //WIP
     }
 
     

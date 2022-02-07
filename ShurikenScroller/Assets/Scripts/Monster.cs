@@ -31,5 +31,6 @@ public abstract class Monster : MonoBehaviour
         }
     }
 
+    //requires each child class to have it's own update method to be called by the scene manager
     public abstract void UpdateHolder();
 }
