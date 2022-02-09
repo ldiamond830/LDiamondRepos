@@ -24,6 +24,21 @@ public class SceneManager : MonoBehaviour
             //calls each enemy's unique update method
             enemy.UpdateHolder();
 
+            //floating skulls deal damage on contact
+            if(enemy is FloatingSkull)
+            {
+                if(CollisionDetector(player.spriteRenderer, enemy.spriteRenderer))
+                {
+                    player.hp -= enemy.damage;
+                    enemy.isAlive = false; //may not be necesarry
+                    enemy.spriteRenderer.enabled = false;
+                    enemy.enabled = false;
+                    enemyList.Remove(enemy);
+
+                   
+                }
+            }
+
             foreach(Shuriken shuriken in shurikenList)
             {
                 if(CollisionDetector(shuriken.spriteRenderer, enemy.spriteRenderer))

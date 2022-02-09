@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloatingSkull : Monster
 {
-    private float speed = 0.01f;
+    private float speed = 1f;
     private bool goingUp = true;
     private bool goingDown = false;
     private Vector3 direction;
@@ -31,6 +31,7 @@ public class FloatingSkull : Monster
         {
             direction = player.Position - position;
             
+            //moves the skull in a small wave pattern
             if (goingUp)
             {
                 direction.y += increment;
@@ -59,7 +60,7 @@ public class FloatingSkull : Monster
             
             direction.Normalize();
             velocity = direction * speed;
-            position += velocity;
+            position += velocity * Time.deltaTime;
             gameObject.transform.position = position;
         }
    }
