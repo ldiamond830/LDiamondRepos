@@ -8,7 +8,7 @@ public class FireBallMonster : Monster
     public float projectileSpeed = 5f;
     private float fireRate = 1.5f;
     private float fireTimer = 0;
-    public SceneManager sceneManager;
+    public SceneController sceneManager;
     // Start is called before the first frame update
     void Start()
     {

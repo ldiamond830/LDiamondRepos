@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public float fireRate = 1.0f;
     public Shuriken shuriken;
     private float fireTimer = 0;
-    public SceneManager sceneManager;
+    public SceneController sceneManager;
     public SpriteRenderer spriteRenderer;
     
     //properties

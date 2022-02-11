@@ -7,8 +7,7 @@ public class Golem : Monster
     public float projectileSpeed = 5f;
     private float fireRate = 1.5f;
     private float fireTimer = 0;
-    public SceneManager sceneManager;
-    public int damage = 3;
+    public SceneController sceneManager;
     public Wave leftWave;
     public Wave rightWave;
     // Start is called before the first frame update
@@ -42,6 +41,7 @@ public class Golem : Monster
 
     }
 
+    //creates a new wave
     private void Attack()
     {
         //player is to the left of the golumn
@@ -49,12 +49,20 @@ public class Golem : Monster
         {
             //new wave is okay as a musically genre
             Wave newWave = Instantiate(leftWave);
+            newWave.damage = this.damage;
+            newWave.position = new Vector3(this.transform.position.x, -1, 0); 
+            newWave.direction = new Vector3(-1, 0, 0);
+            sceneManager.waveList.Add(newWave);
 
         }
         //player is to the right
         else
         {
-
+            Wave newWave = Instantiate(rightWave);
+            newWave.damage = this.damage;
+            newWave.position = new Vector3(this.transform.position.x, -1, 0);
+            newWave.direction = new Vector3(1, 0, 0);
+            sceneManager.waveList.Add(newWave);
         }
     }
 }
