@@ -93,8 +93,8 @@ public class SceneController : MonoBehaviour
             {
                 //on hit removes fireball from scene
                 fireBallList.Remove(fireBall);
-                fireBall.spriteRenderer.enabled = false;
-                fireBall.enabled = false;
+                //fireBall.spriteRenderer.enabled = false;
+                //fireBall.enabled = false;
 
                 //reduces player hp by set amount
                 player.hp -= fireBall.damage;
@@ -114,13 +114,13 @@ public class SceneController : MonoBehaviour
                 }
             }
 
-            //
+            /*
             if (cleaner(fireBall.gameObject))
             {
                 fireBallList.Remove(fireBall);
                 fireBall.spriteRenderer.enabled = false;
                 fireBall.enabled = false;
-            }
+            }*/
         }
 
         //wave hit detection

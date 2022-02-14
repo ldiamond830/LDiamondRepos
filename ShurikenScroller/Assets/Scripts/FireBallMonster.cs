@@ -48,10 +48,16 @@ public class FireBallMonster : Monster
         sceneManager.fireBallList.Add(newFireBall);
         newFireBall.speed = projectileSpeed;
         //creates a new fireball above the head of the enemy
-        newFireBall.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2.5f, 0);
+        newFireBall.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2.0f, 0);
         newFireBall.direction = player.Position - newFireBall.position;
         newFireBall.direction = newFireBall.direction.normalized;
         newFireBall.damage = this.damage;
         newFireBall.spriteRenderer = newFireBall.GetComponent<SpriteRenderer>();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2.0f, 0), 1);
     }
 }

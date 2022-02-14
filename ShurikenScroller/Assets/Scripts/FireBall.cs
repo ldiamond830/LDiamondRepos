@@ -20,13 +20,16 @@ public class FireBall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         //controls movement
         velocity = direction * speed;
         position += velocity * Time.deltaTime;
         //sets position
+        
         gameObject.transform.position = position;
         //rotates the fireball to face towards the player
-        transform.rotation = Quaternion.LookRotation(Vector3.right, direction); //WIP
+        //transform.rotation = Quaternion.LookRotation(Vector3.right, direction); //WIP
+        
     }
 
     

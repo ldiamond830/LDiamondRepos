@@ -5,7 +5,7 @@ using UnityEngine;
 public class Golem : Monster
 {
     public float projectileSpeed = 5f;
-    private float fireRate = 1.5f;
+    private float fireRate = 3.5f;
     private float fireTimer = 0;
     public SceneController sceneManager;
     public Wave leftWave;
