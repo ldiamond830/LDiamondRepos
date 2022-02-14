@@ -6,7 +6,7 @@ public class FireBallMonster : Monster
 {
     public FireBall fireBall;
     public float projectileSpeed = 5f;
-    private float fireRate = 1.5f;
+    private float fireRate = 2f;
     private float fireTimer = 0;
     public SceneController sceneManager;
     public Camera cameraObject;

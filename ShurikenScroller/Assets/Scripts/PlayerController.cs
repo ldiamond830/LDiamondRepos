@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
             newShuriken.direction = clickPos - this.position;
             newShuriken.direction.Normalize();
             newShuriken.transform.position = position;
-            newShuriken.speed = 30f;
+            newShuriken.speed = 15f;
             //adds the new shuriken to the list so collision tests can be run
             sceneManager.shurikenList.Add(newShuriken);
 

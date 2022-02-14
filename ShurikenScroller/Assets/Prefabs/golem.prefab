@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
-  agroRange: 2
+  agroRange: 0.1
   damage: 2
   player: {fileID: 5578194735325499143, guid: 90ce4b5e1c9726d4fb959af924586c2a, type: 3}
   spriteRenderer: {fileID: 2298268100432582398}
