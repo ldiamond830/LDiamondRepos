@@ -25,7 +25,7 @@ public class FloatingSkull : Monster
 
     public override void UpdateHolder()
    {
-        Update();
+        isAgro = agroCheck();
 
         if (isAgro)
         {

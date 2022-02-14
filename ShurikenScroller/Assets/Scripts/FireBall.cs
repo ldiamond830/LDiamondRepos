@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireBall : MonoBehaviour
 {
-    public PlayerController player;
+    
     public Vector3 direction;
     public float speed;
     public Vector3 velocity;
@@ -14,7 +14,7 @@ public class FireBall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        
     }
 
     // Update is called once per frame

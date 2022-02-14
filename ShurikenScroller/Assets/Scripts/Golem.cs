@@ -10,11 +10,13 @@ public class Golem : Monster
     public SceneController sceneManager;
     public Wave leftWave;
     public Wave rightWave;
+    public Camera cameraObject;
+  
     // Start is called before the first frame update
     void Start()
     {
         //sets fields
-        agroRange = 1000;
+        agroRange = cameraObject.orthographicSize * 2f * cameraObject.aspect;
         isAlive = true;
         damage = 2;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -25,7 +27,7 @@ public class Golem : Monster
 
     public override void UpdateHolder()
     {
-        Update();
+        isAgro = agroCheck();
 
         if(isAgro && fireTimer <= 0)
         {

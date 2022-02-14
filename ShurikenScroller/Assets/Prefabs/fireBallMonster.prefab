@@ -95,7 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d12ee2a04d7bb4d8eb634dcaafc09c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlive: 0
   agroRange: 0
   damage: 0
-  player: {fileID: 0}
+  player: {fileID: 5578194735325499143, guid: 90ce4b5e1c9726d4fb959af924586c2a, type: 3}
   spriteRenderer: {fileID: 0}
+  fireBall: {fileID: 0}
+  projectileSpeed: 5
+  sceneManager: {fileID: 0}

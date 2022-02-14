@@ -24,15 +24,20 @@ public abstract class Monster : MonoBehaviour
     // Update is called once per frame
     protected void Update()
     {
+       
+    }
+
+    protected bool agroCheck()
+    {
         //checks if the player is close enough to start attacking
-        if(Vector3.Magnitude(player.transform.position - this.transform.position) < agroRange)
+        if (Vector3.Magnitude(player.transform.position - this.transform.position) < agroRange)
         {
-            isAgro = true;
+            return true;
         }
         else
         {
             //stops the enemy from attacking if the player is far enough away, avoids a situation where an enemy the player passed by is still firing projectiles 
-            isAgro = false;
+            return false;
         }
     }
 

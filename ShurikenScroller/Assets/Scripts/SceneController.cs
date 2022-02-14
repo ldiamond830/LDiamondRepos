@@ -13,15 +13,36 @@ public class SceneController : MonoBehaviour
     public List<Wave> waveList = new List<Wave>();
     public PlayerController player;
     public GameObject crossHair;
+    public Camera cameraObject;
+    private float cameraHeight;
+    private float cameraWidth;
+    private float cameraTop;
+    private float cameraBottom;
+    private float cameraLeft;
+    private float cameraRightEdge;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //sets the camera variables to the size of the main camera
+        cameraHeight = cameraObject.orthographicSize * 2f;
+        cameraWidth = cameraHeight * cameraObject.aspect;
+
+        foreach(Monster enemy in enemyList)
+        {
+            //in case I forget to set one in the inspector
+            if(enemy.player != player)
+            {
+                enemy.player = player;
+            }
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        SetCameraBounds();
+
         foreach (Monster enemy in enemyList)
         {
             //calls each enemy's unique update method
@@ -54,7 +75,13 @@ public class SceneController : MonoBehaviour
 
 
                     shurikenList.Remove(shuriken);
+                    shuriken.enabled = false;
                     shuriken.spriteRenderer.enabled = false;
+                }
+
+                if (cleaner(shuriken.gameObject))
+                {
+                    shurikenList.Remove(shuriken);
                 }
             }
         }
@@ -73,6 +100,27 @@ public class SceneController : MonoBehaviour
                 player.hp -= fireBall.damage;
 
             }
+
+            foreach(Shuriken shuriken in shurikenList)
+            {
+                if(CollisionDetector(fireBall.spriteRenderer, shuriken.spriteRenderer))
+                {
+                    //if a shuriken hits a fireball it will bounce off in the opposite direction it was previously moving
+                    fireBall.direction = new Vector3(fireBall.direction.x * -1, fireBall.direction.y * -1, 0);
+
+                    shurikenList.Remove(shuriken);
+                    shuriken.enabled = false;
+                    shuriken.spriteRenderer.enabled = false;
+                }
+            }
+
+            //
+            if (cleaner(fireBall.gameObject))
+            {
+                fireBallList.Remove(fireBall);
+                fireBall.spriteRenderer.enabled = false;
+                fireBall.enabled = false;
+            }
         }
 
         //wave hit detection
@@ -86,6 +134,11 @@ public class SceneController : MonoBehaviour
 
                 player.hp -= wave.damage;
             }
+
+            if (cleaner(wave.gameObject))
+            {
+                waveList.Remove(wave);
+            }
         }
         //moves player cross hair
         updateCrossHair();
@@ -95,8 +148,24 @@ public class SceneController : MonoBehaviour
             SceneManager.LoadScene("LossScene");
             
         }
-    }
 
+
+        if (cameraObject.transform.position.y < 1)
+        {
+            cameraObject.transform.position = new Vector3(cameraObject.transform.position.x, 1, cameraObject.transform.position.z);
+        }
+    }
+    //called each frame, changes the camera variable so that they update along with the player's movement
+    private void SetCameraBounds()
+    {
+        
+        cameraTop = player.Position.y + cameraHeight;
+        cameraBottom = player.Position.y - cameraHeight;
+        cameraRightEdge = player.Position.x + cameraWidth;
+        cameraLeft = player.Position.x - cameraWidth;
+
+
+    }
 
     bool CollisionDetector(SpriteRenderer sprite1, SpriteRenderer sprite2)
     {
@@ -126,4 +195,18 @@ public class SceneController : MonoBehaviour
 
         crossHair.transform.position = clickPos;
     }
+
+    private bool cleaner(GameObject target)
+    {
+        if(target.transform.position.x < cameraLeft || target.transform.position.x > cameraRightEdge || target.transform.position.y > cameraTop || target.transform.position.y < cameraBottom)
+        {
+            //removes projectiles that have gone off screne
+            target.SetActive(false);
+
+            return true;
+        }
+
+        return false;
+    }
+
 }

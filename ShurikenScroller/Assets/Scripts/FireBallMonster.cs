@@ -9,11 +9,12 @@ public class FireBallMonster : Monster
     private float fireRate = 1.5f;
     private float fireTimer = 0;
     public SceneController sceneManager;
+    public Camera cameraObject;
     // Start is called before the first frame update
     void Start()
     {
         //sets fields
-        agroRange = 300;
+        agroRange = cameraObject.orthographicSize * 2f * cameraObject.aspect; 
         isAlive = true;
         damage = 2;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
@@ -23,7 +24,7 @@ public class FireBallMonster : Monster
     public override void UpdateHolder()
     {
         //calls update in parent class to check if player is within range
-        Update();
+        isAgro = agroCheck();
         //if the player is in range and the monster is ready to fire creates a new fireball and resets the fire timer
         if (isAgro && fireTimer <= 0)
         {
@@ -51,5 +52,6 @@ public class FireBallMonster : Monster
         newFireBall.direction = player.Position - newFireBall.position;
         newFireBall.direction = newFireBall.direction.normalized;
         newFireBall.damage = this.damage;
+        newFireBall.spriteRenderer = newFireBall.GetComponent<SpriteRenderer>();
     }
 }

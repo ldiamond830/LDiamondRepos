@@ -95,3 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c5eb9628b214647b1953a19b520080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlive: 0
+  agroRange: 0
+  damage: 0
+  player: {fileID: 5578194735325499143, guid: 90ce4b5e1c9726d4fb959af924586c2a, type: 3}
+  spriteRenderer: {fileID: 0}

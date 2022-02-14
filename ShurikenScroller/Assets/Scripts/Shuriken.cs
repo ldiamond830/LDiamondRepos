@@ -8,7 +8,7 @@ public class Shuriken : MonoBehaviour
 {
     //fields
     public Vector3 direction;
-    public float speed = 10f;
+    public float speed = 50f;
     private Vector3 velocity;
     private Vector3 position;
     public SpriteRenderer spriteRenderer;

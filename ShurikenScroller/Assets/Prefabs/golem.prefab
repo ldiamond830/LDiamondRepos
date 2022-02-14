@@ -95,3 +95,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df03721ae3a2d9341a41151d2ab4f6c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isAlive: 0
+  agroRange: 0
+  damage: 0
+  player: {fileID: 5578194735325499143, guid: 90ce4b5e1c9726d4fb959af924586c2a, type: 3}
+  spriteRenderer: {fileID: 0}
+  projectileSpeed: 5
+  sceneManager: {fileID: 0}
+  leftWave: {fileID: 8444191968730840817, guid: 038b8412ffcef1547966e90115a83a63, type: 3}
+  rightWave: {fileID: 5115865921119754715, guid: 6e13d903a17bba046b2e678c027e0d7b, type: 3}
+  cameraObject: {fileID: 0}
