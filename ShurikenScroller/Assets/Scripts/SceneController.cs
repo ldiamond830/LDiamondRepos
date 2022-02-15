@@ -114,13 +114,13 @@ public class SceneController : MonoBehaviour
                 }
             }
 
-            /*
+            
             if (cleaner(fireBall.gameObject))
             {
                 fireBallList.Remove(fireBall);
                 fireBall.spriteRenderer.enabled = false;
                 fireBall.enabled = false;
-            }*/
+            }
         }
 
         //wave hit detection

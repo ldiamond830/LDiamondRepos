@@ -24,7 +24,7 @@ public class FloatingSkull : Monster
 
 
     public override void UpdateHolder()
-   {
+    {
         isAgro = agroCheck();
 
         if (isAgro)
@@ -62,6 +62,12 @@ public class FloatingSkull : Monster
             velocity = direction * speed;
             position += velocity * Time.deltaTime;
             gameObject.transform.position = position;
-        }
-   }
+        } 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, agroRange);
+    }
 }

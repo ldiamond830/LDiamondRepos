@@ -58,6 +58,6 @@ public class FireBallMonster : Monster
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2.0f, 0), 1);
+        Gizmos.DrawWireSphere(transform.position, agroRange);
     }
 }

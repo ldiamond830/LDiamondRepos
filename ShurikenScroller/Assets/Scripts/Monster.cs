@@ -30,7 +30,7 @@ public abstract class Monster : MonoBehaviour
     protected bool agroCheck()
     {
         //checks if the player is close enough to start attacking
-        if (Vector3.Magnitude(player.transform.position - this.transform.position) < agroRange)
+        if (Vector3.Magnitude(player.transform.position - this.transform.position) < agroRange * agroRange)
         {
             return true;
         }
@@ -43,4 +43,6 @@ public abstract class Monster : MonoBehaviour
 
     //requires each child class to have it's own update method to be called by the scene manager
     public abstract void UpdateHolder();
+
+    
 }
