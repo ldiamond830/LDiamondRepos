@@ -12,6 +12,8 @@ public class Shuriken : MonoBehaviour
     private Vector3 velocity;
     private Vector3 position;
     public SpriteRenderer spriteRenderer;
+    private float timeInAir = 1.5f;
+    public bool isActive = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +27,15 @@ public class Shuriken : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timeInAir -= Time.deltaTime;
+
         //handles movement
         position += velocity * Time.deltaTime;
         gameObject.transform.position = position;
+
+        if(timeInAir <= 0)
+        {
+            isActive = false;
+        }
     }
 }

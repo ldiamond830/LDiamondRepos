@@ -15,7 +15,7 @@ public class FloatingSkull : Monster
     void Start()
     {
         //sets fields
-        agroRange = 1000;
+        //agroRange = 1000;
         isAlive = true;
         damage = 2;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();

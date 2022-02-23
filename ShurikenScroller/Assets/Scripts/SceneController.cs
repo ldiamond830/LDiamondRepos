@@ -79,8 +79,10 @@ public class SceneController : MonoBehaviour
                     shuriken.spriteRenderer.enabled = false;
                 }
 
-                if (cleaner(shuriken.gameObject))
+                if (!shuriken.isActive)
                 {
+                    shuriken.enabled = false;
+                    shuriken.spriteRenderer.enabled = false;
                     shurikenList.Remove(shuriken);
                 }
             }
@@ -159,10 +161,10 @@ public class SceneController : MonoBehaviour
     private void SetCameraBounds()
     {
         
-        cameraTop = player.Position.y + cameraHeight;
-        cameraBottom = player.Position.y - cameraHeight;
-        cameraRightEdge = player.Position.x + cameraWidth;
-        cameraLeft = player.Position.x - cameraWidth;
+        cameraTop = Mathf.Abs(player.Position.y + cameraHeight);
+        cameraBottom = Mathf.Abs(player.Position.y - cameraHeight);
+        cameraRightEdge = Mathf.Abs((player.Position.x + cameraWidth))/2;
+        cameraLeft = Mathf.Abs((player.Position.x - cameraWidth))/2;
 
 
     }
@@ -209,4 +211,13 @@ public class SceneController : MonoBehaviour
         return false;
     }
 
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawCube(new Vector3(player.Position.x, cameraBottom), new Vector3(2,2,2));
+        Gizmos.DrawCube(new Vector3(player.Position.x, cameraTop), new Vector3(2, 2, 2));
+        Gizmos.DrawCube(new Vector3(cameraRightEdge, player.Position.y), new Vector3(2, 2, 2));
+        Gizmos.DrawCube(new Vector3(cameraLeft, player.Position.y), new Vector3(2, 2, 2));
+    }
 }

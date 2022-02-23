@@ -30,7 +30,7 @@ public abstract class Monster : MonoBehaviour
     protected bool agroCheck()
     {
         //checks if the player is close enough to start attacking
-        if (Vector3.Magnitude(player.transform.position - this.transform.position) < agroRange * agroRange)
+        if (Vector3.Magnitude(player.transform.position - this.transform.position) < agroRange)
         {
             return true;
         }

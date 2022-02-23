@@ -16,7 +16,7 @@ public class Golem : Monster
     void Start()
     {
         //sets fields
-        agroRange = cameraObject.orthographicSize * 2f * cameraObject.aspect;
+        //agroRange = cameraObject.orthographicSize * 2f * cameraObject.aspect;
         isAlive = true;
         damage = 2;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
