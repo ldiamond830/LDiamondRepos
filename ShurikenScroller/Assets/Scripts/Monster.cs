@@ -15,6 +15,11 @@ public abstract class Monster : MonoBehaviour
     public PlayerController player;
     public SpriteRenderer spriteRenderer;
     protected int pointValue;
+    
+    public int PointValue
+    {
+        get { return pointValue; }
+    }
     // Start is called before the first frame update
     void Start()
     {

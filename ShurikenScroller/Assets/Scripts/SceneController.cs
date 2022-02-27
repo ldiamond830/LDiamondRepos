@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 //Renamed because calling a script scene manager creates issues with the SceneManagment library
 public class SceneController : MonoBehaviour
@@ -20,6 +21,8 @@ public class SceneController : MonoBehaviour
     private float cameraBottom;
     private float cameraLeft;
     private float cameraRightEdge;
+    public Text scoreText;
+    private float endTimer;
 
     // Start is called before the first frame update
     void Start()
@@ -77,6 +80,8 @@ public class SceneController : MonoBehaviour
                     shurikenList.Remove(shuriken);
                     shuriken.enabled = false;
                     shuriken.spriteRenderer.enabled = false;
+
+                    player.score += enemy.PointValue;
                 }
 
                 if (!shuriken.isActive)
@@ -95,12 +100,30 @@ public class SceneController : MonoBehaviour
             {
                 //on hit removes fireball from scene
                 fireBallList.Remove(fireBall);
-                //fireBall.spriteRenderer.enabled = false;
-                //fireBall.enabled = false;
+                fireBall.spriteRenderer.enabled = false;
+                fireBall.enabled = false;
 
                 //reduces player hp by set amount
                 player.hp -= fireBall.damage;
 
+            }
+            if (fireBall.hitBack)
+            {
+                foreach(Monster enemy in enemyList)
+                {
+                    if(CollisionDetector(fireBall.spriteRenderer, enemy.spriteRenderer))
+                    {
+                        enemy.spriteRenderer.enabled = false;
+                        enemy.enabled = false;
+                        enemyList.Remove(enemy);
+
+                        fireBallList.Remove(fireBall);
+                        fireBall.spriteRenderer.enabled = false;
+                        fireBall.enabled = false;
+
+                        player.score += enemy.PointValue * 2;
+                    }
+                }
             }
 
             foreach(Shuriken shuriken in shurikenList)
@@ -113,16 +136,19 @@ public class SceneController : MonoBehaviour
                     shurikenList.Remove(shuriken);
                     shuriken.enabled = false;
                     shuriken.spriteRenderer.enabled = false;
+                    fireBall.hitBack = true;
                 }
+
+
             }
 
             
-            if (cleaner(fireBall.gameObject))
-            {
-                fireBallList.Remove(fireBall);
-                fireBall.spriteRenderer.enabled = false;
-                fireBall.enabled = false;
-            }
+           // if (cleaner(fireBall.gameObject))
+           // {
+           //     fireBallList.Remove(fireBall);
+           //     fireBall.spriteRenderer.enabled = false;
+           //     fireBall.enabled = false;
+           // }
         }
 
         //wave hit detection
@@ -137,10 +163,10 @@ public class SceneController : MonoBehaviour
                 player.hp -= wave.damage;
             }
 
-            if (cleaner(wave.gameObject))
-            {
-                waveList.Remove(wave);
-            }
+           // if (cleaner(wave.gameObject))
+           // {
+           //     waveList.Remove(wave);
+           // }
         }
         //moves player cross hair
         updateCrossHair();
@@ -152,10 +178,13 @@ public class SceneController : MonoBehaviour
         }
 
 
-        if (cameraObject.transform.position.y < 1)
+
+        if(endTimer >= 70)
         {
-            cameraObject.transform.position = new Vector3(cameraObject.transform.position.x, 1, cameraObject.transform.position.z);
+            scoreText.color = Color.white;
+            scoreText.text = "Final Score: " + player.score;
         }
+        endTimer += Time.deltaTime;
     }
     //called each frame, changes the camera variable so that they update along with the player's movement
     private void SetCameraBounds()

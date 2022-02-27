@@ -96,11 +96,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAlive: 0
-  agroRange: 6.21
+  agroRange: 10
   damage: 1
   player: {fileID: 5578194735325499143, guid: 90ce4b5e1c9726d4fb959af924586c2a, type: 3}
   spriteRenderer: {fileID: 6797557153349645316}
   fireBall: {fileID: 138190222535949604, guid: 856d1912889cb344b82a2ff74f001677, type: 3}
-  projectileSpeed: 10
+  projectileSpeed: 20
   sceneManager: {fileID: 3773951909897521466, guid: 55c78f6e9ce23f14b845b02a343876b8, type: 3}
   cameraObject: {fileID: 0}

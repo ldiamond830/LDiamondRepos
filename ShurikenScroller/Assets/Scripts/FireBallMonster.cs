@@ -18,6 +18,7 @@ public class FireBallMonster : Monster
         isAlive = true;
         damage = 2;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        pointValue = 3;
     }
 
     // Update is called once per frame

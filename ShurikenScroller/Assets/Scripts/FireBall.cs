@@ -11,6 +11,7 @@ public class FireBall : MonoBehaviour
     public Vector3 position;
     public SpriteRenderer spriteRenderer;
     public int damage;
+    public bool hitBack;
     // Start is called before the first frame update
     void Start()
     {

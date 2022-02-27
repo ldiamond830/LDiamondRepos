@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FloatingSkull : Monster
 {
-    private float speed = 1f;
+    public float speed = 5f;
     private bool goingUp = true;
     private bool goingDown = false;
     private Vector3 direction;
@@ -20,6 +20,7 @@ public class FloatingSkull : Monster
         damage = 2;
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         position = transform.position;
+        pointValue = 1;
     }
 
 

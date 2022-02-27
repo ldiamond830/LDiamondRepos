@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private float speedTimer;
     private bool firstSpeedUp = false;
     private bool secondSpeedUp = false;
+    public int score;
     //properties
     public Vector3 Position
     {
