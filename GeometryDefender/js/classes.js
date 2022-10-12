@@ -373,7 +373,7 @@ class Bullet extends PIXI.Graphics{
 
 
     }
-    //taken from circle blast exercise and modified
+    
     move(dt=1/60){
         //piercing shots travel on the same path all the way through
         if(this.type != "piercing"){
@@ -386,7 +386,7 @@ class Bullet extends PIXI.Graphics{
         this.y += this.fwd.y * this.speed * dt;
     }
 
-    //gets a normalized vector between the bullet and it's target
+    //gets a normalized vector between the bullet and its target
     getPath(){
         this.fwd = {x:(this.target.x + this.target.width/2) - this.x, y:(this.target.y + this.target.height/2) - this.y};
         this.fwd = NormalizeVector(this.fwd);
