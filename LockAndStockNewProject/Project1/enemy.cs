@@ -66,6 +66,7 @@ namespace LockAndStock
 
 
             CheckCollision(target);
+            //has a small chance to give combat dialouge
             SayVoiceLine(rng, target);
         }
 
@@ -102,19 +103,22 @@ namespace LockAndStock
 
             }
         }
+        
         protected virtual void CheckCollision(Player target)
         {
+            
             if (position.Intersects(target.Position) && hasHit == false && target.IsInvincible == false)
             {
                 target.Health -= 1;
                 hitCount++;
                 hasHit = true;
             }
+            //adds 1/12 of a second to the timeTillNextHit timer every frame
             else if (position.Intersects(target.Position) && hasHit == true && target.IsInvincible == false)
             {
                 timeTillNextHit += (0.016666666666);
             }
-
+            //enemies are able to do damage every 0.4 seconds
             if (timeTillNextHit > 0.4)
             {
                 hasHit = false;
