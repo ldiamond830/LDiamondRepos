@@ -461,7 +461,7 @@ function gameLoop(){
     let dt = 1/app.ticker.FPS;
     if(dt > 1/12) dt =1/12;
 
-
+//updates each tower the player has purchased
     for(let d of defenseList){
 
         let target;
@@ -490,6 +490,7 @@ function gameLoop(){
         }
     }
 
+//updates projectiles fired by towers
     for(let b of bulletList){
         //updates the position of bullet
         b.move();
@@ -539,6 +540,7 @@ function gameLoop(){
     //creates a new enemy after a variable amount of time
     SpawnEnemy(dt);
 
+//updates enemies
     for(let e of enemyList){
         
         //removes dead enemies
