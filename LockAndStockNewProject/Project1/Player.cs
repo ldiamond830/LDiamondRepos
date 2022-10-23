@@ -79,9 +79,8 @@ namespace LockAndStock
 
         public void Update(double gametime, MouseState mouse, KeyboardState kbState)
         {
-            shotDirection = new Vector2((mouse.X - position.X), (mouse.Y - position.Y));
-            shotDirection.Normalize();
-
+            
+            //changes color to indicate the player is invicible
             if (isInvincible == true)
             {
                 color = Color.Purple;
@@ -91,16 +90,22 @@ namespace LockAndStock
                 color = Color.White;
             }
 
+            //shooting behavior, there is a 0.5 second cool down between when the player can fire
             if (gametime >= 0.5 && mouse.LeftButton == ButtonState.Pressed)
             {
+                shotDirection = new Vector2((mouse.X - position.X), (mouse.Y - position.Y));
+                shotDirection.Normalize();
 
                 bulletList.Add(new Bullet(shotDirection, projectileTexture, new Rectangle(position.X, position.Y, 50, 50)));
                 shotSound.Play(0.1f, 0, 0);
 
                 hasShot = true;
+                
+                //moves the player in the opposite direction of their shot
                 Recoil(shotDirection);
             }
 
+            //WASD movement
             if (kbState.IsKeyDown(Keys.W))
             {
                 position.Y -= speed;
