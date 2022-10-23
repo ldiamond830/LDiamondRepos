@@ -135,8 +135,7 @@ namespace LockAndStock
 
                     player.Update(fireRate, mouse, kbState);
 
-
-
+                    //updates all current powerups
                     foreach (PowerUp powerUp in powerUpList)
                     {
 
@@ -155,14 +154,16 @@ namespace LockAndStock
                             powerUpList.RemoveAt(i);
                         }
                     }
-
+                //spawns new enemy
                     if (spawnTimer > spawnTime)
                     {
+                    //enemy type is randomly selected
                         SpawnEnemies(rng);
                         spawnTimer = 0;
                         spawnTime = SetSpawnTimer();
                     }
 
+                    //updates all active bullets
                     foreach (Bullet bullet in player.BulletList)
                     {
                         if (bullet.IsActive)
@@ -171,6 +172,7 @@ namespace LockAndStock
                         }
                     }
 
+                    //creates interval between player shots
                     if (player.HasShot == false)
                     {
                         fireRate += gameTime.ElapsedGameTime.TotalSeconds;
@@ -181,7 +183,7 @@ namespace LockAndStock
                         player.HasShot = false;
                     }
 
-
+                    //updates all enemies
                     foreach (enemy enemy in enemyList)
                     {
                         if (enemy.IsAlive && !(enemy is CryptoNerd))
@@ -193,6 +195,7 @@ namespace LockAndStock
                             enemy.Update(player, rng);
                         }
 
+                        //checks if any enemies are being hit by one of the player's bullets
                         foreach (Bullet bullet in player.BulletList)
                         {
 
@@ -206,6 +209,7 @@ namespace LockAndStock
                             }
 
                         }
+                        
                         if (enemy.IsHit == true)
                         {
                             //1 in 10 chance of spawning a power up
@@ -218,6 +222,7 @@ namespace LockAndStock
                         }
                     }
 
+                    //removes dead enemies from update list
                     for (int i = 0; i < enemyList.Count; i++)
                     {
                         if (!enemyList[i].IsAlive)
@@ -226,6 +231,7 @@ namespace LockAndStock
                         }
                     }
 
+                    //removes spent bullets from update list
                     for (int i = 0; i < player.BulletList.Count; i++)
                     {
                         if (!player.BulletList[i].IsActive)
