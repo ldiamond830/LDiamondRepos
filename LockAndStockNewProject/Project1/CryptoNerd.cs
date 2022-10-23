@@ -14,11 +14,14 @@ namespace LockAndStock
     {
         private Color color = Color.White;
         private int health = 2;
+        
+        
         public CryptoNerd(Texture2D texture, SoundEffect voiceLine, Rectangle position) : base(true, 3, texture, voiceLine, false, position)
         {
 
         }
-
+        
+//overrides parent class to allow enemies built from this class can take multiple hits 
         public override void hitCheck(Bullet bullet, Player player)
         {
             if (bullet.Position.Intersects(position) && bullet.IsActive)
@@ -29,10 +32,12 @@ namespace LockAndStock
 
         }
 
+
         public override void Update(Player target, Random rng)
         {
             base.Update(target, rng);
 
+            //turns sprite red when it has 1 health remaining
             if (health == 1)
             {
                 color = Color.Red;
