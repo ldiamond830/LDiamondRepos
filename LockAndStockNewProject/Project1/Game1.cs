@@ -441,6 +441,7 @@ namespace LockAndStock
 
 
                 selection = rng.Next(1, 11);
+                //enemy spawn is weighted towards the weakest type
                 if (selection < 5)
                 {
                     enemyList.Add(new Trader(TraderTexture, TraderVoiceLine, Position));
