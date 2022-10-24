@@ -359,6 +359,8 @@ namespace LockAndStock
             }
         }
 
+    
+        //sets time between enemies being spawned, enemies spawn faster the more the player has killed
         public double SetSpawnTimer()
         {
             if (player.Score <= 1500)
