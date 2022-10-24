@@ -109,6 +109,7 @@ public class SceneController : MonoBehaviour
             }
             if (fireBall.hitBack)
             {
+            //if a fireball has been reflected by the player checks if it's colliding with any enemies
                 foreach(Monster enemy in enemyList)
                 {
                     if(CollisionDetector(fireBall.spriteRenderer, enemy.spriteRenderer))
@@ -121,6 +122,7 @@ public class SceneController : MonoBehaviour
                         fireBall.spriteRenderer.enabled = false;
                         fireBall.enabled = false;
 
+                        //killing an enemy with a hit back fire ball rewards double points
                         player.score += enemy.PointValue * 2;
                     }
                 }
