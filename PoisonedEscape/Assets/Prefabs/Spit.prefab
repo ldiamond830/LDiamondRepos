@@ -117,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4
   enemyManager: {fileID: 0}
+  enemyBounds: []
+  explosionRadius: 1
   totalGroundTime: 2
 --- !u!50 &4005808276335883709
 Rigidbody2D:

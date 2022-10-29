@@ -10,7 +10,7 @@ public class Spit : MonoBehaviour
     public float moveSpeed;
 
     public EnemyManager enemyManager;
-    private List<Bounds> enemyBounds;
+    public List<Bounds> enemyBounds;
     private Bounds spitBounds;
     //broken
     //private CircleCollider2D collider;
@@ -18,7 +18,7 @@ public class Spit : MonoBehaviour
     private bool hasLanded;
 
     private float startingY;
-
+    [SerializeField]
     private float explosionRadius;
 
     private float sumTime = 0.0f;
@@ -39,7 +39,7 @@ public class Spit : MonoBehaviour
         {
             enemyBounds.Add(enemy.gameObject.GetComponent<SpriteRenderer>().bounds);
         }
-        spitBounds = gameObject.AddComponent<SpriteRenderer>().bounds;
+        spitBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
     }
 
     // Update is called once per frame
@@ -50,6 +50,12 @@ public class Spit : MonoBehaviour
             if(currentGroundTime >= totalGroundTime)
             {
                 gameObject.SetActive(false);
+                this.enabled = false;
+            }
+
+            if (CollisionCheck())
+            {
+
             }
 
             currentGroundTime += Time.deltaTime;
@@ -63,6 +69,7 @@ public class Spit : MonoBehaviour
             velocity = new Vector3(direction.x * moveSpeed, direction.y , 0);
             position += velocity * Time.deltaTime;
             transform.position = position;
+            spitBounds.center = position;
 
             //stops moving when it reaches the same height as it started at in the arc or hits an enemy
             if(position.y <= startingY - 0.1 || CollisionCheck())
@@ -115,8 +122,18 @@ public class Spit : MonoBehaviour
             float distance = Vector3.Magnitude(enemy.Position - position);
             if(distance < explosionRadius)
             {
-                Debug.Log("hit");
+                Debug.Log("explosion hit");
             }
         }
     }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(position, spitBounds.size);
+        Gizmos.DrawWireCube(enemyManager.enemies[0].transform.position, enemyBounds[0].size);
+    }
 }
+
+
+

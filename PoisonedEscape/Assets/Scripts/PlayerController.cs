@@ -63,48 +63,44 @@ public class PlayerController : MonoBehaviour
 
     private void OnProjectile(InputAction Action)
     {
-        //gets mouse location
-        Vector3 mousePos = Mouse.current.position.ReadValue();
-        mousePos.z = Camera.main.transform.position.y - 0.5f;
-        Vector3 clickPos = Camera.main.ScreenToWorldPoint(mousePos);
-        //sets mouse.z to 0 to avoid shuriken going behind the camera
-        clickPos.z = 0;
+       
     }
+   
     
     private void RotateHand()
     {
-        
-        //gets the position of the mouse on the screen
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint((Vector3)Mouse.current.position.ReadValue());
-        
-
-        if(mousePosition != prevMousePos)
-        {
-            Vector3 temp = transform.position - mousePosition;
-
-            float angleToRotate = Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
-           
-            
-            //adjusts the angle of the hand
-
-            // fist.transform.RotateAround(this.transform.position, Vector3.forward, angleToRotate);
-                //uaternion.Euler(0, 0, angleToRotate);
-        }
-
-
-        prevMousePos = mousePosition;
         /*
+       //gets the position of the mouse on the screen
+       Vector3 mousePosition = Camera.main.ScreenToWorldPoint((Vector3)Mouse.current.position.ReadValue());
 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint((Vector3)Mouse.current.position.ReadValue());
-        //I'm not sure if castPoint has a position in it or not, but if when you type castPoint.transform.position
-        direction = (mousePosition - transform.position).normalized;
 
-        //create the rotation we need to be in to look at the target
-        Quaternion lookRotation = Quaternion.LookRotation(direction);
+       if(mousePosition != prevMousePos)
+       {
+           Vector3 temp = transform.position - mousePosition;
 
-        //rotate us over time according to speed until we are in the required rotation
-        fist.transform.RotateAround(this.transform.position, Vector3.forward, lookRotation.eulerAngles)
-        */
+           float angleToRotate = Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
+
+
+           //adjusts the angle of the hand
+
+           // fist.transform.RotateAround(this.transform.position, Vector3.forward, angleToRotate);
+               //uaternion.Euler(0, 0, angleToRotate);
+       }
+
+
+       prevMousePos = mousePosition;
+
+
+       Vector3 mousePosition = Camera.main.ScreenToWorldPoint((Vector3)Mouse.current.position.ReadValue());
+       //I'm not sure if castPoint has a position in it or not, but if when you type castPoint.transform.position
+       direction = (mousePosition - transform.position).normalized;
+
+       //create the rotation we need to be in to look at the target
+       Quaternion lookRotation = Quaternion.LookRotation(direction);
+
+       //rotate us over time according to speed until we are in the required rotation
+       fist.transform.RotateAround(this.transform.position, Vector3.forward, lookRotation.eulerAngles)
+       */
     }
     /*
     private void OnPunch(InputValue value)
@@ -123,10 +119,22 @@ public class PlayerController : MonoBehaviour
 
     private void OnProjectile(InputValue value)
     {
+        //gets mouse location
+        Vector3 mousePos = Mouse.current.position.ReadValue();
+        mousePos.z = Camera.main.transform.position.y - 0.5f;
+        Vector3 clickPos = Camera.main.ScreenToWorldPoint(mousePos);
+        //sets mouse.z to 0 to avoid shuriken going behind the camera
+        clickPos.z = 0;
+
+
         Spit SpitToInstantiate = Instantiate(spitBase);
         SpitToInstantiate.transform.position = transform.position;
         SpitToInstantiate.enemyManager = enemyManager;
 
+        foreach(Enemy enemy in enemyManager.enemies)
+        {
+            SpitToInstantiate.enemyBounds.Add(enemy.gameObject.GetComponent<SpriteRenderer>().bounds);
+        }
 
     }
 
