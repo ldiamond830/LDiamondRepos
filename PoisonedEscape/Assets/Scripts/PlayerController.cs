@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
 
-
+    public Spit spitBase;
 
     private Vector3 prevMousePos;
 
@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
 
+       
         //busted
 
         //RotateHand();
@@ -105,9 +106,19 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint((Vector3)Mouse.current.position.ReadValue());
             fist.Direction = mousePosition - transform.position;
+            fist.Direction.Normalize();
             fist.CurrentState = State.isPunching;
+
         }
        
+    }
+
+    private void OnProjectile(InputValue value)
+    {
+        Spit SpitToInstantiate = Instantiate(spitBase);
+        SpitToInstantiate.transform.position = transform.position;
+
+
     }
 
     //needed to for controls to work 

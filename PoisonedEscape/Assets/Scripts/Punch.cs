@@ -12,12 +12,14 @@ public enum State
 public class Punch : MonoBehaviour
 {
     private Vector3 direction;
-    private Vector3 velocity = Vector2.zero;
+    private Vector3 velocity;
     private Vector3 position;
 
     private Vector3 distanceFromPlayer;
     private Vector3 playerPos;
     private float defaultDis;
+    private Vector3 returnPos;
+
     //stats
     [SerializeField]
     private float moveSpeed;
@@ -33,6 +35,7 @@ public class Punch : MonoBehaviour
     public Vector3 Direction
     {
         set { direction = value; }
+        get { return direction; }
     }
     public State CurrentState
     {
@@ -77,29 +80,35 @@ public class Punch : MonoBehaviour
                 if(Vector3.Magnitude(distanceFromPlayer) >= range)
                 {
                     currentState = State.isReturning;
-                    direction = playerPos - position;
+                    
                     
                 }
 
                 break;
 
             case State.isReturning:
-                //returns faster than it moves
+                direction = playerPos - position;
+
+                //returns faster than it moves out
                 velocity = new Vector3(direction.x * moveSpeed * 2, direction.y * moveSpeed * 2, 0);
+                //velocity = Vector3.Lerp( playerPos, position, Time.deltaTime);
 
                 reposition();
 
                 distanceFromPlayer = playerPos - position;
                 
-                if(Vector3.Magnitude(distanceFromPlayer) <= defaultDis)
+                if(Vector3.Magnitude(distanceFromPlayer) <= defaultDis * 2)
                 {
+                    returnPos = position;
                     currentState = State.wait;
+                    
                 }
                 
                 break;
 
             case State.wait:
-                
+                //position = playerPos;
+                //transform.position = returnPos;
                 break;
                   
 
