@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &556776899 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7899065114593151708, guid: b328a1b10a121d842a277afbdadef65a, type: 3}
-  m_PrefabInstance: {fileID: 3973140185008301063}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfe0e6bd2d507a240940869dcef7f79d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &610331072
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +276,7 @@ GameObject:
   - component: {fileID: 1310210578}
   - component: {fileID: 1310210580}
   - component: {fileID: 1310210581}
+  - component: {fileID: 1310210582}
   m_Layer: 0
   m_Name: enemy1
   m_TagString: Untagged
@@ -386,7 +376,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -402,6 +392,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.3, y: 1.3}
   m_EdgeRadius: 0
+--- !u!50 &1310210582
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1310210577}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &3973140185008301063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -416,11 +427,15 @@ PrefabInstance:
     - target: {fileID: 3973140185928831321, guid: b328a1b10a121d842a277afbdadef65a, type: 3}
       propertyPath: fist
       value: 
-      objectReference: {fileID: 556776899}
+      objectReference: {fileID: 0}
     - target: {fileID: 3973140185928831321, guid: b328a1b10a121d842a277afbdadef65a, type: 3}
       propertyPath: spitBase
       value: 
       objectReference: {fileID: 1387392796842876347, guid: 6373e5f91f9f0b34ab50c620201778c3, type: 3}
+    - target: {fileID: 3973140185928831321, guid: b328a1b10a121d842a277afbdadef65a, type: 3}
+      propertyPath: enemyManager
+      value: 
+      objectReference: {fileID: 985348700}
     - target: {fileID: 3973140185928831322, guid: b328a1b10a121d842a277afbdadef65a, type: 3}
       propertyPath: m_RootOrder
       value: 1

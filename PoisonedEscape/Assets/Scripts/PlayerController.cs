@@ -23,7 +23,13 @@ public class PlayerController : MonoBehaviour
 
     public Spit spitBase;
 
-    private Vector3 prevMousePos;
+    //private Vector3 prevMousePos;
+
+    public Vector3 Position
+    {
+        get { return position; }
+    }
+
 
     // Start is called before the first frame update
     void Start()

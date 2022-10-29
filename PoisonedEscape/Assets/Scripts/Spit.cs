@@ -10,7 +10,9 @@ public class Spit : MonoBehaviour
     public float moveSpeed;
 
     public EnemyManager enemyManager;
-    private CircleCollider2D collider;
+    private List<Bounds> enemyBounds;
+    //broken
+    //private CircleCollider2D collider;
 
     private bool hasLanded;
 
@@ -31,7 +33,11 @@ public class Spit : MonoBehaviour
         hasLanded = false;
         position = transform.position;
         startingY = position.y;
-        collider = GetComponent<CircleCollider2D>();
+        
+        foreach(Enemy enemy in enemyManager.enemies)
+        {
+            enemyBounds.Add(enemy.gameObject.GetComponent<SpriteRenderer>().bounds);
+        }
     }
 
     // Update is called once per frame
@@ -79,16 +85,17 @@ public class Spit : MonoBehaviour
         return x;
     }
 
+
+
+    
     private bool CollisionCheck()
     {
-        foreach (Enemy enemy in enemyManager.enemies)
-        {
-            if (collider.IsTouching(enemy.Collider))
-            {
-                return true;
-            }
-        }
-        return false;
+        
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("hit");
     }
 
     private void explosion()
