@@ -6,6 +6,8 @@ public class RedGuard : Enemy
 {
     [SerializeField]
     private float meleeRange;
+
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +19,8 @@ public class RedGuard : Enemy
     void Update()
     {
         base.Update();
+
+
     }
 
     private void MeleeAttack()
