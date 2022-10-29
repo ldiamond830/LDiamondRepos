@@ -143,7 +143,7 @@ public class Spit : MonoBehaviour
             float distance = Vector3.Magnitude(enemy.Position - position);
             if(distance < explosionRadius)
             {
-                enemy.health -= 1;
+                enemy.TakeDamage(1);
             }
         }
     }

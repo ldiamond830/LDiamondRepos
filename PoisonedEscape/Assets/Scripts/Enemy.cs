@@ -6,12 +6,22 @@ public enum State
 {
     aggressive,
     defensive,
-   
+   fearful,
 }
 
 //holds behaviors and data needed by all enemies
 public abstract class Enemy : MonoBehaviour
 {
+    /* currently unused
+    //camera bounds
+    private float cameraHeight;
+    private float cameraWidth;
+    public Camera cameraObject;
+    */
+
+    public GameObject room;
+    private Bounds boundaries;
+
     //stats
     public int health;
     public int speed;
@@ -57,6 +67,11 @@ public abstract class Enemy : MonoBehaviour
     {
         poisonInterval = 1.0f;
         enemyBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
+        boundaries = room.GetComponent<SpriteRenderer>().bounds;
+        /*
+        cameraHeight = cameraObject.orthographicSize * 2f;
+        cameraWidth = cameraHeight * cameraObject.aspect;
+        */
     }
 
     // Update is called once per frame
@@ -68,16 +83,7 @@ public abstract class Enemy : MonoBehaviour
         transform.position = position;
         enemyBounds.center = position;
 
-        if(stateTimer >= timeToStateChange)
-        {
-            SetState();
-            //SetBehavior();
-           stateTimer = 0;
-        }
-        else
-        {
-            stateTimer += Time.deltaTime;
-        }
+        
 
         
 
@@ -85,7 +91,8 @@ public abstract class Enemy : MonoBehaviour
         {
             if(poisonTimer <= 0)
             {
-                health -= poisonCounter;
+                TakeDamage(poisonCounter);
+                SetState();
                 poisonTimer = poisonInterval;
             }
             else
@@ -93,11 +100,21 @@ public abstract class Enemy : MonoBehaviour
                 poisonTimer -= Time.deltaTime;
             }
         }
+
+        StayInBounds();
     }
 
     protected abstract void SetBehavior();
 
+    //called when enemy takes damage
     protected abstract void SetState();
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        //recalculates the state whenever the enemy takes damage
+        SetState();
+    }
 
     //move toward the player
     protected void Approach()
@@ -116,5 +133,27 @@ public abstract class Enemy : MonoBehaviour
     }
 
     protected abstract void RangedAttack();
+
+    protected void StayInBounds()
+    {
+        if(position.x + enemyBounds.extents.x > boundaries.max.x)
+        {
+            position.x = boundaries.max.x - enemyBounds.extents.x;
+        }
+        else if(position.x - enemyBounds.extents.x < boundaries.min.x)
+        {
+            position.x = boundaries.min.x + enemyBounds.extents.x;
+
+        }
+
+        if(position.y + enemyBounds.extents.y > boundaries.max.y)
+        {
+            position.y = boundaries.extents.y - enemyBounds.extents.y;
+        }
+        else if(position.y - enemyBounds.extents.y < boundaries.min.y)
+        {
+            position.y = boundaries.min.y + enemyBounds.extents.y;
+        }
+    }
     
 }

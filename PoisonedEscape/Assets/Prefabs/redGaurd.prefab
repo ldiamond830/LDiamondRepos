@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1849390fa45c6e3478260f0542d3f908, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 0}
   health: 10
   speed: 7
   player: {fileID: 3973140185928831321, guid: b328a1b10a121d842a277afbdadef65a, type: 3}
@@ -109,6 +110,7 @@ MonoBehaviour:
     m_Extent: {x: 0, y: 0, z: 0}
   spear: {fileID: 3861428954470972915}
   meleeRange: 2
+  safeDistance: 5
   projectileTemplate: {fileID: 2542671642360744792, guid: b0349d74af5a1fc4da037c0d1d3324cf, type: 3}
 --- !u!61 &7628853954688338937
 BoxCollider2D:

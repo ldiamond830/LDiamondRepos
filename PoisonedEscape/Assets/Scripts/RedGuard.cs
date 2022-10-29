@@ -8,6 +8,8 @@ public class RedGuard : Enemy
     private SpearController spear;
     [SerializeField]
     private float meleeRange;
+    [SerializeField]
+    private float safeDistance;
 
     private float rangedAttackInterval;
     private float rangedAttackTimer;
@@ -32,8 +34,8 @@ public class RedGuard : Enemy
     // Update is called once per frame
     void Update()
     {
-        
-        if(distanceToPlayer <= agroRange)
+        distanceToPlayer = Vector3.Magnitude(player.Position - transform.position);
+        if (distanceToPlayer <= agroRange)
         {
             base.Update();
 
@@ -46,7 +48,7 @@ public class RedGuard : Enemy
                     break;
 
 
-                case State.defensive:
+                case State.fearful:
                    
                         if (rangedAttackTimer <= 0)
                         {
@@ -61,6 +63,26 @@ public class RedGuard : Enemy
                         }
                     
 
+                    break;
+                case State.defensive:
+                    if (distanceToPlayer < safeDistance)
+                    {
+                        Retreat();
+                    }
+                    else
+                    {
+                        if (rangedAttackTimer <= 0)
+                        {
+                            direction = Vector2.zero;
+                            RangedAttack();
+                            rangedAttackTimer = rangedAttackInterval;
+
+                        }
+                        else
+                        {
+                            rangedAttackTimer -= Time.deltaTime;
+                        }
+                    }
                     break;
 
                 default:
@@ -89,8 +111,10 @@ public class RedGuard : Enemy
         //already have the logic to make the spear rotate to the player, so no need to copy it for aiming the projectile
         projectile.transform.rotation = spear.transform.rotation;
 
-        projectile.Direction = Vector3.Normalize(player.Position - position);
+        projectile.transform.position = transform.position;
 
+        projectile.Direction = Vector3.Normalize(player.Position - position);
+        projectile.Player = player;
 
 
 
@@ -103,7 +127,14 @@ public class RedGuard : Enemy
 
         if(health <= 3)
         {
-            currentState = State.defensive;
+            if(selector!= 0)
+            {
+                currentState = State.defensive;
+            }
+            else
+            {
+                currentState = State.fearful;
+            }
 
         }
         else if(health > 3 && health <= 5)
@@ -125,6 +156,13 @@ public class RedGuard : Enemy
             
         }
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, safeDistance);
+        Gizmos.DrawLine(player.Position, transform.position);
     }
 
     //unused currently
