@@ -125,7 +125,7 @@ public class RedGuard : Enemy
     {
         int selector = Random.Range(0, 3);
 
-        if(health <= 3)
+        if(Health <= 3)
         {
             if(selector!= 0)
             {
@@ -137,7 +137,7 @@ public class RedGuard : Enemy
             }
 
         }
-        else if(health > 3 && health <= 5)
+        else if(Health > 3 && Health <= 5)
         {
             //at half health or less enemies have a reduce chance to be agressive
             if(selector == 1)

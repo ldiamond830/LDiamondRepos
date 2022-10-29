@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    private EnemyManager currentRoom;
+
     //movement controls
     public InputAction playerControls;
     private Vector2 direction = Vector2.zero;
@@ -16,8 +19,7 @@ public class PlayerController : MonoBehaviour
     private Text healthText;
     //private Punch fist;
 
-    [SerializeField]
-    private EnemyManager enemyManager;
+    
 
     //stats
     [SerializeField]
@@ -43,7 +45,6 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 Position
     {
-        
         get { return position; }
     }
 
@@ -56,6 +57,12 @@ public class PlayerController : MonoBehaviour
     public Bounds PlayerBounds
     {
         get { return bounds; }
+    }
+
+    public EnemyManager Room
+    {
+        get { return currentRoom; }
+        set { currentRoom = value; }
     }
 
     // Start is called before the first frame update
@@ -80,6 +87,8 @@ public class PlayerController : MonoBehaviour
             immunityTimer -= Time.deltaTime;
         }
        
+        
+
         //busted
 
         //RotateHand();
@@ -93,6 +102,9 @@ public class PlayerController : MonoBehaviour
         //moves the player based on speed value, read in direction and scales by delta time
         velocity = new Vector3(direction.x * moveSpeed, direction.y * moveSpeed, 0);
         position += velocity * Time.deltaTime;
+
+        StayInBounds();
+
         transform.position = position;
         
     }
@@ -148,6 +160,29 @@ public class PlayerController : MonoBehaviour
     }
     */
 
+    private void StayInBounds()
+    {
+        //since the gates are always positioned on the right of the room
+        if (position.x + bounds.extents.x > Room.exit.GateBounds.min.x)
+        {
+            position.x = Room.exit.GateBounds.min.x - bounds.extents.x;
+        }
+        else if (position.x - bounds.extents.x < Room.RoomBounds.center.x - Room.RoomBounds.extents.x)
+        {
+          position.x = Room.RoomBounds.min.x + bounds.extents.x;
+
+        }
+
+        if (position.y + bounds.extents.y > Room.RoomBounds.max.y)
+        {
+            position.y = Room.RoomBounds.extents.y - bounds.extents.y;
+        }
+        else if (position.y - bounds.extents.y < Room.RoomBounds.min.y)
+        {
+            position.y = Room.RoomBounds.min.y + bounds.extents.y;
+        }
+    }
+
     private void OnProjectile(InputValue value)
     {
         if(fireTimer<= 0)
@@ -158,7 +193,7 @@ public class PlayerController : MonoBehaviour
 
             Spit SpitToInstantiate = Instantiate(spitBase);
             SpitToInstantiate.transform.position = transform.position;
-            SpitToInstantiate.enemyManager = enemyManager;
+            SpitToInstantiate.enemyManager = currentRoom;
 
             //gets mouse location
             Vector3 mousePos = Mouse.current.position.ReadValue();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum State
 {
@@ -19,11 +20,14 @@ public abstract class Enemy : MonoBehaviour
     public Camera cameraObject;
     */
 
+    public Slider healthBar;
+
     public GameObject room;
     private Bounds boundaries;
 
     //stats
-    public int health;
+    public float maxHealth;
+    private float health;
     public int speed;
     public PlayerController player;
     public float agroRange;
@@ -46,6 +50,8 @@ public abstract class Enemy : MonoBehaviour
     protected float poisonInterval;
     protected float poisonTimer;
 
+    protected bool damagable;
+
 
     public int PoisonCounter
     {
@@ -57,14 +63,18 @@ public abstract class Enemy : MonoBehaviour
     {
         get { return position; }
     }
-    public int Health
+    public float Health
     {
         set { health = value; }
+        get { return health; }
     }
 
     // Start is called before the first frame update
     protected void Start()
     {
+        position = transform.position;
+        health = maxHealth;
+        UpdatedHealthBar();
         poisonInterval = 1.0f;
         enemyBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
         boundaries = room.GetComponent<SpriteRenderer>().bounds;
@@ -72,6 +82,7 @@ public abstract class Enemy : MonoBehaviour
         cameraHeight = cameraObject.orthographicSize * 2f;
         cameraWidth = cameraHeight * cameraObject.aspect;
         */
+
     }
 
     // Update is called once per frame
@@ -111,9 +122,12 @@ public abstract class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+      
         health -= damage;
         //recalculates the state whenever the enemy takes damage
         SetState();
+
+        UpdatedHealthBar();
     }
 
     //move toward the player
@@ -154,6 +168,12 @@ public abstract class Enemy : MonoBehaviour
         {
             position.y = boundaries.min.y + enemyBounds.extents.y;
         }
+    }
+
+    private void UpdatedHealthBar()
+    {
+        //sets the health bar based on the percentage of maxHealth the enemy has remaining
+        healthBar.value = (health / maxHealth);
     }
     
 }

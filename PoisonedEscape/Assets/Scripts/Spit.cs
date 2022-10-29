@@ -61,12 +61,11 @@ public class Spit : MonoBehaviour
 
             if (hitTimer <= 0)
             {
-                hitTimer = hitInterval;
-                Enemy hitEnemy = CollisionCheck();
-                if (hitEnemy != null)
-                {
-                    hitEnemy.PoisonCounter++;
-                }
+               foreach(Enemy enemy in enemyManager.enemies)
+               {
+                    enemy.PoisonCounter++;
+                    hitTimer = hitInterval;
+               }
             }
             else
             {
@@ -95,14 +94,24 @@ public class Spit : MonoBehaviour
                 
             }
 
-            if (CollisionCheck() != null)
+            foreach(Enemy enemy in enemyManager.enemies)
             {
-               explosion();
-                hasLanded = true;
-                transform.localScale *= 3;
+                if (CollisionCheck(enemy.enemyBounds))
+                {
+                    //if the projectile hits an enemy in mid air it does damage to every enemy in a radius and lands
+                    explosion();
+                    hasLanded = true;
+                    transform.localScale *= 3;
+                }
             }
+            
 
             sumTime += Time.deltaTime * 2;
+
+            if(CollisionCheck(enemyManager.exit.GateBounds) && enemyManager.exit.Destructable)
+            {
+                enemyManager.exit.IsActive = false;
+            }
 
         }
     }
@@ -121,19 +130,12 @@ public class Spit : MonoBehaviour
 
 
     
-    private Enemy CollisionCheck()
+    private bool CollisionCheck(Bounds other)
     {
-        foreach (Enemy enemy in enemyManager.enemies)
-        {
-            if (spitBounds.Intersects(enemy.enemyBounds))
-            {
-                Debug.Log("hit");
-                
-                return enemy;
-            }
-        }
-        return null;
+        return spitBounds.Intersects(other);
     }
+
+    
 
    
     private void explosion()

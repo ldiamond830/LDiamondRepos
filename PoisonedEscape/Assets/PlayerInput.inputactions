@@ -31,15 +31,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "New action",
-                    "type": "Button",
-                    "id": "2ddd21c3-b72c-4979-b537-87c2ef4b3dc7",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -57,7 +48,7 @@
                 {
                     "name": "",
                     "id": "964137b7-9911-40b3-8d37-ed557b6bf519",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/semicolon",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -78,12 +69,12 @@
                 },
                 {
                     "name": "",
-                    "id": "1e57fb7c-9d09-4064-9537-55d96bd56511",
-                    "path": "",
+                    "id": "9701994d-e874-4f98-bd46-1fb9a4201c7b",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Projectile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
