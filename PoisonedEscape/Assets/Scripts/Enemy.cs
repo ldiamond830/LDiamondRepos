@@ -16,10 +16,13 @@ public abstract class Enemy : MonoBehaviour
     public int health;
     public int speed;
     public PlayerController player;
-
+    public float agroRange;
+    protected float distanceToPlayer;
     
 
-    protected BoxCollider2D collider;
+    protected int poisonCounter;
+
+    public Bounds enemyBounds;
 
 
     protected Vector2 direction = Vector2.zero;
@@ -30,36 +33,65 @@ public abstract class Enemy : MonoBehaviour
 
     protected float timeToStateChange;
     protected float stateTimer;
+    protected float poisonInterval;
+    protected float poisonTimer;
 
-    
-    public BoxCollider2D Collider
+
+    public int PoisonCounter
     {
-        get { return collider; }
+        get { return poisonCounter; }
+        set { poisonCounter = value; }
     }
+  
     public Vector3 Position
     {
         get { return position; }
     }
+    public int Health
+    {
+        set { health = value; }
+    }
+
     // Start is called before the first frame update
     protected void Start()
     {
-        collider = GetComponent<BoxCollider2D>();
+        poisonInterval = 1.0f;
+        enemyBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
     }
 
     // Update is called once per frame
     protected void Update()
     {
+        //update position and hitbox;
         velocity = direction * speed;
-        position += velocity;
+        position += velocity * Time.deltaTime;
         transform.position = position;
+        enemyBounds.center = position;
 
         if(stateTimer >= timeToStateChange)
         {
             SetState();
+            //SetBehavior();
+            stateTimer = 0;
         }
         else
         {
             stateTimer += Time.deltaTime;
+        }
+
+        
+
+        if (poisonCounter > 0)
+        {
+            if(poisonTimer <= 0)
+            {
+                health -= poisonCounter;
+                poisonTimer = poisonInterval;
+            }
+            else
+            {
+                poisonTimer -= Time.deltaTime;
+            }
         }
     }
 
@@ -85,6 +117,6 @@ public abstract class Enemy : MonoBehaviour
 
     protected void RangedAttack()
     {
-
+        Debug.Log("ranged attack");
     }
 }

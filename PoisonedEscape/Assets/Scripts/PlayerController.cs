@@ -20,28 +20,61 @@ public class PlayerController : MonoBehaviour
     //stats
     [SerializeField]
     private float moveSpeed;
+    [SerializeField]
+    private float fireRate;
+    private float fireTimer;
+    [SerializeField]
+    private int health;
+
 
     public Spit spitBase;
 
-    //private Vector3 prevMousePos;
+    private float immunityTimer;
+
+    private Bounds bounds;
+
+    public float ImmunityTimer
+    {
+        set { immunityTimer = value; }
+        get { return immunityTimer; }
+    }
 
     public Vector3 Position
     {
+        
         get { return position; }
     }
 
+    public int Health
+    {
+        get { return health; }
+        set { health = value; }
+    }
+
+    public Bounds PlayerBounds
+    {
+        get { return bounds; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         position = transform.position;
+        bounds = gameObject.GetComponent<SpriteRenderer>().bounds;
+
     }
 
     // Update is called once per frame
     void Update()
     {
         Movement();
+        bounds.center = position;
+        fireTimer -= Time.deltaTime;
 
+        if(immunityTimer >= 0)
+        {
+            immunityTimer -= Time.deltaTime;
+        }
        
         //busted
 
@@ -58,12 +91,6 @@ public class PlayerController : MonoBehaviour
         position += velocity * Time.deltaTime;
         transform.position = position;
         
-    }
-
-
-    private void OnProjectile(InputAction Action)
-    {
-       
     }
    
     
@@ -119,22 +146,30 @@ public class PlayerController : MonoBehaviour
 
     private void OnProjectile(InputValue value)
     {
-        //gets mouse location
-        Vector3 mousePos = Mouse.current.position.ReadValue();
-        mousePos.z = Camera.main.transform.position.y - 0.5f;
-        Vector3 clickPos = Camera.main.ScreenToWorldPoint(mousePos);
-        //sets mouse.z to 0 to avoid shuriken going behind the camera
-        clickPos.z = 0;
-
-
-        Spit SpitToInstantiate = Instantiate(spitBase);
-        SpitToInstantiate.transform.position = transform.position;
-        SpitToInstantiate.enemyManager = enemyManager;
-
-        foreach(Enemy enemy in enemyManager.enemies)
+        if(fireTimer<= 0)
         {
-            SpitToInstantiate.enemyBounds.Add(enemy.gameObject.GetComponent<SpriteRenderer>().bounds);
+            fireTimer = fireRate;
+
+            
+
+            Spit SpitToInstantiate = Instantiate(spitBase);
+            SpitToInstantiate.transform.position = transform.position;
+            SpitToInstantiate.enemyManager = enemyManager;
+
+            //gets mouse location
+            Vector3 mousePos = Mouse.current.position.ReadValue();
+            mousePos.z = Camera.main.transform.position.y - 0.5f;
+            Vector3 clickPos = Camera.main.ScreenToWorldPoint(mousePos);
+            if (clickPos.x < position.x)
+            {
+                SpitToInstantiate.Direction = new Vector3(1.0f, 0.0f, 0.0f);
+            }
+            else
+            {
+                SpitToInstantiate.Direction = new Vector3(-1.0f, 0.0f, 0.0f);
+            }
         }
+      
 
     }
 

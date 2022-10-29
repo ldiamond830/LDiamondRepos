@@ -5,26 +5,75 @@ using UnityEngine;
 public class RedGuard : Enemy
 {
     [SerializeField]
+    private SpearController spear;
+    [SerializeField]
     private float meleeRange;
 
-    
+    private float rangedAttackInterval;
+    private float rangedAttackTimer;
+    private bool isMeleeing;
     // Start is called before the first frame update
     void Start()
     {
+        
         base.Start();
+        timeToStateChange = 2;
         currentState = State.aggressive;
+        speed = 1;
+        spear.Player = player;
+        spear.PlayerBounds = player.gameObject.GetComponent<SpriteRenderer>().bounds;
+        distanceToPlayer = Vector3.Magnitude(player.Position - transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        base.Update();
+        
+        if(distanceToPlayer <= agroRange)
+        {
+            base.Update();
+
+            switch (currentState)
+            {
+                case State.aggressive:
+                    Approach();
+
+
+                    break;
+
+
+                case State.defensive:
+                   
+                        if (rangedAttackTimer <= 0)
+                        {
+                            RangedAttack();
+                            rangedAttackTimer = rangedAttackInterval;
+
+                        }
+                        else
+                        {
+                            Retreat();
+                        }
+                    
+
+                    break;
+
+                default:
+                    Debug.Log("error in enemy state setting");
+                    break;
+
+            }
+
+        }
 
 
     }
 
+
     private void MeleeAttack()
     {
+        isMeleeing = true;
+        spear.Position = transform.position;
 
     }
 
@@ -55,10 +104,9 @@ public class RedGuard : Enemy
         }
         else
         {
-            if(selector <= 1)
-            {
+            
                 currentState = State.aggressive;
-            }
+            
         }
 
     }
@@ -75,14 +123,7 @@ public class RedGuard : Enemy
                 //if the enemy is within melee range has a chance to do a melee attack
                 if(distanceToPlayer < meleeRange)
                 {
-                    if (selector == 0)
-                    {
-                        MeleeAttack();
-                    }
-                    else
-                    {
-                        Approach();
-                    }
+                    MeleeAttack();
                 }
                 else
                 {

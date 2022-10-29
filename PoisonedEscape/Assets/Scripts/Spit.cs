@@ -10,7 +10,7 @@ public class Spit : MonoBehaviour
     public float moveSpeed;
 
     public EnemyManager enemyManager;
-    public List<Bounds> enemyBounds;
+    
     private Bounds spitBounds;
     //broken
     //private CircleCollider2D collider;
@@ -27,18 +27,24 @@ public class Spit : MonoBehaviour
     private float totalGroundTime;
     private float currentGroundTime;
 
+    private float hitTimer;
+    private float hitInterval;
+
+    public Vector3 Direction
+    {
+        set { direction = value; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        direction = new Vector3(1.0f, 0.0f, 0.0f);
+        hitInterval = 0.5f;
+        
         hasLanded = false;
         position = transform.position;
         startingY = position.y;
         
-        foreach(Enemy enemy in enemyManager.enemies)
-        {
-            enemyBounds.Add(enemy.gameObject.GetComponent<SpriteRenderer>().bounds);
-        }
+        
         spitBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
     }
 
@@ -53,10 +59,15 @@ public class Spit : MonoBehaviour
                 this.enabled = false;
             }
 
-            if (CollisionCheck())
+            if (hitTimer <= 0)
             {
-
+                Enemy hitEnemy = CollisionCheck();
+                if (hitEnemy != null)
+                {
+                    hitEnemy.PoisonCounter++;
+                }
             }
+            
 
             currentGroundTime += Time.deltaTime;
         }
@@ -72,9 +83,15 @@ public class Spit : MonoBehaviour
             spitBounds.center = position;
 
             //stops moving when it reaches the same height as it started at in the arc or hits an enemy
-            if(position.y <= startingY - 0.1 || CollisionCheck())
+            if(position.y <= startingY - 0.1 )
             {
                 hasLanded = true;
+                transform.localScale *= 3;
+                
+            }
+
+            if (CollisionCheck() != null)
+            {
                 explosion();
             }
 
@@ -97,17 +114,18 @@ public class Spit : MonoBehaviour
 
 
     
-    private bool CollisionCheck()
+    private Enemy CollisionCheck()
     {
-        foreach (Bounds hitbox in enemyBounds)
+        foreach (Enemy enemy in enemyManager.enemies)
         {
-            if (spitBounds.Intersects(hitbox))
+            if (spitBounds.Intersects(enemy.enemyBounds))
             {
                 Debug.Log("hit");
-                return true;
+                
+                return enemy;
             }
         }
-        return false;
+        return null;
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -122,7 +140,7 @@ public class Spit : MonoBehaviour
             float distance = Vector3.Magnitude(enemy.Position - position);
             if(distance < explosionRadius)
             {
-                Debug.Log("explosion hit");
+                enemy.health -= 1;
             }
         }
     }
@@ -131,7 +149,7 @@ public class Spit : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(position, spitBounds.size);
-        Gizmos.DrawWireCube(enemyManager.enemies[0].transform.position, enemyBounds[0].size);
+        
     }
 }
 
