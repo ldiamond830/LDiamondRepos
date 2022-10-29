@@ -6,6 +6,7 @@ public class EnemyManager : MonoBehaviour
 {
 
     public List<Enemy> enemies = new List<Enemy>();
+    public PlayerController player;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +20,8 @@ public class EnemyManager : MonoBehaviour
         {
             if(enemy.health<= 0)
             {
-                Debug.Log("enemy dead");
+                enemies.Remove(enemy);
+                enemy.gameObject.SetActive(false);
             }
         }
     }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity = Vector2.zero;
     private Vector3 position;
 
-
+    [SerializeField]
+    private Text healthText;
     //private Punch fist;
 
     [SerializeField]
@@ -67,6 +69,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        healthText.text = "Health: " + health;
+
         Movement();
         bounds.center = position;
         fireTimer -= Time.deltaTime;
@@ -160,13 +164,14 @@ public class PlayerController : MonoBehaviour
             Vector3 mousePos = Mouse.current.position.ReadValue();
             mousePos.z = Camera.main.transform.position.y - 0.5f;
             Vector3 clickPos = Camera.main.ScreenToWorldPoint(mousePos);
+
             if (clickPos.x < position.x)
             {
-                SpitToInstantiate.Direction = new Vector3(1.0f, 0.0f, 0.0f);
+                SpitToInstantiate.Direction = new Vector3(-1.0f, 0.0f, 0.0f);
             }
             else
             {
-                SpitToInstantiate.Direction = new Vector3(-1.0f, 0.0f, 0.0f);
+                SpitToInstantiate.Direction = new Vector3(1.0f, 0.0f, 0.0f);
             }
         }
       

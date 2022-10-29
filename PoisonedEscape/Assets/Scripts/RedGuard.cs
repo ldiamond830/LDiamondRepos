@@ -12,6 +12,9 @@ public class RedGuard : Enemy
     private float rangedAttackInterval;
     private float rangedAttackTimer;
     private bool isMeleeing;
+
+    public EnemyProjectile projectileTemplate;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class RedGuard : Enemy
         spear.Player = player;
         spear.PlayerBounds = player.gameObject.GetComponent<SpriteRenderer>().bounds;
         distanceToPlayer = Vector3.Magnitude(player.Position - transform.position);
+        rangedAttackInterval = 1.0f;
     }
 
     // Update is called once per frame
@@ -53,6 +57,7 @@ public class RedGuard : Enemy
                         else
                         {
                             Retreat();
+                            rangedAttackTimer -= Time.deltaTime;
                         }
                     
 
@@ -78,7 +83,18 @@ public class RedGuard : Enemy
     }
 
    
+    protected override void RangedAttack()
+    {
+        EnemyProjectile projectile = Instantiate(projectileTemplate);
+        //already have the logic to make the spear rotate to the player, so no need to copy it for aiming the projectile
+        projectile.transform.rotation = spear.transform.rotation;
 
+        projectile.Direction = Vector3.Normalize(player.Position - position);
+
+
+
+
+    }
 
 
     protected override void SetState()
@@ -99,7 +115,7 @@ public class RedGuard : Enemy
             }
             else
             {
-                currentState = State.aggressive;
+                currentState = State.defensive;
             }
         }
         else
@@ -111,7 +127,7 @@ public class RedGuard : Enemy
 
     }
 
-
+    //unused currently
     protected override void SetBehavior()
     {
         int selector = Random.Range(0, 2);

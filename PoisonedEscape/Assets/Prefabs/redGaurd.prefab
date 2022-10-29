@@ -102,12 +102,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   speed: 7
-  player: {fileID: 0}
+  player: {fileID: 3973140185928831321, guid: b328a1b10a121d842a277afbdadef65a, type: 3}
+  agroRange: 20
   enemyBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   spear: {fileID: 3861428954470972915}
   meleeRange: 2
+  projectileTemplate: {fileID: 2542671642360744792, guid: b0349d74af5a1fc4da037c0d1d3324cf, type: 3}
 --- !u!61 &7628853954688338937
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -39,7 +39,7 @@ public class Spit : MonoBehaviour
     void Start()
     {
         hitInterval = 0.5f;
-        
+        hitTimer = hitInterval;
         hasLanded = false;
         position = transform.position;
         startingY = position.y;
@@ -61,11 +61,16 @@ public class Spit : MonoBehaviour
 
             if (hitTimer <= 0)
             {
+                hitTimer = hitInterval;
                 Enemy hitEnemy = CollisionCheck();
                 if (hitEnemy != null)
                 {
                     hitEnemy.PoisonCounter++;
                 }
+            }
+            else
+            {
+                hitTimer -= Time.deltaTime;
             }
             
 
@@ -92,7 +97,9 @@ public class Spit : MonoBehaviour
 
             if (CollisionCheck() != null)
             {
-                explosion();
+               explosion();
+                hasLanded = true;
+                transform.localScale *= 3;
             }
 
             sumTime += Time.deltaTime * 2;
@@ -128,11 +135,7 @@ public class Spit : MonoBehaviour
         return null;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        Debug.Log("hit");
-    }
-
+   
     private void explosion()
     {
         foreach(Enemy enemy in enemyManager.enemies)

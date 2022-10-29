@@ -72,7 +72,7 @@ public abstract class Enemy : MonoBehaviour
         {
             SetState();
             //SetBehavior();
-            stateTimer = 0;
+           stateTimer = 0;
         }
         else
         {
@@ -115,8 +115,6 @@ public abstract class Enemy : MonoBehaviour
         direction = direction.normalized * -1;
     }
 
-    protected void RangedAttack()
-    {
-        Debug.Log("ranged attack");
-    }
+    protected abstract void RangedAttack();
+    
 }
