@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7063769494784374171}
   - component: {fileID: 2599729098385233880}
   - component: {fileID: 1387392796842876347}
+  - component: {fileID: 4005808276335883709}
   m_Layer: 0
   m_Name: Spit
   m_TagString: Untagged
@@ -114,5 +115,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e60264709ea064e951bdab49c46b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
+  moveSpeed: 4
   enemyManager: {fileID: 0}
+  totalGroundTime: 2
+--- !u!50 &4005808276335883709
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423653423667063790}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

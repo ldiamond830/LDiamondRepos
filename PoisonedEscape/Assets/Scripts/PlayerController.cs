@@ -11,10 +11,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity = Vector2.zero;
     private Vector3 position;
 
-    [SerializeField]
-    private Punch fist;
 
-    
+    //private Punch fist;
+
+    [SerializeField]
+    private EnemyManager enemyManager;
 
     //stats
     [SerializeField]
@@ -50,7 +51,7 @@ public class PlayerController : MonoBehaviour
         velocity = new Vector3(direction.x * moveSpeed, direction.y * moveSpeed, 0);
         position += velocity * Time.deltaTime;
         transform.position = position;
-        fist.PlayerPos = position;
+        
     }
 
 
@@ -80,7 +81,7 @@ public class PlayerController : MonoBehaviour
             
             //adjusts the angle of the hand
 
-            fist.transform.RotateAround(this.transform.position, Vector3.forward, angleToRotate);
+            // fist.transform.RotateAround(this.transform.position, Vector3.forward, angleToRotate);
                 //uaternion.Euler(0, 0, angleToRotate);
         }
 
@@ -99,7 +100,7 @@ public class PlayerController : MonoBehaviour
         fist.transform.RotateAround(this.transform.position, Vector3.forward, lookRotation.eulerAngles)
         */
     }
-
+    /*
     private void OnPunch(InputValue value)
     {
         if(fist.CurrentState != State.isReturning)
@@ -112,11 +113,13 @@ public class PlayerController : MonoBehaviour
         }
        
     }
+    */
 
     private void OnProjectile(InputValue value)
     {
         Spit SpitToInstantiate = Instantiate(spitBase);
         SpitToInstantiate.transform.position = transform.position;
+        SpitToInstantiate.enemyManager = enemyManager;
 
 
     }

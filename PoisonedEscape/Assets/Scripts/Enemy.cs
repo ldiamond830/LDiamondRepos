@@ -13,11 +13,19 @@ public abstract class Enemy : MonoBehaviour
 
     private BoxCollider2D collider;
 
+
+    private Vector2 direction = Vector2.zero;
+    private Vector3 velocity = Vector2.zero;
+    private Vector3 position;
+
     public BoxCollider2D Collider
     {
         get { return collider; }
     }
-
+    public Vector3 Position
+    {
+        get { return position; }
+    }
     // Start is called before the first frame update
     protected void Start()
     {
@@ -27,6 +35,7 @@ public abstract class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
+    
 }
