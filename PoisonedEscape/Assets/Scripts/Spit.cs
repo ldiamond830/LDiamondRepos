@@ -39,7 +39,7 @@ public class Spit : MonoBehaviour
     void Start()
     {
         hitInterval = 0.5f;
-        hitTimer = hitInterval;
+        hitTimer = 0.0f;
         hasLanded = false;
         position = transform.position;
         startingY = position.y;
@@ -61,11 +61,20 @@ public class Spit : MonoBehaviour
 
             if (hitTimer <= 0)
             {
-               foreach(Enemy enemy in enemyManager.enemies)
-               {
-                    enemy.PoisonCounter++;
-                    hitTimer = hitInterval;
-               }
+                if(enemyManager.enemies.Count > 0)
+                {
+                    foreach (Enemy enemy in enemyManager.enemies)
+                    {
+                        if (CollisionCheck(enemy.enemyBounds))
+                        {
+                            enemy.PoisonCounter++;
+                            //Debug.Log("hit");
+                            hitTimer = hitInterval;
+                        }
+
+                    }
+                }
+               
             }
             else
             {
@@ -111,6 +120,8 @@ public class Spit : MonoBehaviour
             if(CollisionCheck(enemyManager.exit.GateBounds) && enemyManager.exit.Destructable)
             {
                 enemyManager.exit.IsActive = false;
+                gameObject.SetActive(false);
+                this.enabled = false;
             }
 
         }
@@ -146,6 +157,7 @@ public class Spit : MonoBehaviour
             if(distance < explosionRadius)
             {
                 enemy.TakeDamage(1);
+                enemy.PoisonCounter++;
             }
         }
     }

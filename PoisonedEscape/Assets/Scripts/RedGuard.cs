@@ -27,15 +27,22 @@ public class RedGuard : Enemy
         speed = 1;
         spear.Player = player;
         spear.PlayerBounds = player.gameObject.GetComponent<SpriteRenderer>().bounds;
-        distanceToPlayer = Vector3.Magnitude(player.Position - transform.position);
+        distanceToPlayer = Vector3.Magnitude(transform.position - player.Position);
         rangedAttackInterval = 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        distanceToPlayer = Vector3.Magnitude(player.Position - transform.position);
-        if (distanceToPlayer <= agroRange)
+
+
+        distanceToPlayer = Vector3.Magnitude(transform.position - player.Position);
+        if(distanceToPlayer <= agroRange)
+        {
+            isAgro = true;
+        }
+
+        if (isAgro)
         {
             base.Update();
 
@@ -161,8 +168,10 @@ public class RedGuard : Enemy
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, safeDistance);
-        Gizmos.DrawLine(player.Position, transform.position);
+        Gizmos.DrawWireSphere(transform.position, distanceToPlayer);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, agroRange);
+
     }
 
     //unused currently

@@ -13,6 +13,9 @@ public enum State
 //holds behaviors and data needed by all enemies
 public abstract class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    private SpriteRenderer poisonIndicator;
+
     /* currently unused
     //camera bounds
     private float cameraHeight;
@@ -31,8 +34,10 @@ public abstract class Enemy : MonoBehaviour
     public int speed;
     public PlayerController player;
     public float agroRange;
+
     protected float distanceToPlayer;
-    
+
+    protected bool isAgro;
 
     protected int poisonCounter;
 
@@ -82,7 +87,7 @@ public abstract class Enemy : MonoBehaviour
         cameraHeight = cameraObject.orthographicSize * 2f;
         cameraWidth = cameraHeight * cameraObject.aspect;
         */
-
+        isAgro = false;
     }
 
     // Update is called once per frame
@@ -100,10 +105,16 @@ public abstract class Enemy : MonoBehaviour
 
         if (poisonCounter > 0)
         {
+            if (!poisonIndicator.enabled)
+            {
+                poisonIndicator.enabled = true;
+            }
+
             if(poisonTimer <= 0)
             {
                 TakeDamage(poisonCounter);
                 SetState();
+                UpdatedHealthBar();
                 poisonTimer = poisonInterval;
             }
             else

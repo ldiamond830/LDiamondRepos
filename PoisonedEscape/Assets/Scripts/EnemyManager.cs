@@ -40,6 +40,7 @@ public class EnemyManager : MonoBehaviour
     {
         if(player.Room != this)
         {
+            
             if (roomBounds.Contains(player.Position))
             {
                player.Room = this;
@@ -64,6 +65,6 @@ public class EnemyManager : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(transform.position, roomBounds.size);
-        Gizmos.DrawWireCube(exit.transform.position, exit.GateBounds.size);
+        //Gizmos.DrawWireCube(exit.transform.position, exit.GateBounds.size);
     }
 }

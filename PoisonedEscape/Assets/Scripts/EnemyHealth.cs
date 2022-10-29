@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
 public class EnemyHealth : MonoBehaviour
 {
     public GameObject backBar;
@@ -29,3 +29,4 @@ public class EnemyHealth : MonoBehaviour
         healthBar.transform.localScale = temp;
     }
 }
+*/

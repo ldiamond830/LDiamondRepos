@@ -118,7 +118,7 @@ MonoBehaviour:
   moveSpeed: 4
   enemyManager: {fileID: 0}
   explosionRadius: 1
-  totalGroundTime: 2
+  totalGroundTime: 3
 --- !u!50 &4005808276335883709
 Rigidbody2D:
   serializedVersion: 4

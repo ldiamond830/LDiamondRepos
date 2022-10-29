@@ -8,6 +8,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private EnemyManager currentRoom;
+    [SerializeField]
+    private EnemyManager startRoom;
+
 
     //movement controls
     public InputAction playerControls;
@@ -162,12 +165,13 @@ public class PlayerController : MonoBehaviour
 
     private void StayInBounds()
     {
-        //since the gates are always positioned on the right of the room
-        if (position.x + bounds.extents.x > Room.exit.GateBounds.min.x)
+        //since the gates are always positioned on the right of the room they function as the border while active
+        if (position.x + bounds.extents.x > Room.exit.GateBounds.min.x && Room.exit.IsActive)
         {
             position.x = Room.exit.GateBounds.min.x - bounds.extents.x;
         }
-        else if (position.x - bounds.extents.x < Room.RoomBounds.center.x - Room.RoomBounds.extents.x)
+        //player can backtract as far as the starter room
+        else if (position.x - bounds.extents.x < startRoom.RoomBounds.center.x - startRoom.RoomBounds.extents.x)
         {
           position.x = Room.RoomBounds.min.x + bounds.extents.x;
 
