@@ -11,6 +11,7 @@ public class Spit : MonoBehaviour
 
     public EnemyManager enemyManager;
     private List<Bounds> enemyBounds;
+    private Bounds spitBounds;
     //broken
     //private CircleCollider2D collider;
 
@@ -38,6 +39,7 @@ public class Spit : MonoBehaviour
         {
             enemyBounds.Add(enemy.gameObject.GetComponent<SpriteRenderer>().bounds);
         }
+        spitBounds = gameObject.AddComponent<SpriteRenderer>().bounds;
     }
 
     // Update is called once per frame
@@ -90,7 +92,15 @@ public class Spit : MonoBehaviour
     
     private bool CollisionCheck()
     {
-        
+        foreach (Bounds hitbox in enemyBounds)
+        {
+            if (spitBounds.Intersects(hitbox))
+            {
+                Debug.Log("hit");
+                return true;
+            }
+        }
+        return false;
     }
 
     void OnTriggerEnter2D(Collider2D col)

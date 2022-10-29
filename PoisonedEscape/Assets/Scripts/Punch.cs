@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/* current cut content
 public enum State
 {
     isPunching,
@@ -135,3 +135,4 @@ public class Punch : MonoBehaviour
         return false;
     }
 }
+*/
