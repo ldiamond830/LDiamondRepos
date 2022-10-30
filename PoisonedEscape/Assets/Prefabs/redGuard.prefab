@@ -396,7 +396,7 @@ MonoBehaviour:
   healthBar: {fileID: 1690588316697406175}
   room: {fileID: 0}
   maxHealth: 10
-  speed: 10
+  speed: 12
   player: {fileID: 3973140185928831321, guid: b328a1b10a121d842a277afbdadef65a, type: 3}
   agroRange: 8
   enemyBounds:

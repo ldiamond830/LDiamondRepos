@@ -12,6 +12,9 @@ public class BlueGuard : Enemy
     private float waitTime;
     private float waitTimer;
 
+    private float agressiveTime;
+    private float agressiveTimer;
+
     [SerializeField]
     private SpearController spear2;
 
@@ -29,12 +32,14 @@ public class BlueGuard : Enemy
         spear2.PlayerBounds = player.gameObject.GetComponent<SpriteRenderer>().bounds;
 
         rangedAttackInterval = 0.75f;
-        currentState = State.enraged;
+        currentState = State.aggressive;
 
         chargeTime = 1.5f;
         waitTime = 0.75f;
         chargeTimer = chargeTime;
         waitTimer = waitTime;
+
+        agressiveTime = 1.0f;
 
         
     }
@@ -48,16 +53,72 @@ public class BlueGuard : Enemy
             isAgro = true;
         }
 
+       
+
         if (isAgro)
         {
+            Debug.Log(currentState);
+            if (isCharging)
+            {
+                speed = 10;
+                
+                    velocity = new Vector3(direction.x * speed * 3, direction.y * speed * 3, 0.0f);
+
+                    if (chargeTimer <= 0)
+                    {
+                        //speed -= 3;
+                        chargeTimer = chargeTime;
+                        //currentState = State.waiting;
+                        isCharging = false;
+                    }
+                    else
+                    {
+                        chargeTimer -= Time.deltaTime;
+                    }
+
+                    if(currentState == State.aggressive)
+                    {
+                        
+                    }
+                
+            }
+            else
+            {
+                speed = 8;
+            }
             base.Update();
             spear.AdjustRotation();
             spear2.AdjustRotation();
 
             switch (currentState)
             {
-                case State.aggressive:
-                    Approach();
+                case State.enraged:
+                    if(agressiveTimer <= 0)
+                    {
+                        if (!isCharging)
+                        {
+                            StartCharge();
+                            agressiveTimer = agressiveTime;
+                        }
+
+                        if (rangedAttackTimer <= 0)
+                        {
+                            //direction = Vector2.zero;
+                            RangedAttack();
+                            rangedAttackTimer = rangedAttackInterval;
+
+                        }
+                        else
+                        {
+                            rangedAttackTimer -= Time.deltaTime;
+                        }
+
+                    }
+                    else
+                    {
+                        agressiveTimer -= Time.deltaTime;
+                    }
+                    //Debug.Log(velocity);
                     break;
                 case State.defensive:
                     if (distanceToPlayer < safeDistance)
@@ -79,27 +140,15 @@ public class BlueGuard : Enemy
                         }
                     }
                     break;
-                case State.enraged:
+                case State.aggressive:
+
                     if (!isCharging)
                     {
                         StartCharge();
+                        
 
                     }
-                    else
-                    {
-                        velocity = new Vector3(direction.x * speed * 3, direction.y * speed * 3, 0.0f);
-
-                        if(chargeTimer <= 0)
-                        {
-                            chargeTimer = chargeTime;
-                            currentState = State.waiting;
-                            isCharging = false;
-                        }
-                        else
-                        {
-                            chargeTimer -= Time.deltaTime;
-                        }
-                    }
+                    
                     break;
                 case State.waiting:
                     direction = Vector3.zero;
@@ -141,9 +190,9 @@ public class BlueGuard : Enemy
     private void StartCharge()
     {
         isCharging = true;
-        direction = player.Position - position;
+        direction = player.Position - transform.position;
         direction.Normalize();
-
+        //speed += 3;
 
     }
 
@@ -170,6 +219,27 @@ public class BlueGuard : Enemy
                 currentState = State.defensive;
             }
         }
+        else
+        {
+            selector = Random.Range(0,1);
+            if(selector == 0)
+            {
+                currentState = State.aggressive;
+            }
+            else
+            {
+                currentState = State.aggressive;
+            }
+
+            
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(Position, agroRange);
+        Gizmos.DrawWireSphere(Position, safeDistance);
     }
 
     protected override void SetBehavior()

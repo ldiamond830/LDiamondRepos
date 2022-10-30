@@ -102,7 +102,7 @@ public abstract class Enemy : MonoBehaviour
         position = transform.position;
         health = maxHealth;
         UpdatedHealthBar();
-        poisonInterval = 1.0f;
+        poisonInterval = 2.5f;
         enemyBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
         boundaries = room.GetComponent<SpriteRenderer>().bounds;
         /*

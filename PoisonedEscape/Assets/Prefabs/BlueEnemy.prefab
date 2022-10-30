@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 353af21147c4ff547a7406badd192393, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  safeDistance: 1
+  safeDistance: 5
   projectileTemplate: {fileID: 2542671642360744792, guid: b0349d74af5a1fc4da037c0d1d3324cf, type: 3}
   spear: {fileID: 530549047660455672}
   poisonIndicator: {fileID: 6499014448421442579}
@@ -397,7 +397,7 @@ MonoBehaviour:
   maxHealth: 30
   speed: 8
   player: {fileID: 0}
-  agroRange: 20
+  agroRange: 8.8
   enemyBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}

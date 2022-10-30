@@ -82,7 +82,7 @@ public class SpearController : MonoBehaviour
         //angleToRotate *= -1;
         transform.rotation = Quaternion.Euler(0, 0, angleToRotate);
 
-        Debug.Log("Angle: " + angleToRotate);
+        //Debug.Log("Angle: " + angleToRotate);
 
         Vector4 temp = Quaternion.Euler(0, 0, angleToRotate) * new Vector4(forward.x, forward.y, forward.z, 0.0f);
         forward = temp.normalized;

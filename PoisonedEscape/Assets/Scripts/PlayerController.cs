@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 position;
 
     [SerializeField]
-    private Text healthText;
+    private Slider healthSlider;
     //private Punch fist;
 
     
@@ -32,7 +32,8 @@ public class PlayerController : MonoBehaviour
     private float fireRate;
     private float fireTimer;
     [SerializeField]
-    private int health;
+    private float health;
+    private float maxHealth;
 
 
     //sounds
@@ -62,7 +63,7 @@ public class PlayerController : MonoBehaviour
         get { return position; }
     }
 
-    public int Health
+    public float Health
     {
         get { return health; }
         set { health = value; }
@@ -82,11 +83,12 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxHealth = health;
         position = transform.position;
         currentRoom = startRoom;
         bounds = gameObject.GetComponent<SpriteRenderer>().bounds;
 
-        healthText.text = "Health: " + health;
+        //healthSlider.text = "Health: " + health;
     }
 
     // Update is called once per frame
@@ -255,7 +257,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        healthText.text = "Health: " + health;
+        healthSlider.value = health/maxHealth;
 
         if (!hitSound.isPlaying)
         {
