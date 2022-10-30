@@ -7,8 +7,10 @@ using UnityEngine;
 /// </summary>
 public class EnemyManager : MonoBehaviour
 {
-    
-    public Camera cameraObject;
+
+    public AudioSource enemyHit;
+
+    //public Camera cameraObject;
     public GateController exit;
     private Bounds roomBounds;
 
@@ -33,6 +35,10 @@ public class EnemyManager : MonoBehaviour
         roomBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
         roomBounds.center = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0.0f);
         
+        foreach(Enemy enemy in enemies)
+        {
+            enemy.HitSound = enemyHit;
+        }
     }
 
     // Update is called once per frame

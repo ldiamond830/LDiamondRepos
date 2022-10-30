@@ -71,7 +71,7 @@ public class SpearController : MonoBehaviour
         {
             if(player.ImmunityTimer <= 0)
             {
-                player.Health--;
+                player.TakeDamage(damage);
                 player.ImmunityTimer = 0.5f;
             }
             

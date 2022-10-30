@@ -37,6 +37,11 @@ public class PlayerController : MonoBehaviour
     //sounds
     [SerializeField]
     private AudioSource acidHiss;
+    [SerializeField]
+    private AudioSource attackSound;
+    [SerializeField]
+    private AudioSource hitSound;
+
 
 
     public Spit spitBase;
@@ -80,12 +85,13 @@ public class PlayerController : MonoBehaviour
         currentRoom = startRoom;
         bounds = gameObject.GetComponent<SpriteRenderer>().bounds;
 
+        healthText.text = "Health: " + health;
     }
 
     // Update is called once per frame
     void Update()
     {
-        healthText.text = "Health: " + health;
+       
 
         Movement();
         bounds.center = position;
@@ -183,7 +189,7 @@ public class PlayerController : MonoBehaviour
         {
             if (position.x + bounds.extents.x > Room.RoomBounds.max.x)
             {
-                position.x = Room.RoomBounds.min.x - bounds.extents.x;
+                position.x = Room.RoomBounds.max.x - bounds.extents.x;
             }
         }
         //player can backtract as far as the starter room
@@ -209,7 +215,10 @@ public class PlayerController : MonoBehaviour
         {
             fireTimer = fireRate;
 
-            
+            if (!attackSound.isPlaying)
+            {
+                attackSound.Play();
+            }
 
             Spit SpitToInstantiate = Instantiate(spitBase);
             SpitToInstantiate.transform.position = transform.position;
@@ -233,6 +242,17 @@ public class PlayerController : MonoBehaviour
         }
       
 
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        healthText.text = "Health: " + health;
+
+        if (!hitSound.isPlaying)
+        {
+            hitSound.Play();
+        }
     }
 
     //needed to for controls to work 

@@ -7,7 +7,7 @@ public enum State
 {
     aggressive,
     defensive,
-   fearful,
+    fearful,
 }
 
 //holds behaviors and data needed by all enemies
@@ -15,6 +15,9 @@ public abstract class Enemy : MonoBehaviour
 {
     [SerializeField]
     private SpriteRenderer poisonIndicator;
+
+    
+    private AudioSource hitSound;
 
     /* currently unused
     //camera bounds
@@ -57,6 +60,11 @@ public abstract class Enemy : MonoBehaviour
 
     protected bool damagable;
 
+    //properties
+    public AudioSource HitSound
+    {
+        set { hitSound = value; }
+    }
 
     public int PoisonCounter
     {
@@ -137,6 +145,11 @@ public abstract class Enemy : MonoBehaviour
         health -= damage;
         //recalculates the state whenever the enemy takes damage
         SetState();
+
+        if (!hitSound.isPlaying)
+        {
+            hitSound.Play();
+        }
 
         UpdatedHealthBar();
     }

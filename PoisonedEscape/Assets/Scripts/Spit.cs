@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Spit : MonoBehaviour
 {
+    [SerializeField]
+    private Sprite groundSprite;
+    private SpriteRenderer spriteRenderer;
+
     private Vector3 direction;
     private Vector3 velocity;
     private Vector3 position;
@@ -47,10 +51,10 @@ public class Spit : MonoBehaviour
         position = transform.position;
         startingY = position.y;
 
-        //audioSource = gameObject.GetComponent<AudioSource>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         
 
-        spitBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
+        spitBounds = spriteRenderer.bounds;
     }
 
     // Update is called once per frame
@@ -104,9 +108,8 @@ public class Spit : MonoBehaviour
             //stops moving when it reaches the same height as it started at in the arc or hits an enemy
             if(position.y <= startingY - 0.1 )
             {
-                hasLanded = true;
-                transform.localScale *= 3;
-                
+                Land();
+
             }
             //enemy collision check
             foreach(Enemy enemy in currentRoom.enemies)
@@ -115,8 +118,8 @@ public class Spit : MonoBehaviour
                 {
                     //if the projectile hits an enemy in mid air it does damage to every enemy in a radius and lands
                     explosion();
-                    hasLanded = true;
-                    transform.localScale *= 3;
+                    Land();
+                    
                 }
             }
             
@@ -151,7 +154,11 @@ public class Spit : MonoBehaviour
         return x;
     }
 
-
+    private void Land()
+    {
+        hasLanded = true;
+        spriteRenderer.sprite = groundSprite;
+    }
 
     
     private bool CollisionCheck(Bounds other)
@@ -183,7 +190,7 @@ public class Spit : MonoBehaviour
             || position.y - spitBounds.extents.y < currentRoom.RoomBounds.min.y
             || position.x - spitBounds.extents.x < currentRoom.RoomBounds.min.x)
         {
-            hasLanded = true;
+            Land();
         }
 
     }

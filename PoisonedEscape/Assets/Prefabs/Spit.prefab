@@ -116,11 +116,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e60264709ea064e951bdab49c46b0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundSprite: {fileID: 21300000, guid: 8277e1b5eee8fd8439e14cb3ee80caec, type: 3}
   moveSpeed: 4
-  enemyManager: {fileID: 0}
+  currentRoom: {fileID: 0}
   explosionRadius: 1
   totalGroundTime: 3
-  audioSource: {fileID: -2312400409249992462}
+  acidHiss: {fileID: 0}
 --- !u!50 &4005808276335883709
 Rigidbody2D:
   serializedVersion: 4
