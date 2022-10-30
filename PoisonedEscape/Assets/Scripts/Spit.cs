@@ -117,7 +117,7 @@ public class Spit : MonoBehaviour
                 if (CollisionCheck(enemy.enemyBounds))
                 {
                     //if the projectile hits an enemy in mid air it does damage to every enemy in a radius and lands
-                    explosion();
+                   explosion();
                     Land();
                     
                 }

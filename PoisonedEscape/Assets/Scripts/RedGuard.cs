@@ -113,7 +113,7 @@ public class RedGuard : Enemy
 
         projectile.Direction = Vector3.Normalize(player.Position - position);
         projectile.Player = player;
-
+        projectile.RoomBounds = boundaries;
 
 
     }

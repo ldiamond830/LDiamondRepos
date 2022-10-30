@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -102,7 +103,10 @@ public class PlayerController : MonoBehaviour
             immunityTimer -= Time.deltaTime;
         }
        
-        
+        if(health <= 0)
+        {
+            SceneManager.LoadScene("LossScene");
+        }
 
         //busted
 
@@ -185,13 +189,17 @@ public class PlayerController : MonoBehaviour
                 position.x = Room.exit.GateBounds.min.x - bounds.extents.x;
             }
         }
+        
         else
         {
-            if (position.x + bounds.extents.x > Room.RoomBounds.max.x)
+            //prevents the player from walking out of bounds if they aren't going through the area where the gate was before being destoryed
+            if (position.x + bounds.extents.x > Room.RoomBounds.max.x && 
+                (position.y + bounds.extents.y > Room.exit.GateBounds.max.y || position.y - bounds.extents.y < Room.exit.GateBounds.min.y))
             {
                 position.x = Room.RoomBounds.max.x - bounds.extents.x;
             }
         }
+        
         //player can backtract as far as the starter room
         if (position.x - bounds.extents.x < startRoom.RoomBounds.center.x - startRoom.RoomBounds.extents.x)
         {

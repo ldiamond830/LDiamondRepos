@@ -76,9 +76,14 @@ public class SpearController : MonoBehaviour
      
     public void AdjustRotation()
     {
-        float angleToRotate = Mathf.Atan2(player.Position.y, player.Position.x) * Mathf.Rad2Deg;
+        Vector3 vecToPlayer = player.Position - transform.position;
+
+        float angleToRotate = Mathf.Atan2(vecToPlayer.y, vecToPlayer.x) * Mathf.Rad2Deg;
         //angleToRotate *= -1;
         transform.rotation = Quaternion.Euler(0, 0, angleToRotate);
+
+        Debug.Log("Angle: " + angleToRotate);
+
         Vector4 temp = Quaternion.Euler(0, 0, angleToRotate) * new Vector4(forward.x, forward.y, forward.z, 0.0f);
         forward = temp.normalized;
         bounds.center = transform.position;

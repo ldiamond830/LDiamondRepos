@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BlueGuard : Enemy
 {
     private bool isCharging;
@@ -131,7 +132,7 @@ public class BlueGuard : Enemy
 
             projectile.Direction = Vector3.Normalize(player.Position - position);
             projectile.Player = player;
-
+            projectile.RoomBounds = boundaries;
             separation += 0.5f;
 
         }

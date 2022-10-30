@@ -70,6 +70,7 @@ public class EnemyManager : MonoBehaviour
             if (roomBounds.Contains(player.Position))
             {
                player.Room = this;
+                //Debug.Log("Player room: " + this);
             }
         }
         if(enemies.Count > 0)

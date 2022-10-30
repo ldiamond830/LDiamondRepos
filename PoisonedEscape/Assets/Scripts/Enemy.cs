@@ -41,7 +41,7 @@ public abstract class Enemy : MonoBehaviour
     public Slider healthBar;
 
     public GameObject room;
-    private Bounds boundaries;
+    protected Bounds boundaries;
 
     //stats
     public float maxHealth;
@@ -125,7 +125,7 @@ public abstract class Enemy : MonoBehaviour
         velocity = direction * speed;
         position += velocity * Time.deltaTime;
         transform.position = position;
-        enemyBounds.center = position;
+        enemyBounds.center = new Vector3(position.x, position.y, 0.0f);
 
         
 
