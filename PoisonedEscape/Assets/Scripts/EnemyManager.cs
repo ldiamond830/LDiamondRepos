@@ -22,6 +22,8 @@ public class EnemyManager : MonoBehaviour
         get { return roomBounds; }
     }
 
+    private bool empty = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +37,23 @@ public class EnemyManager : MonoBehaviour
         roomBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
         roomBounds.center = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0.0f);
         
-        foreach(Enemy enemy in enemies)
+
+        if(enemies.Count > 0)
         {
-            enemy.HitSound = enemyHit;
+            foreach (Enemy enemy in enemies)
+            {
+                enemy.HitSound = enemyHit;
+            }
+            //indicates to player that the gate cannot be destroyed
+            exit.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
         }
+        else
+        {
+            exit.gameObject.GetComponent<SpriteRenderer>().color = Color.black;
+            empty = true;
+        }
+
+        
     }
 
     // Update is called once per frame
@@ -64,6 +79,7 @@ public class EnemyManager : MonoBehaviour
         if(enemies.Count <= 0)
         {
             exit.Destructable = true;
+            exit.gameObject.GetComponent<SpriteRenderer>().color = Color.black;
         }
     }
 
