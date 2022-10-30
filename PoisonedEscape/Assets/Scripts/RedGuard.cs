@@ -4,18 +4,9 @@ using UnityEngine;
 
 public class RedGuard : Enemy
 {
-    [SerializeField]
-    private SpearController spear;
-    [SerializeField]
-    private float meleeRange;
-    [SerializeField]
-    private float safeDistance;
+    //private bool isMeleeing;
 
-    private float rangedAttackInterval;
-    private float rangedAttackTimer;
-    private bool isMeleeing;
-
-    public EnemyProjectile projectileTemplate;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +16,7 @@ public class RedGuard : Enemy
         timeToStateChange = 2;
         currentState = State.aggressive;
         speed = 1;
-        spear.Player = player;
-        spear.PlayerBounds = player.gameObject.GetComponent<SpriteRenderer>().bounds;
+        
         distanceToPlayer = Vector3.Magnitude(transform.position - player.Position);
         rangedAttackInterval = 1.0f;
     }
@@ -44,6 +34,9 @@ public class RedGuard : Enemy
 
         if (isAgro)
         {
+
+            spear.AdjustRotation();
+
             base.Update();
 
             switch (currentState)
@@ -104,12 +97,7 @@ public class RedGuard : Enemy
     }
 
 
-    private void MeleeAttack()
-    {
-        isMeleeing = true;
-        spear.Position = transform.position;
-
-    }
+    
 
    
     protected override void RangedAttack()
@@ -177,6 +165,7 @@ public class RedGuard : Enemy
     //unused currently
     protected override void SetBehavior()
     {
+        /*
         int selector = Random.Range(0, 2);
         float distanceToPlayer = Vector3.Magnitude(position - player.Position);
 
@@ -224,7 +213,8 @@ public class RedGuard : Enemy
             default:
                 Debug.Log("error in enemy state setting");
                 break;
-
+       
         }
+         */
     }
 }

@@ -59,12 +59,7 @@ public class SpearController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float angleToRotate = Mathf.Atan2(player.Position.y, player.Position.x) * Mathf.Rad2Deg;
-        //angleToRotate *= -1;
-        transform.rotation = Quaternion.Euler(0, 0, angleToRotate);
-        Vector4 temp = Quaternion.Euler(0, 0, angleToRotate) * new Vector4(forward.x, forward.y, forward.z, 0.0f);
-        forward = temp.normalized;
-        bounds.center = transform.position;
+       
 
 
         if (CollisionCheck())
@@ -79,6 +74,16 @@ public class SpearController : MonoBehaviour
        
     }
      
+    public void AdjustRotation()
+    {
+        float angleToRotate = Mathf.Atan2(player.Position.y, player.Position.x) * Mathf.Rad2Deg;
+        //angleToRotate *= -1;
+        transform.rotation = Quaternion.Euler(0, 0, angleToRotate);
+        Vector4 temp = Quaternion.Euler(0, 0, angleToRotate) * new Vector4(forward.x, forward.y, forward.z, 0.0f);
+        forward = temp.normalized;
+        bounds.center = transform.position;
+    }
+
     private bool CollisionCheck()
     {
         if (bounds.Intersects(player.PlayerBounds))

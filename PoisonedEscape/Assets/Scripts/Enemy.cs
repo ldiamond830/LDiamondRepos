@@ -8,11 +8,23 @@ public enum State
     aggressive,
     defensive,
     fearful,
+    enraged,
+    waiting
 }
 
 //holds behaviors and data needed by all enemies
 public abstract class Enemy : MonoBehaviour
 {
+    [SerializeField]
+    protected float safeDistance;
+    protected float rangedAttackInterval;
+    protected float rangedAttackTimer;
+    [SerializeField]
+    protected EnemyProjectile projectileTemplate;
+
+    [SerializeField]
+    protected SpearController spear;
+
     [SerializeField]
     private SpriteRenderer poisonIndicator;
 
@@ -96,6 +108,9 @@ public abstract class Enemy : MonoBehaviour
         cameraWidth = cameraHeight * cameraObject.aspect;
         */
         isAgro = false;
+
+        spear.Player = player;
+        spear.PlayerBounds = player.gameObject.GetComponent<SpriteRenderer>().bounds;
     }
 
     // Update is called once per frame
