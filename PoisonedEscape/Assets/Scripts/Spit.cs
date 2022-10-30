@@ -9,7 +9,7 @@ public class Spit : MonoBehaviour
     private Vector3 position;
     public float moveSpeed;
 
-    public EnemyManager enemyManager;
+    public EnemyManager currentRoom;
     
     private Bounds spitBounds;
     //broken
@@ -30,6 +30,9 @@ public class Spit : MonoBehaviour
     private float hitTimer;
     private float hitInterval;
 
+    public AudioSource acidHiss;
+   
+
     public Vector3 Direction
     {
         set { direction = value; }
@@ -43,8 +46,10 @@ public class Spit : MonoBehaviour
         hasLanded = false;
         position = transform.position;
         startingY = position.y;
+
+        //audioSource = gameObject.GetComponent<AudioSource>();
         
-        
+
         spitBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
     }
 
@@ -61,9 +66,9 @@ public class Spit : MonoBehaviour
 
             if (hitTimer <= 0)
             {
-                if(enemyManager.enemies.Count > 0)
+                if(currentRoom.enemies.Count > 0)
                 {
-                    foreach (Enemy enemy in enemyManager.enemies)
+                    foreach (Enemy enemy in currentRoom.enemies)
                     {
                         if (CollisionCheck(enemy.enemyBounds))
                         {
@@ -86,10 +91,11 @@ public class Spit : MonoBehaviour
         }
         else
         {
+            BoundsCheck();
             
             direction.y = calculateArc(sumTime);
 
-            
+            //updates position
             velocity = new Vector3(direction.x * moveSpeed, direction.y , 0);
             position += velocity * Time.deltaTime;
             transform.position = position;
@@ -102,8 +108,8 @@ public class Spit : MonoBehaviour
                 transform.localScale *= 3;
                 
             }
-
-            foreach(Enemy enemy in enemyManager.enemies)
+            //enemy collision check
+            foreach(Enemy enemy in currentRoom.enemies)
             {
                 if (CollisionCheck(enemy.enemyBounds))
                 {
@@ -117,11 +123,18 @@ public class Spit : MonoBehaviour
 
             sumTime += Time.deltaTime * 2;
 
-            if(CollisionCheck(enemyManager.exit.GateBounds) && enemyManager.exit.Destructable)
+            if(CollisionCheck(currentRoom.exit.GateBounds) && currentRoom.exit.Destructable && currentRoom.exit.IsActive)
             {
-                enemyManager.exit.IsActive = false;
+               acidHiss.enabled = true;
+                if(acidHiss.clip != null)
+                {
+                    acidHiss.Play();
+                }
+                
+                currentRoom.exit.IsActive = false;
                 gameObject.SetActive(false);
                 this.enabled = false;
+                
             }
 
         }
@@ -151,7 +164,7 @@ public class Spit : MonoBehaviour
    
     private void explosion()
     {
-        foreach(Enemy enemy in enemyManager.enemies)
+        foreach(Enemy enemy in currentRoom.enemies)
         {
             float distance = Vector3.Magnitude(enemy.Position - position);
             if(distance < explosionRadius)
@@ -160,6 +173,19 @@ public class Spit : MonoBehaviour
                 enemy.PoisonCounter++;
             }
         }
+    }
+
+    //if the projectile hits a wall it just lands there against the wall
+    private void BoundsCheck()
+    {
+        if (position.x + spitBounds.extents.x > currentRoom.RoomBounds.max.x 
+            || position.y + spitBounds.extents.y > currentRoom.RoomBounds.max.y
+            || position.y - spitBounds.extents.y < currentRoom.RoomBounds.min.y
+            || position.x - spitBounds.extents.x < currentRoom.RoomBounds.min.x)
+        {
+            hasLanded = true;
+        }
+
     }
 
     void OnDrawGizmos()

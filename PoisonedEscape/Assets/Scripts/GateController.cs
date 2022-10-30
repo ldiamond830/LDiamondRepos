@@ -42,4 +42,11 @@ public class GateController : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+
+    public void Deactivate()
+    {
+        
+
+
+    }
 }

@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
     private int health;
 
 
+    //sounds
+    [SerializeField]
+    private AudioSource acidHiss;
+
+
     public Spit spitBase;
 
     private float immunityTimer;
@@ -72,6 +77,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         position = transform.position;
+        currentRoom = startRoom;
         bounds = gameObject.GetComponent<SpriteRenderer>().bounds;
 
     }
@@ -166,12 +172,22 @@ public class PlayerController : MonoBehaviour
     private void StayInBounds()
     {
         //since the gates are always positioned on the right of the room they function as the border while active
-        if (position.x + bounds.extents.x > Room.exit.GateBounds.min.x && Room.exit.IsActive)
+        if (Room.exit.IsActive)
         {
-            position.x = Room.exit.GateBounds.min.x - bounds.extents.x;
+            if (position.x + bounds.extents.x > Room.exit.GateBounds.min.x )
+            {
+                position.x = Room.exit.GateBounds.min.x - bounds.extents.x;
+            }
+        }
+        else
+        {
+            if (position.x + bounds.extents.x > Room.RoomBounds.max.x)
+            {
+                position.x = Room.RoomBounds.min.x - bounds.extents.x;
+            }
         }
         //player can backtract as far as the starter room
-        else if (position.x - bounds.extents.x < startRoom.RoomBounds.center.x - startRoom.RoomBounds.extents.x)
+        if (position.x - bounds.extents.x < startRoom.RoomBounds.center.x - startRoom.RoomBounds.extents.x)
         {
           position.x = Room.RoomBounds.min.x + bounds.extents.x;
 
@@ -197,7 +213,9 @@ public class PlayerController : MonoBehaviour
 
             Spit SpitToInstantiate = Instantiate(spitBase);
             SpitToInstantiate.transform.position = transform.position;
-            SpitToInstantiate.enemyManager = currentRoom;
+            SpitToInstantiate.currentRoom = currentRoom;
+
+            SpitToInstantiate.acidHiss = acidHiss;
 
             //gets mouse location
             Vector3 mousePos = Mouse.current.position.ReadValue();
