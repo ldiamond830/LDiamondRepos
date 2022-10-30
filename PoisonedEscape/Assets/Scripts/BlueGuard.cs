@@ -13,10 +13,16 @@ public class BlueGuard : Enemy
 
     [SerializeField]
     private SpearController spear2;
-    // Start is called before the first frame update
-    void Start()
+
+    public override void PublicStart()
     {
-        base.Start();
+        OnStart();
+    }
+
+    // Start is called before the first frame update
+    protected override void OnStart()
+    {
+        base.OnStart();
 
         spear2.Player = player;
         spear2.PlayerBounds = player.gameObject.GetComponent<SpriteRenderer>().bounds;
@@ -28,6 +34,8 @@ public class BlueGuard : Enemy
         waitTime = 0.75f;
         chargeTimer = chargeTime;
         waitTimer = waitTime;
+
+        
     }
 
     // Update is called once per frame

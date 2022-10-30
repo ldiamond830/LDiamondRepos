@@ -94,8 +94,10 @@ public abstract class Enemy : MonoBehaviour
         get { return health; }
     }
 
+    
+
     // Start is called before the first frame update
-    protected void Start()
+    protected virtual void OnStart()
     {
         position = transform.position;
         health = maxHealth;
@@ -108,7 +110,10 @@ public abstract class Enemy : MonoBehaviour
         cameraWidth = cameraHeight * cameraObject.aspect;
         */
         isAgro = false;
-
+        if (player == null)
+        {
+            Debug.Log("error");
+        }
         spear.Player = player;
         spear.PlayerBounds = player.gameObject.GetComponent<SpriteRenderer>().bounds;
     }
@@ -214,5 +219,7 @@ public abstract class Enemy : MonoBehaviour
         //sets the health bar based on the percentage of maxHealth the enemy has remaining
         healthBar.value = (health / maxHealth);
     }
+
+    public abstract void PublicStart();
     
 }

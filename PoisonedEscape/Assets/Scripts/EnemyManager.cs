@@ -43,7 +43,12 @@ public class EnemyManager : MonoBehaviour
             foreach (Enemy enemy in enemies)
             {
                 enemy.HitSound = enemyHit;
+                enemy.room = this.gameObject;
+                enemy.player = player;
+
+                enemy.PublicStart();
             }
+            
             //indicates to player that the gate cannot be destroyed
             exit.gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
         }
@@ -67,16 +72,19 @@ public class EnemyManager : MonoBehaviour
                player.Room = this;
             }
         }
-
-        foreach(Enemy enemy in enemies)
+        if(enemies.Count > 0)
         {
-            if(enemy.Health<= 0)
+            foreach (Enemy enemy in enemies)
             {
-                enemies.Remove(enemy);
-                enemy.gameObject.SetActive(false);
+                if (enemy.Health <= 0)
+                {
+                    enemies.Remove(enemy);
+                    enemy.gameObject.SetActive(false);
+                }
             }
         }
-        if(enemies.Count <= 0)
+        
+        if(enemies.Count <= 0 && exit != null)
         {
             exit.Destructable = true;
             exit.gameObject.GetComponent<SpriteRenderer>().color = Color.black;

@@ -6,13 +6,16 @@ public class RedGuard : Enemy
 {
     //private bool isMeleeing;
 
-    
 
+    public override void PublicStart()
+    {
+        OnStart();
+    }
     // Start is called before the first frame update
-    void Start()
+    protected override void OnStart()
     {
         
-        base.Start();
+        base.OnStart();
         timeToStateChange = 2;
         currentState = State.aggressive;
         speed = 1;
