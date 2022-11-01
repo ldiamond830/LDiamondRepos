@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
 {
+    //movement fields
     private Vector3 direction;
     private Vector3 velocity;
     private Vector3 position;
-    public float moveSpeed;
+
+    //stat fields
+    [SerializeField]
+    private float moveSpeed;
+    [SerializeField]
+    private int damage;
+
+    //collision fields
     private Bounds bounds;
     private Bounds roomBounds;
     private bool stop;
@@ -54,7 +62,7 @@ public class EnemyProjectile : MonoBehaviour
 
             if (CollisionCheck())
             {
-                player.Health--;
+                player.TakeDamage(damage);
                 gameObject.SetActive(false);
                 this.enabled = false;
             }

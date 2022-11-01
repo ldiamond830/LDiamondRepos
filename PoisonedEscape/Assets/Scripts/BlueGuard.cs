@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class BlueGuard : Enemy
 {
+
     private bool isCharging;
     private float chargeTime;
     private float chargeTimer;
@@ -12,8 +13,10 @@ public class BlueGuard : Enemy
     private float waitTime;
     private float waitTimer;
 
-    private float agressiveTime;
-    private float agressiveTimer;
+    private float enragedChargeTime;
+    private float engragedChargeTimer;
+    private int enragedSpeed;
+    private int standardSpeed;
 
     [SerializeField]
     private SpearController spear2;
@@ -39,8 +42,10 @@ public class BlueGuard : Enemy
         chargeTimer = chargeTime;
         waitTimer = waitTime;
 
-        agressiveTime = 1.0f;
-
+        enragedChargeTime = 1.0f;
+        engragedChargeTimer = enragedChargeTime;
+        standardSpeed = speed;
+        enragedSpeed = speed * 1.5;
         
     }
 
@@ -53,39 +58,12 @@ public class BlueGuard : Enemy
             isAgro = true;
         }
 
-       
+        //Debug.Log(currentState);
 
         if (isAgro)
         {
             Debug.Log(currentState);
-            if (isCharging)
-            {
-                speed = 10;
-                
-                    velocity = new Vector3(direction.x * speed * 3, direction.y * speed * 3, 0.0f);
-
-                    if (chargeTimer <= 0)
-                    {
-                        //speed -= 3;
-                        chargeTimer = chargeTime;
-                        //currentState = State.waiting;
-                        isCharging = false;
-                    }
-                    else
-                    {
-                        chargeTimer -= Time.deltaTime;
-                    }
-
-                    if(currentState == State.aggressive)
-                    {
-                        
-                    }
-                
-            }
-            else
-            {
-                speed = 8;
-            }
+            
             base.Update();
             spear.AdjustRotation();
             spear2.AdjustRotation();
@@ -93,31 +71,48 @@ public class BlueGuard : Enemy
             switch (currentState)
             {
                 case State.enraged:
-                    if(agressiveTimer <= 0)
+
+                    if (!isCharging)
                     {
-                        if (!isCharging)
-                        {
-                            StartCharge();
-                            agressiveTimer = agressiveTime;
-                        }
+                        StartCharge();
 
-                        if (rangedAttackTimer <= 0)
-                        {
-                            //direction = Vector2.zero;
-                            RangedAttack();
-                            rangedAttackTimer = rangedAttackInterval;
-
-                        }
-                        else
-                        {
-                            rangedAttackTimer -= Time.deltaTime;
-                        }
 
                     }
                     else
                     {
-                        agressiveTimer -= Time.deltaTime;
+                        //speed = 10;
+
+                        //velocity = new Vector3(direction.x * speed * 3, direction.y * speed * 3, 0.0f);
+
+                        if (engragedChargeTimer <= 0)
+                        {
+                            //speed -= 3;
+                            engragedChargeTimer = enragedChargeTime;
+                            //currentState = State.waiting;
+                            isCharging = false;
+                        }
+                        else
+                        {
+                            engragedChargeTimer -= Time.deltaTime;
+                        }
+
+                        
+
                     }
+
+                    if (rangedAttackTimer <= 0)
+                    {
+                            //direction = Vector2.zero;
+                            RangedAttack();
+                            rangedAttackTimer = rangedAttackInterval;
+
+                    }
+                    else
+                    {
+                        rangedAttackTimer -= Time.deltaTime;
+                    }
+
+                  
                     //Debug.Log(velocity);
                     break;
                 case State.defensive:
@@ -148,7 +143,37 @@ public class BlueGuard : Enemy
                         
 
                     }
-                    
+                    else
+                    {
+                        //speed = 10;
+
+                        //velocity = new Vector3(direction.x * speed , direction.y * speed, 0.0f);
+
+                        if (chargeTimer <= 0)
+                        {
+                            //speed -= 3;
+                            chargeTimer = chargeTime;
+                            //currentState = State.waiting;
+                            isCharging = false;
+                        }
+                        else
+                        {
+                            chargeTimer -= Time.deltaTime;
+                        }
+
+                        if (currentState == State.aggressive)
+                        {
+
+                        }
+
+                    }
+                    /*
+                    else
+                    {
+                        //speed = 8;
+                    }
+                    */
+
                     break;
                 case State.waiting:
                     direction = Vector3.zero;
@@ -232,6 +257,15 @@ public class BlueGuard : Enemy
             }
 
             
+        }
+
+        if(currentState == State.enraged)
+        {
+            speed = enragedSpeed;
+        }
+        else
+        {
+            speed = standardSpeed;
         }
     }
 

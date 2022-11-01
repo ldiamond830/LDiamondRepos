@@ -2109,6 +2109,14 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1206747290}
+    - target: {fileID: 7159341464562122531, guid: 8ec1b663c408e4f429503c25b43ef40f, type: 3}
+      propertyPath: maxHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7159341464562122531, guid: 8ec1b663c408e4f429503c25b43ef40f, type: 3}
+      propertyPath: safeDistance
+      value: 7.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ec1b663c408e4f429503c25b43ef40f, type: 3}
 --- !u!114 &1318669950 stripped
@@ -2357,7 +2365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7684775448502704455, guid: edc2ec8842b573e42aa3b2d7c3d6cd98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.4869848
+      value: -0.1832092
       objectReference: {fileID: 0}
     - target: {fileID: 7684775448502704455, guid: edc2ec8842b573e42aa3b2d7c3d6cd98, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3639,6 +3647,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1206747290}
+    - target: {fileID: 2893324788759337650, guid: edc2ec8842b573e42aa3b2d7c3d6cd98, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.495
+      objectReference: {fileID: 0}
     - target: {fileID: 4090636447906188005, guid: edc2ec8842b573e42aa3b2d7c3d6cd98, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

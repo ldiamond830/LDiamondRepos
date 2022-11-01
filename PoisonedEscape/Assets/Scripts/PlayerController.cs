@@ -202,8 +202,15 @@ public class PlayerController : MonoBehaviour
             }
         }
         
+
+       if(position.x - bounds.extents.x < Room.RoomBounds.min.x 
+            && (position.y + bounds.extents.y > Room.exit.GateBounds.max.y || position.y - bounds.extents.y < Room.exit.GateBounds.min.y))
+       {
+            position.x = Room.RoomBounds.min.x + bounds.extents.x;
+       }
+
         //player can backtract as far as the starter room
-        if (position.x - bounds.extents.x < startRoom.RoomBounds.center.x - startRoom.RoomBounds.extents.x)
+        if (position.x - bounds.extents.x < startRoom.RoomBounds.center.x - startRoom.RoomBounds.extents.x )
         {
           position.x = Room.RoomBounds.min.x + bounds.extents.x;
 
