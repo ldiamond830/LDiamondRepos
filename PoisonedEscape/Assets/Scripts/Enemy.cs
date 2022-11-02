@@ -31,13 +31,6 @@ public abstract class Enemy : MonoBehaviour
     
     private AudioSource hitSound;
 
-    /* currently unused
-    //camera bounds
-    private float cameraHeight;
-    private float cameraWidth;
-    public Camera cameraObject;
-    */
-
     public Slider healthBar;
 
     public GameObject room;
@@ -58,7 +51,7 @@ public abstract class Enemy : MonoBehaviour
 
     public Bounds enemyBounds;
 
-
+    //movement 
     protected Vector2 direction = Vector2.zero;
     protected Vector3 velocity = Vector2.zero;
     protected Vector3 position;
@@ -96,13 +89,16 @@ public abstract class Enemy : MonoBehaviour
 
     
 
-    // Start is called before the first frame update
+    
     protected virtual void OnStart()
     {
+
+        //setting base values
         position = transform.position;
         health = maxHealth;
+
         UpdatedHealthBar();
-        poisonInterval = 2.5f;
+        poisonInterval = 2.75f;
         enemyBounds = gameObject.GetComponent<SpriteRenderer>().bounds;
         boundaries = room.GetComponent<SpriteRenderer>().bounds;
         /*
@@ -110,10 +106,7 @@ public abstract class Enemy : MonoBehaviour
         cameraWidth = cameraHeight * cameraObject.aspect;
         */
         isAgro = false;
-        if (player == null)
-        {
-            Debug.Log("error");
-        }
+       
         spear.Player = player;
         spear.PlayerBounds = player.gameObject.GetComponent<SpriteRenderer>().bounds;
     }
@@ -133,6 +126,7 @@ public abstract class Enemy : MonoBehaviour
 
         if (poisonCounter > 0)
         {
+            //makes an icon visible to show that the enemy has been poisoned
             if (!poisonIndicator.enabled)
             {
                 poisonIndicator.enabled = true;
@@ -140,8 +134,9 @@ public abstract class Enemy : MonoBehaviour
 
             if(poisonTimer <= 0)
             {
+                //deals 1 damage for every poison applyed to this enemy 
                 TakeDamage(poisonCounter);
-                SetState();
+                
                 UpdatedHealthBar();
                 poisonTimer = poisonInterval;
             }
@@ -150,27 +145,29 @@ public abstract class Enemy : MonoBehaviour
                 poisonTimer -= Time.deltaTime;
             }
         }
-
+        //prevents the enemy from exiting their room 
         StayInBounds();
     }
 
-    protected abstract void SetBehavior();
+    
 
     //called when enemy takes damage
     protected abstract void SetState();
 
     public void TakeDamage(int damage)
     {
-      
+        //updates health
         health -= damage;
         //recalculates the state whenever the enemy takes damage
         SetState();
 
+        //plays a hit sound if the sound is currenly playing 
         if (!hitSound.isPlaying)
         {
             hitSound.Play();
         }
 
+        //updates the UI health bar
         UpdatedHealthBar();
     }
 
@@ -190,8 +187,10 @@ public abstract class Enemy : MonoBehaviour
         direction = direction.normalized * -1;
     }
 
+    //implimented in all child classes
     protected abstract void RangedAttack();
 
+    //prevents the enemy from exceeding the bounds of its room
     protected void StayInBounds()
     {
         if(position.x + enemyBounds.extents.x > boundaries.max.x)
@@ -220,6 +219,7 @@ public abstract class Enemy : MonoBehaviour
         healthBar.value = (health / maxHealth);
     }
 
+    //implimented by all child classes
     public abstract void PublicStart();
     
 }

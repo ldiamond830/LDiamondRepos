@@ -43,6 +43,7 @@ public class EnemyProjectile : MonoBehaviour
         //projectiles will disappear after 3 seconds
         deSpawnTimer = 3.0f;
 
+        //initializing values
         bounds = gameObject.GetComponent<SpriteRenderer>().bounds;
         position = transform.position;
         stop = false;
@@ -53,7 +54,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (!stop)
         {
-            
+            //updates the position and bounds based on the movement calculation
             velocity = direction * moveSpeed;
             position += velocity * Time.deltaTime;
             transform.position = position;
@@ -62,7 +63,9 @@ public class EnemyProjectile : MonoBehaviour
 
             if (CollisionCheck())
             {
+                //because each projectile can only hit once doesn't give the player invicibilty frames like the enemies spear
                 player.TakeDamage(damage);
+                //disables projectile after it hits the player and does damage
                 gameObject.SetActive(false);
                 this.enabled = false;
             }
@@ -71,6 +74,7 @@ public class EnemyProjectile : MonoBehaviour
         }
         else
         {
+            //projectile will wait on the floor for a short period before disapearing
             if(deSpawnTimer <= 0)
             {
                 gameObject.SetActive(false);
@@ -85,17 +89,10 @@ public class EnemyProjectile : MonoBehaviour
         
     }
 
-
+    //checks if the bounds of the sprite is intersecting that of the player
     private bool CollisionCheck()
     {
-        if (bounds.Intersects(player.PlayerBounds))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return bounds.Intersects(player.PlayerBounds);
     }
 
     private void StayInBounds()

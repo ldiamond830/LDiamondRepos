@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// holds data and controls behavior for disbling gates at the end of each room
+/// </summary>
 public class GateController : MonoBehaviour
 {
     private bool destructable;
@@ -38,15 +40,10 @@ public class GateController : MonoBehaviour
     {
         if (!isActive)
         {
-            Debug.Log("Gate inactive");
+            
             gameObject.SetActive(false);
         }
     }
 
-    public void Deactivate()
-    {
-        
-
-
-    }
+   
 }

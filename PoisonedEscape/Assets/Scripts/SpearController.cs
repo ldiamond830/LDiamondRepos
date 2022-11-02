@@ -64,9 +64,11 @@ public class SpearController : MonoBehaviour
 
         if (CollisionCheck())
         {
+            
             if(player.ImmunityTimer <= 0)
             {
                 player.TakeDamage(damage);
+                //gives the player 0.5 seconds of immunity to avoid dealing damage every frame
                 player.ImmunityTimer = 0.5f;
             }
             
@@ -76,13 +78,16 @@ public class SpearController : MonoBehaviour
      
     public void AdjustRotation()
     {
+        //draws a vector between the spear and player
         Vector3 vecToPlayer = player.Position - transform.position;
 
+        //gets the angle to rotate based on the vector between the player and current position
         float angleToRotate = Mathf.Atan2(vecToPlayer.y, vecToPlayer.x) * Mathf.Rad2Deg;
-        //angleToRotate *= -1;
+       
+        //updates the rotation using a quaternion
         transform.rotation = Quaternion.Euler(0, 0, angleToRotate);
 
-        //Debug.Log("Angle: " + angleToRotate);
+       
 
         Vector4 temp = Quaternion.Euler(0, 0, angleToRotate) * new Vector4(forward.x, forward.y, forward.z, 0.0f);
         forward = temp.normalized;

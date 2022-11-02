@@ -62,32 +62,36 @@ public class Spit : MonoBehaviour
     {
         if (hasLanded)
         {
+            //despawns after a certain period
             if(currentGroundTime >= totalGroundTime)
             {
                 gameObject.SetActive(false);
                 this.enabled = false;
             }
 
-            if (hitTimer <= 0)
+            //checks enemy collisions
+            if (currentRoom.enemies.Count > 0)
             {
-                if(currentRoom.enemies.Count > 0)
+                if (hitTimer <= 0)
                 {
+
                     foreach (Enemy enemy in currentRoom.enemies)
                     {
                         if (CollisionCheck(enemy.enemyBounds))
                         {
+                            //adds a stack of poison to the hit enemy
                             enemy.PoisonCounter++;
-                            //Debug.Log("hit");
                             hitTimer = hitInterval;
                         }
 
                     }
+
+
                 }
-               
-            }
-            else
-            {
-                hitTimer -= Time.deltaTime;
+                else
+                {
+                    hitTimer -= Time.deltaTime;
+                }
             }
             
 
@@ -95,8 +99,10 @@ public class Spit : MonoBehaviour
         }
         else
         {
+            //prevents the projectile going out of boudns
             BoundsCheck();
             
+            //updates the direction based on how long the projectile has been in the air
             direction.y = calculateArc(sumTime);
 
             //updates position
@@ -105,41 +111,52 @@ public class Spit : MonoBehaviour
             transform.position = position;
             spitBounds.center = position;
 
-            //stops moving when it reaches the same height as it started at in the arc or hits an enemy
+            //stops moving when it reaches a similar height as it started at in the arc or hits an enemy
             if(position.y <= startingY - 0.1 )
             {
                 Land();
 
             }
             //enemy collision check
-            foreach(Enemy enemy in currentRoom.enemies)
+            if(currentRoom.enemies.Count > 0)
             {
-                if (CollisionCheck(enemy.enemyBounds))
+                foreach (Enemy enemy in currentRoom.enemies)
                 {
-                    //if the projectile hits an enemy in mid air it does damage to every enemy in a radius and lands
-                   explosion();
-                    Land();
-                    
+                    if (CollisionCheck(enemy.enemyBounds))
+                    {
+                        //if the projectile hits an enemy in mid air it does damage to every enemy in a radius and lands
+                        explosion();
+                        //lands upon hitting an enemy
+                        Land();
+
+                    }
                 }
             }
             
-
+            
+            
+            //added the *2 while experiementing to make the arc move more smoothly
             sumTime += Time.deltaTime * 2;
 
-            if(CollisionCheck(currentRoom.exit.GateBounds) && currentRoom.exit.Destructable && currentRoom.exit.IsActive)
+            //check collision with the exit to each room to allow the player to shoot them down
+            if (currentRoom.exit.IsActive)
             {
-               acidHiss.enabled = true;
-                if(acidHiss.clip != null)
+                if (CollisionCheck(currentRoom.exit.GateBounds) && currentRoom.exit.Destructable)
                 {
-                    acidHiss.Play();
-                }
-                
-                currentRoom.exit.IsActive = false;
-                gameObject.SetActive(false);
-                this.enabled = false;
-                
-            }
+                    
+                    if (acidHiss.clip != null)
+                    {
+                        acidHiss.Play();
+                    }
 
+                    currentRoom.exit.IsActive = false;
+                    gameObject.SetActive(false);
+                    this.enabled = false;
+
+                }
+
+
+            }
         }
     }
 
@@ -154,6 +171,7 @@ public class Spit : MonoBehaviour
         return x;
     }
 
+    //updates the sprite and sets bool when projectile "hits the ground" or hits an enemy
     private void Land()
     {
         hasLanded = true;
@@ -168,7 +186,8 @@ public class Spit : MonoBehaviour
 
     
 
-   
+   //deals damage to every enemy within a certain radius upon hitting an enemy, meant to create an effect of a ball of acid exploading against a surface
+   //only triggered on hitting an enemy to reward good play with additional damage
     private void explosion()
     {
         foreach(Enemy enemy in currentRoom.enemies)

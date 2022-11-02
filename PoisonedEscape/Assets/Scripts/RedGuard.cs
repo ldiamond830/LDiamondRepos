@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class RedGuard : Enemy
 {
-    //private bool isMeleeing;
-
-
+    
     public override void PublicStart()
     {
         OnStart();
     }
+
     // Start is called before the first frame update
     protected override void OnStart()
     {
@@ -29,11 +28,7 @@ public class RedGuard : Enemy
     {
 
 
-        distanceToPlayer = Vector3.Magnitude(transform.position - player.Position);
-        if(distanceToPlayer <= agroRange)
-        {
-            isAgro = true;
-        }
+        
 
         if (isAgro)
         {
@@ -44,13 +39,14 @@ public class RedGuard : Enemy
 
             switch (currentState)
             {
+                //moves toward the player while agressive
                 case State.aggressive:
                     Approach();
 
 
                     break;
 
-
+                    //tries to get as far from the player and fires projectiles while fearful
                 case State.fearful:
                    
                         if (rangedAttackTimer <= 0)
@@ -67,6 +63,7 @@ public class RedGuard : Enemy
                     
 
                     break;
+                    //tries to maintain a certain distances and fires projectiles while defensive
                 case State.defensive:
                     if (distanceToPlayer < safeDistance)
                     {
@@ -88,12 +85,19 @@ public class RedGuard : Enemy
                     }
                     break;
 
-                default:
-                    Debug.Log("error in enemy state setting");
-                    break;
+               
 
             }
 
+        }
+        //checks if the player is within agro range
+        else
+        {
+            distanceToPlayer = Vector3.Magnitude(transform.position - player.Position);
+            if (distanceToPlayer <= agroRange)
+            {
+                isAgro = true;
+            }
         }
 
 
@@ -102,7 +106,7 @@ public class RedGuard : Enemy
 
     
 
-   
+   //creates a new projectile and initializes its values
     protected override void RangedAttack()
     {
         EnemyProjectile projectile = Instantiate(projectileTemplate);
@@ -118,11 +122,11 @@ public class RedGuard : Enemy
 
     }
 
-
+    //sets the enemy behavior based on a combination of chance and remaining health
     protected override void SetState()
     {
         int selector = Random.Range(0, 3);
-
+        //at 3 health enemy has no chance to be agressive
         if(Health <= 3)
         {
             if(selector!= 0)
@@ -137,7 +141,7 @@ public class RedGuard : Enemy
         }
         else if(Health > 3 && Health <= 5)
         {
-            //at half health or less enemies have a reduce chance to be agressive
+            //at 5 health or less enemies have a reduce chance to be agressive
             if(selector == 1)
             {
                 currentState = State.aggressive;
@@ -165,59 +169,5 @@ public class RedGuard : Enemy
 
     }
 
-    //unused currently
-    protected override void SetBehavior()
-    {
-        /*
-        int selector = Random.Range(0, 2);
-        float distanceToPlayer = Vector3.Magnitude(position - player.Position);
-
-        switch (currentState)
-        {
-            case State.aggressive:
-                //if the enemy is within melee range has a chance to do a melee attack
-                if(distanceToPlayer < meleeRange)
-                {
-                    MeleeAttack();
-                }
-                else
-                {
-                    if (selector == 0)
-                    {
-                        RangedAttack();
-                    }
-                    else
-                    {
-                        Approach();
-                    }
-                }
-            break;
-
-
-            case State.defensive:
-               if(distanceToPlayer < meleeRange)
-               {
-                    Retreat();
-               }
-                else
-                {
-                    if(selector == 0)
-                    {
-                        RangedAttack();
-                    }
-                    else
-                    {
-                        Retreat();
-                    }
-                }
-
-                break;
-
-            default:
-                Debug.Log("error in enemy state setting");
-                break;
-       
-        }
-         */
-    }
+   
 }

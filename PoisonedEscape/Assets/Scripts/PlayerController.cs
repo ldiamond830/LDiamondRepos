@@ -83,36 +83,32 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //intializing values
         maxHealth = health;
         position = transform.position;
         currentRoom = startRoom;
         bounds = gameObject.GetComponent<SpriteRenderer>().bounds;
 
-        //healthSlider.text = "Health: " + health;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
        
-
+        //updates player position
         Movement();
-        bounds.center = position;
-        fireTimer -= Time.deltaTime;
 
+        if (fireTimer >= 0)
+        {
+            fireTimer -= Time.deltaTime;
+        }
+        
+        //updates the player's invicibility frames
         if(immunityTimer >= 0)
         {
             immunityTimer -= Time.deltaTime;
         }
-       
-        if(health <= 0)
-        {
-            SceneManager.LoadScene("LossScene");
-        }
-
-        //busted
-
-        //RotateHand();
     }
 
     private void Movement()
@@ -123,63 +119,15 @@ public class PlayerController : MonoBehaviour
         //moves the player based on speed value, read in direction and scales by delta time
         velocity = new Vector3(direction.x * moveSpeed, direction.y * moveSpeed, 0);
         position += velocity * Time.deltaTime;
-
+        //check to avoid the player moving out of bounds
         StayInBounds();
-
+        //updates the object in game
         transform.position = position;
-        
+        bounds.center = position;
     }
    
     
-    private void RotateHand()
-    {
-        /*
-       //gets the position of the mouse on the screen
-       Vector3 mousePosition = Camera.main.ScreenToWorldPoint((Vector3)Mouse.current.position.ReadValue());
-
-
-       if(mousePosition != prevMousePos)
-       {
-           Vector3 temp = transform.position - mousePosition;
-
-           float angleToRotate = Mathf.Atan2(mousePosition.y, mousePosition.x) * Mathf.Rad2Deg;
-
-
-           //adjusts the angle of the hand
-
-           // fist.transform.RotateAround(this.transform.position, Vector3.forward, angleToRotate);
-               //uaternion.Euler(0, 0, angleToRotate);
-       }
-
-
-       prevMousePos = mousePosition;
-
-
-       Vector3 mousePosition = Camera.main.ScreenToWorldPoint((Vector3)Mouse.current.position.ReadValue());
-       //I'm not sure if castPoint has a position in it or not, but if when you type castPoint.transform.position
-       direction = (mousePosition - transform.position).normalized;
-
-       //create the rotation we need to be in to look at the target
-       Quaternion lookRotation = Quaternion.LookRotation(direction);
-
-       //rotate us over time according to speed until we are in the required rotation
-       fist.transform.RotateAround(this.transform.position, Vector3.forward, lookRotation.eulerAngles)
-       */
-    }
-    /*
-    private void OnPunch(InputValue value)
-    {
-        if(fist.CurrentState != State.isReturning)
-        {
-            Vector3 mousePosition = Camera.main.ScreenToWorldPoint((Vector3)Mouse.current.position.ReadValue());
-            fist.Direction = mousePosition - transform.position;
-            fist.Direction.Normalize();
-            fist.CurrentState = State.isPunching;
-
-        }
-       
-    }
-    */
+    
 
     private void StayInBounds()
     {
@@ -201,9 +149,9 @@ public class PlayerController : MonoBehaviour
                 position.x = Room.RoomBounds.max.x - bounds.extents.x;
             }
         }
-        
 
-       if(position.x - bounds.extents.x < Room.RoomBounds.min.x 
+        //prevents the player from walking out of bounds if they aren't going through the area where the gate was before being destoryed
+        if (position.x - bounds.extents.x < Room.RoomBounds.min.x 
             && (position.y + bounds.extents.y > Room.exit.GateBounds.max.y || position.y - bounds.extents.y < Room.exit.GateBounds.min.y))
        {
             position.x = Room.RoomBounds.min.x + bounds.extents.x;
@@ -215,7 +163,7 @@ public class PlayerController : MonoBehaviour
           position.x = Room.RoomBounds.min.x + bounds.extents.x;
 
         }
-
+        //border checks for top and bottom
         if (position.y + bounds.extents.y > Room.RoomBounds.max.y)
         {
             position.y = Room.RoomBounds.extents.y - bounds.extents.y;
@@ -226,17 +174,21 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //behavior for firing a new projectile
     private void OnProjectile(InputValue value)
     {
         if(fireTimer<= 0)
         {
+            //resets the interval between shots
             fireTimer = fireRate;
 
+            //plays the firing sound
             if (!attackSound.isPlaying)
             {
                 attackSound.Play();
             }
 
+            //creates a new spit projectile and intializes it's values
             Spit SpitToInstantiate = Instantiate(spitBase);
             SpitToInstantiate.transform.position = transform.position;
             SpitToInstantiate.currentRoom = currentRoom;
@@ -248,6 +200,7 @@ public class PlayerController : MonoBehaviour
             mousePos.z = Camera.main.transform.position.y - 0.5f;
             Vector3 clickPos = Camera.main.ScreenToWorldPoint(mousePos);
 
+            //fires the projectile to either the right or left depending on the mouse position
             if (clickPos.x < position.x)
             {
                 SpitToInstantiate.Direction = new Vector3(-1.0f, 0.0f, 0.0f);
@@ -261,18 +214,26 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //behavior that happens every time the player takes damage
     public void TakeDamage(int damage)
     {
         health -= damage;
+        //updates the health 
         healthSlider.value = health/maxHealth;
 
         if (!hitSound.isPlaying)
         {
             hitSound.Play();
         }
+
+        //loss condition
+        if (health <= 0)
+        {
+            SceneManager.LoadScene("LossScene");
+        }
     }
 
-    //needed to for controls to work 
+    
     private void OnEnable()
     {
         playerControls.Enable();

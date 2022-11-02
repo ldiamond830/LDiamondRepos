@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+/// <summary>
+/// attached to final room checks when enemy count is zero and transitions to win scene
+/// </summary>
 public class WinState : MonoBehaviour
 {
     [SerializeField]
