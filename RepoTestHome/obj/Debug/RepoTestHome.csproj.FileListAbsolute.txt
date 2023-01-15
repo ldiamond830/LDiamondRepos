@@ -1,7 +1,0 @@
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\RepoTestHome\bin\Debug\RepoTestHome.exe.config
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\RepoTestHome\bin\Debug\RepoTestHome.exe
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\RepoTestHome\bin\Debug\RepoTestHome.pdb
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\RepoTestHome\obj\Debug\RepoTestHome.csprojAssemblyReference.cache
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\RepoTestHome\obj\Debug\RepoTestHome.csproj.CoreCompileInputs.cache
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\RepoTestHome\obj\Debug\RepoTestHome.exe
-C:\Users\space hamster\Desktop\GDAPSProjects\repos\RepoTestHome\obj\Debug\RepoTestHome.pdb
