@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //updates player's horizontal velocity
+        //updates player's horizontal velocity, vertical is handled in the separate jump method
         rigidbody.velocity = new Vector2((direction.x * speed * Time.deltaTime), rigidbody.velocity.y);
        
 
@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //reads in WASD direction from player controls
         direction = playerControls.ReadValue<Vector2>();
 
 

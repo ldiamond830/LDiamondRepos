@@ -20,7 +20,7 @@ public class DarkController : MonoBehaviour
     private void Update()
     {
         globalLight.intensity = lightMeterUI.fillAmount;
-        //Debug.Log(globalLight.intensity);
+       
 
         if (isWater)
         {
