@@ -27,3 +27,46 @@ private IEnumerator Dash()
       yield return new WaitForSeconds(dashCooldown);
       canDash = true;
     }
+
+//player update
+private void FixedUpdate()
+    {
+        //vertical is handled in the separate jump method
+        rigidbody.velocity = new Vector2((direction.x * speed * Time.deltaTime), rigidbody.velocity.y);
+    }
+
+private void OnJump(InputValue value)
+    {
+        if (canJump)
+        {
+            rigidbody.AddForce(new Vector2(0, jumpHeight));
+        }
+    }
+
+
+//platform collision controller 
+private void OnCollisionEnter2D(Collision2D collision)
+{
+        if(player == null)
+        {
+            player = collision.gameObject.GetComponent<PlayerController>();
+        }
+        if (player.CanJump == false)
+        {
+            player.CanJump = true;
+        }
+    }
+}
+
+//code for controlling light level of the overall stage, taken from DarkController.cs which aside from this was written by another member of the team
+globalLight.intensity = lightMeterUI.fillAmount;
+
+//checkpoint behavior
+private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!playerHasReached)
+        {
+            player.RespawnPoint = this.transform.position;
+        }
+    }
+
