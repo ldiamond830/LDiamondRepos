@@ -1,0 +1,182 @@
+Class StenWizard : Cacodemon{
+
+Default
+{
+	Health 4500;
+	Radius 20;
+	Height 56;
+	Mass 100000;
+	Speed 20;
+	FloatSpeed 20;
+	PainChance 25;
+	Monster;
+	+BOSS
+	+BOSSDEATH
+	+FLOAT
+	+FLOATBOB
+	+NOGRAVITY
+	+SPAWNCEILING
+	-STAYMORPHED
+	SeeSound "Sten/See";
+	AttackSound "Sten/Attack";
+	PainSound "Sten/Pain";
+	DeathSound "Sten/Death";
+	Obituary "Player was annihilated by the dark wizard Sten";
+	Tag "Wizard Sten";
+}
+
+States
+	{
+	Spawn:
+		STEN A 1 A_Look;
+		Loop;
+	See:
+		STEN A 1 A_Chase;
+		Loop;
+	Melee:
+		Goto Missile;
+	Missile:
+		STEN A 0 BRIGHT A_FaceTarget;
+		STEN A 2 BRIGHT A_FaceTarget;
+		STEN B 10 {
+		
+		//uses rng to either pick attack
+		if (random(1,2)==1)
+		{
+			if(target)
+			{
+					int Dist = Distance3D(target);
+					int zDiff = (self.pos.z - target.pos.z);
+					//uses close range bomb if player is within a certain distance
+					if (Dist < 400)
+					{
+						SetStateLabel("Bomb");
+					}
+					else
+					{
+						SetStateLabel("RingShot");
+					}
+				
+			}
+		}
+	}
+  STEN B 10 A_FaceTarget;
+	Goto MassiveShot;
+
+	Bomb:
+	STEN C 1 A_FaceTarget;
+	STEN D 10 
+	{
+		A_SpawnProjectile("StenBomb", 32, 0, 0, CMF_OFFSETPITCH);
+		A_SpawnProjectile("StenBomb", 32, 0, 0, CMF_OFFSETPITCH, 30);
+		A_SpawnProjectile("StenBomb", 32, 0, 0, CMF_OFFSETPITCH, -30);
+		A_PlaySound("Sten/Attack");
+	}
+	STEN C 10 A_FaceTarget;
+	Goto See;
+	
+	RingShot:
+	STEN C 10;
+	STEN D 10{
+		for(int i = 0; i < 12; i++)
+		{
+		int degAngle = 360.0f / i;
+		//converts degree angle to a fixed point number which ZDoom uses for rotations 
+		int fixedPointAngle = degAngle << 16;
+		 A_SpawnProjectile("StenProjectile", 32, cos(fixedPointAngle) * 50, sin(fixedPointAngle) * 50, CMF_AIMDIRECTION, 5);
+		 A_PlaySound("Sten/Attack");
+		}
+	}
+	Goto See;
+	
+	MassiveShot:
+	STEN C 40{
+	//spawns a projectile that stays in place to serve as a build up
+	A_SpawnProjectile("StenMassiveProjectile", 90);
+	A_PlaySound("Sten/Attack");
+	}
+	STEN D 10 A_SpawnProjectile("StenMassiveProjectileMoving", 90);
+	Goto See;
+	Pain:
+	STEN A 1 A_Look;
+	Goto See;
+	Death:
+		SKUL H 8 BRIGHT A_Scream;
+		SKUL I 8 BRIGHT A_NoBlocking;
+		SKUL J 8;
+		SKUL K 8;
+		Stop;
+	Raise:
+		STEN B 8 A_UnSetFloorClip;
+		STEN B 8;
+		Goto See;
+	}
+}
+
+Class RatGrenade : DoomWeapon{
+Default
+{
+Weapon.SelectionOrder 3000;
+Weapon.AmmoUse 1;
+Weapon.AmmoGive 2;
+Weapon.AmmoType "RatGrenadeAmmo";
+Weapon.SlotNumber 7;
++WEAPON.NOAUTOFIRE
+Inventory.PickupMessage "Player picked up the ultimate weapon";
+Tag "Rat Grenadge Weapon";
+}
+
+
+States
+{
+Ready:
+RATG A 1 A_WeaponReady;
+Loop;
+
+Deselect:
+RATG M 5; 
+RATG L 5;
+Goto Lower;
+
+Select:
+RATG L 5;
+RATG M 5;
+Goto Raise;
+
+Fire:
+RATG B 4;
+RATG C 4;
+RATG D 4;
+RATG E 4;
+RATG F 3;
+RATG G 3{
+ A_ThrowGrenade("RatGrenadeProjectile", 0, 0, 8, true);
+ A_PlaySound("Rat/Attack");
+ }
+RATG H 3;
+RATG I 3;
+RATG J 3;
+RATG K 3;
+RATG L 3;
+RATG M 3 A_ReFire;
+Goto Ready;
+
+Flash:
+BFGF A 11 Bright A_Light1;
+BFGF B 6 Bright A_Light2;
+Goto LightDone;
+
+Spawn:
+RATP A -1;
+Stop;
+
+//actual raise and lower weapon functionality is controlled in separate states select and deselect for easier tweaking
+Lower:
+RATG K 1 A_Lower(18);
+Loop;
+
+Raise:
+RATG A 1 A_Raise(18);
+Loop;
+}
+}
