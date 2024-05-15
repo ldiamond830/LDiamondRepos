@@ -1,0 +1,321 @@
+//Controller for cymbal monkey security camera enemy
+public class CymbalMonkeySelector : Selector
+{
+    #region Detection Indicator
+    protected UIManager UIManager;
+    #endregion
+
+    private List<TeddyBearSelector> BearsInRange = new List<TeddyBearSelector>();
+    public CymbalMonkeyDetectionBehavior DetectionBehavior { get; private set; }
+
+    private ScanBehavior scanBehavior;
+    private CymbalMonkeyLookAtPlayerBehavior lookAtPlayer;
+    private AlarmBehavior alarmBehavior;
+    private StopAlarmBehavior stopAlarmBehavior;
+    private ReturnToOrigninalRotationBehavior returnToOriginalLookDirection;
+    private CymbalMonkeyDetectionSequence detectionSequence;
+    private CymbalMonkeyEndAlarmSequence endDetectionSequence;
+    private Behavior selectedBehavior;
+
+    [SerializeField]
+    private float detectionAngle;
+    [SerializeField]
+    private float secondsToDetect;
+    [SerializeField]
+    private float rotationSpeed;
+    [SerializeField]
+    private float rotationRange;
+    [SerializeField]
+    private Slider detectionSlider;
+    [SerializeField]
+    private FirstPersonController player;
+    [SerializeField]
+    private GameObject forwardIndicator;
+    [SerializeField]
+    private Animator cymbalMonkeyAnim;
+    [SerializeField]
+    private GameObject head;
+
+   
+    void Start()
+    {
+        DetectionBehavior = new CymbalMonkeyDetectionBehavior(player, detectionAngle, secondsToDetect, detectionSlider, head);
+        scanBehavior = new ScanBehavior(gameObject, rotationSpeed, rotationRange);
+        lookAtPlayer = new CymbalMonkeyLookAtPlayerBehavior(head, player.gameObject, rotationSpeed * 2.5f, DetectionBehavior);
+        returnToOriginalLookDirection = new ReturnToOrigninalRotationBehavior(head, rotationSpeed, DetectionBehavior);
+        alarmBehavior = new AlarmBehavior(BearsInRange, this);
+        stopAlarmBehavior = new StopAlarmBehavior(BearsInRange, DetectionBehavior);
+
+        detectionSequence = new CymbalMonkeyDetectionSequence(alarmBehavior, lookAtPlayer);
+        endDetectionSequence = new CymbalMonkeyEndAlarmSequence(returnToOriginalLookDirection, stopAlarmBehavior);
+
+        #region Indicator
+        UIManager = player.transform.Find("UI").GetComponent<UIManager>();
+        UIManager.AddMonkeyDetectionIndicator(gameObject);
+        #endregion
+        selectBehavior();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        DetectionBehavior.Execute();
+
+        if (selectedBehavior.CurrentState != behaviorState.inProgress)
+        {
+            selectBehavior();
+        }
+        forwardIndicator.transform.position = transform.position + head.transform.forward;
+
+        selectedBehavior.Execute();
+    }
+
+    public override void selectBehavior()
+    {
+
+        switch (DetectionBehavior.CurrentDetectionState)
+        {
+            case detectionState.seen:
+                cymbalMonkeyAnim.enabled = false;
+                selectedBehavior = lookAtPlayer;
+                break;
+            case detectionState.detected:
+                cymbalMonkeyAnim.enabled = true;
+                
+                if (cymbalMonkeyAnim.GetInteger("Current State") != 1)
+                {
+                    //plays cymbal sound
+                    AkSoundEngine.PostEvent("WE_eMonkeyCymbal", this.gameObject);
+                    cymbalMonkeyAnim.SetInteger("Current State", 1);
+                }
+                selectedBehavior = detectionSequence;
+                break;
+            case detectionState.undetected:
+                cymbalMonkeyAnim.enabled = true;
+                if (cymbalMonkeyAnim.GetInteger("Current State") != 0)
+                {
+                    cymbalMonkeyAnim.SetInteger("Current State", 0);
+                }
+                selectedBehavior = scanBehavior;
+                break;
+            case detectionState.endDetection:
+                cymbalMonkeyAnim.enabled = false;
+                //stops cymbal sound
+                AkSoundEngine.StopAll(this.gameObject);
+                selectedBehavior = endDetectionSequence;
+                break;
+            case detectionState.lostDetection:
+                cymbalMonkeyAnim.enabled = true;
+                selectedBehavior = scanBehavior;
+                break;
+
+        }
+
+    }
+
+//track teddy bears in range of alarm
+    private void OnTriggerEnter(Collider col)
+    {
+        TeddyBearSelector teddyBear = col.gameObject.GetComponentInParent<TeddyBearSelector>();
+        if (teddyBear != null)
+        {
+            BearsInRange.Add(teddyBear);
+
+        }
+    }
+
+    private void OnTriggerExit(Collider col)
+    {
+        TeddyBearSelector teddyBear = col.gameObject.GetComponentInParent<TeddyBearSelector>();
+        if (teddyBear != null && BearsInRange.Contains(teddyBear))
+        {
+            BearsInRange.Remove(teddyBear);
+        }
+    }
+}
+
+//behavior for teddy bear detecting player
+ public override void Execute()
+    {
+        SeePlayer = CheckLineOfSight();
+        HearPlayer = CheckPlayerAudible();
+
+        if ((teddyBearAnimator.GetInteger("Current State") == 2 || teddyBearAnimator.GetInteger("Current State") == 3) && AnimComplete())
+        {
+            TurnHeadBack();
+        }
+        //Debug.Log(currentDetectionState);
+        //If not seeing player, but hearing them, toggle hearing indicator
+        hearingIndicator.SetActive(HearPlayerNotSeen);
+        switch (currentDetectionState)
+        {
+            case detectionState.undetected:
+                //this is so jank
+                HeardStatTimer -= Time.deltaTime;
+
+                teddyBearAnimator.SetInteger("Current State", 0);
+
+                if (SeePlayer)
+                {
+                    StatisticsTracker.Instance.TimesSeen++;
+                    currentDetectionState = detectionState.suspicious;
+
+                }
+                else if (HearPlayer)
+                {
+                    hearingIndicator.SetActive(true);
+                    if(HeardStatTimer <= 0)
+                    {
+                        StatisticsTracker.Instance.TimesHeard++;
+                        HeardStatTimer = 1;
+                    }
+                    
+                    currentDetectionState = detectionState.heard;
+                }
+                break;
+            case detectionState.suspicious:
+                if (SeePlayer)
+                {
+                    detectionProgress += Time.deltaTime;
+                    if(detectionProgress >= secondsTillSeen)
+                    {
+                        currentDetectionState = detectionState.seen;
+                    }
+                }
+                else
+                {
+                    detectionProgress -= Time.deltaTime;
+
+                    if (detectionProgress <= 0)
+                    {
+                        currentDetectionState = detectionState.undetected;
+                    }
+                }
+                break;
+            case detectionState.seen:
+                TurnHeadBack();
+                if (SeePlayer)
+                {
+                    detectionProgress += Time.deltaTime;
+
+                    if (detectionProgress >= secondsTillDetection)
+                    {
+                        detectionProgress = secondsTillDetection;
+                        currentDetectionState = detectionState.detected;
+                        StatisticsTracker.Instance.TimesChased++;
+                    }
+                }
+                else
+                {
+                    detectionProgress -= Time.deltaTime;
+
+                    if (detectionProgress <= 0)
+                    {
+                        currentDetectionState = detectionState.undetected;
+                    }
+                }
+
+
+                break;
+
+            case detectionState.heard:
+                //behavior during heard state will turn teddy bear towards player, so this will start the chasing sequence if the player is in LOS
+                if (SeePlayer)
+                {
+                    currentDetectionState = detectionState.seen;
+                    StatisticsTracker.Instance.TimesSeen++;
+                }
+
+                break;
+
+            case detectionState.detected:
+                chaseDuration += Time.deltaTime;
+
+                if(!player.IsCaught)
+                    teddyBearAnimator.SetInteger("Current State", 1);
+
+                //if the player is able to stay out of LOS for a long enough period go to lostDetection state which checks their last seen position
+                if (!SeePlayer)
+                {
+                    detectionProgress -= Time.deltaTime;
+
+                    if (detectionProgress <= 0)
+                    {
+                        currentDetectionState = detectionState.lostDetection;
+                        StatisticsTracker.Instance.ChaseDurations.Add(chaseDuration);
+                        chaseDuration = 0;
+                    }
+                }
+                else
+                {
+                    detectionProgress += Time.deltaTime;
+                    //cap detection progress
+                    if(detectionProgress > secondsTillDetection)
+                    {
+                        detectionProgress = secondsTillDetection;
+                    }
+                }
+                break;
+
+            case detectionState.lostDetection:
+                if (SeePlayer)
+                {
+                    currentDetectionState = detectionState.seen;
+                    StatisticsTracker.Instance.TimesSeen++;
+                }
+                //reseting from lost detection to patrol is handled in searchBehavior.cs
+                break;
+            case detectionState.alarmed:
+                if (SeePlayer)
+                {
+                    //if teddy bear has been alarmed it will by pass the suspicious state and go straight to seen
+                    currentDetectionState = detectionState.seen;
+                }
+                break;
+        }
+
+       
+    }
+    private bool CheckLineOfSight()
+    {
+        RaycastHit hit;
+        if (Physics.Linecast(lookPoint.transform.position, player.DetectionPoint, out hit))
+        {
+            //check if there are no obstacles blocking LOS to player
+            if (hit.transform.tag == "Player")
+            {
+                Vector3 directionToPlayer = player.DetectionPoint - agent.transform.position;
+
+                //check if player is within angle of vision cone
+                if (Vector3.Angle(agent.transform.forward, directionToPlayer) <= detectionAngle)
+                {
+                    //store last position seen
+                    lastKnownPosition = AIUtils.Instance.GetNavMeshPosition(player.transform.position);
+                    //.Log("player visible");
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool CheckPlayerAudible()
+    {
+        //player is always inaudible when crouched or they are no moving
+        if (player.CurrentMovement == FirstPersonController.Movement.Crouching || player.MoveVector == Vector2.zero)
+        {
+            return false;
+        }
+
+        float distance = Vector3.Distance(player.transform.position, agent.transform.position);
+        if (distance < sprintHearingRadius && player.CurrentMovement == FirstPersonController.Movement.Sprinting //player is sprinting within radius
+                || distance < walkHearingRadius && player.CurrentMovement == FirstPersonController.Movement.Walking) //player is walking within radius
+        {
+            lastHeardPosition = player.transform.position;
+            return true;
+        }
+
+        return false;
+    }
+
